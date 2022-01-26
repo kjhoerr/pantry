@@ -16,6 +16,15 @@ public class Item {
     private String description;
 
     private double quantity;
+    
+    public Item() {
+    }
+    
+    public Item(String name, String description, double quantity) {
+        this.name = name;
+        this.description = description;
+        this.quantity = quantity;
+    }
 
     public Integer getId() {
         return id;
