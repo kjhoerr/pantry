@@ -16,7 +16,8 @@ public class ItemController {
     private ItemRepository itemRepository;
 
     @PostMapping(path="/add")
-    public @ResponseBody Integer addNewItem (@RequestParam String name, @RequestParam String description, @RequestParam String shortid, @RequestParam double quantity) {
+    @ResponseBody
+    Integer addNewItem(@RequestParam String name, @RequestParam String description, @RequestParam String shortid, @RequestParam double quantity) {
         Item item = new Item();
         item.setName(name);
         item.setDescription(description);
@@ -28,12 +29,14 @@ public class ItemController {
     }
 
     @GetMapping(path="")
-    public @ResponseBody Iterable<Item> getAllItems() {
+    @ResponseBody
+    Iterable<Item> getAllItems() {
         return itemRepository.findAll();
     }
     
     @GetMapping(path="/{shortid}")
-    public @ResponseBody Item getByShortid(@PathVariable String shortid) {
+    @ResponseBody
+    Item getByShortid(@PathVariable String shortid) {
         return itemRepository.findByShortid(shortid);
     }
     
