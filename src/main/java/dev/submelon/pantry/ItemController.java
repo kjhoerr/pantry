@@ -16,15 +16,15 @@ public class ItemController {
     private ItemRepository itemRepository;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewItem (@RequestParam String name, @RequestParam String description, @RequestParam String shortid, @RequestParam double quantity) {
+    public @ResponseBody Integer addNewItem (@RequestParam String name, @RequestParam String description, @RequestParam String shortid, @RequestParam double quantity) {
         Item item = new Item();
         item.setName(name);
         item.setDescription(description);
         item.setShortid(shortid);
         item.setQuantity(quantity);
 
-        itemRepository.save(item);
-        return "Ok";
+        Item updatedItem = itemRepository.save(item);
+        return updatedItem.getId();
     }
 
     @GetMapping(path="")
