@@ -11,7 +11,7 @@ public class PantryApplication {
 
   @RequestMapping("/")
   public String home() {
-    return "Check this out: http://localhost:8080/item/all";
+    return "Check this out: http://localhost:8080/items/";
   }
 
   public static void main(String[] args) {

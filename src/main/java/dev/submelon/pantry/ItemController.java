@@ -10,30 +10,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(path="/item")
+@RequestMapping(path="/items")
 public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewItem (@RequestParam String name, @RequestParam String description, @RequestParam double quantity) {
+    public @ResponseBody String addNewItem (@RequestParam String name, @RequestParam String description, @RequestParam String shortid, @RequestParam double quantity) {
         Item item = new Item();
         item.setName(name);
         item.setDescription(description);
+        item.setShortid(shortid);
         item.setQuantity(quantity);
 
         itemRepository.save(item);
         return "Ok";
     }
 
-    @GetMapping(path="/all")
+    @GetMapping(path="")
     public @ResponseBody Iterable<Item> getAllItems() {
         return itemRepository.findAll();
     }
     
-    @GetMapping(path="/name/{name}")
-    public @ResponseBody Item getByName(@PathVariable String name) {
-        return itemRepository.findByName(name);
+    @GetMapping(path="/{shortid}")
+    public @ResponseBody Item getByShortid(@PathVariable String shortid) {
+        return itemRepository.findByShortid(shortid);
     }
     
 }

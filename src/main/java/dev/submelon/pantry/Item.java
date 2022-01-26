@@ -1,5 +1,6 @@
 package dev.submelon.pantry;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,18 +12,24 @@ public class Item {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
+    @Column(nullable=false)
     private String name;
 
     private String description;
+    
+    @Column(unique=true, nullable=false)
+    private String shortid;
 
+    @Column(nullable=false)
     private double quantity;
     
     public Item() {
     }
     
-    public Item(String name, String description, double quantity) {
+    public Item(String name, String description, String shortid, double quantity) {
         this.name = name;
         this.description = description;
+        this.shortid = shortid;
         this.quantity = quantity;
     }
 
@@ -48,6 +55,14 @@ public class Item {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getShortid() {
+        return shortid;
+    }
+
+    public void setShortid(String shortid) {
+        this.shortid = shortid;
     }
 
     public double getQuantity() {
