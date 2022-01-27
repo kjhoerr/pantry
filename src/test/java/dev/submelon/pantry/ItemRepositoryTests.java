@@ -15,13 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class ItemRepositoryTests {
     @Autowired
-    private ItemRepository itemRepository;
+    private PantryItemRepository itemRepository;
 
     @BeforeAll
     public void before() throws Exception {
-        Item pb = new Item("Peanut Butter", "Crunchy", "crunchy-pb", 14.0);
-        Item jelly = new Item("Strawberry Preserves", "The best", "sb-preserves", 12.8);
-        Item bread = new Item("Oatnut Bread", "Relatively healthy, right?", "oatnut-bread", 10);
+        PantryItem pb = new PantryItem("Peanut Butter", "Crunchy", "crunchy-pb", 14.0);
+        PantryItem jelly = new PantryItem("Strawberry Preserves", "The best", "sb-preserves", 12.8);
+        PantryItem bread = new PantryItem("Oatnut Bread", "Relatively healthy, right?", "oatnut-bread", 10);
         assertNull(pb.getId());
         assertNull(jelly.getId());
         assertNull(bread.getId());
@@ -35,13 +35,13 @@ public class ItemRepositoryTests {
 
     @Test
     public void testFetchData() {
-        Item pb = itemRepository.findByShortid("crunchy-pb");
+        PantryItem pb = itemRepository.findByShortid("crunchy-pb").get();
         assertNotNull(pb);
         assertEquals(14.0, pb.getQuantity());
-        Iterable<Item> items = itemRepository.findAll();
+        Iterable<PantryItem> items = itemRepository.findAll();
 
         int count = 0;
-        for (Item item : items) {
+        for (PantryItem item : items) {
             assertNotNull(item);
             count++;
         }
