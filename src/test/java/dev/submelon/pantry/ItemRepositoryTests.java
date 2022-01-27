@@ -19,9 +19,9 @@ public class ItemRepositoryTests {
 
     @BeforeAll
     public void before() throws Exception {
-        PantryItem pb = new PantryItem("Peanut Butter", "Crunchy", "crunchy-pb", 14.0);
-        PantryItem jelly = new PantryItem("Strawberry Preserves", "The best", "sb-preserves", 12.8);
-        PantryItem bread = new PantryItem("Oatnut Bread", "Relatively healthy, right?", "oatnut-bread", 10);
+        PantryItem pb = new PantryItem("Peanut Butter", "Crunchy", 14.0, "oz");
+        PantryItem jelly = new PantryItem("Strawberry Preserves", "The best", 12.8, "oz");
+        PantryItem bread = new PantryItem("Oatnut Bread", "Relatively healthy, right?", 10, "slices");
         assertNull(pb.getId());
         assertNull(jelly.getId());
         assertNull(bread.getId());
@@ -35,7 +35,7 @@ public class ItemRepositoryTests {
 
     @Test
     public void testFetchData() {
-        PantryItem pb = itemRepository.findByShortid("crunchy-pb").get();
+        PantryItem pb = itemRepository.findByName("Peanut Butter").get();
         assertNotNull(pb);
         assertEquals(14.0, pb.getQuantity());
         Iterable<PantryItem> items = itemRepository.findAll();

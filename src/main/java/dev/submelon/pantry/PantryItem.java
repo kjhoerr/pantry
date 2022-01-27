@@ -24,17 +24,17 @@ public class PantryItem {
 
     private String description;
     
-    @Column(unique=true, nullable=false)
-    private String shortid;
-
     @Column(nullable=false)
     private double quantity;
+
+    @Column(nullable=false)
+    private String quantityUnitType;
     
-    public PantryItem(String name, String description, String shortid, double quantity) {
+    public PantryItem(String name, String description, double quantity, String quantityUnitType) {
         this.name = name;
         this.description = description;
-        this.shortid = shortid;
         this.quantity = quantity;
+        this.quantityUnitType = quantityUnitType;
     }
 
 }
