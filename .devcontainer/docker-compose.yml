@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         # Volume directory for hosted files. This directory is created on image build with proper permissions. This is set as an env-var in the Dockerfile
-        VARIANT: "17"
+        VARIANT: "11"
 
         # Options
         INSTALL_MAVEN: "true"
