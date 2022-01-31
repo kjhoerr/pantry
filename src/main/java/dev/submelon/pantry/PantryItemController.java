@@ -3,9 +3,10 @@ package dev.submelon.pantry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -14,17 +15,20 @@ public class PantryItemController {
     @Autowired
     private PantryItemRepository itemRepository;
 
-    @PostMapping(path="/add")
+    @PutMapping(path="/{id}")
     @ResponseBody
-    Integer addNewItem(@RequestParam String name, @RequestParam String description, @RequestParam double quantity, @RequestParam String quantityUnitType) {
-        PantryItem item = new PantryItem();
-        item.setName(name);
-        item.setDescription(description);
-        item.setQuantity(quantity);
-        item.setQuantityUnitType(quantityUnitType);
-
-        PantryItem updatedItem = itemRepository.save(item);
-        return updatedItem.getId();
+    PantryItem addNewItem(@RequestBody PantryItem item, @PathVariable Long id) {
+        return itemRepository.findById(id)
+            .map(existingItem -> {
+                existingItem.setName(item.getName());
+                existingItem.setDescription(item.getDescription());
+                existingItem.setQuantity(item.getQuantity());
+                existingItem.setQuantityUnitType(item.getQuantityUnitType());
+                return itemRepository.save(existingItem);
+            })
+            .orElseGet(() -> {
+                return itemRepository.save(item);
+            });
     }
 
     @GetMapping(path="")
