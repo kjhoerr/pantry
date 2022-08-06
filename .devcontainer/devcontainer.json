@@ -1,34 +1,44 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/java
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.241.1/containers/java
 {
 	"name": "Pantry",
-	"dockerComposeFile": "docker-compose.yml",
-	"service": "pantry",
-	"workspaceFolder": "/workspaces/pantry",
-
-	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"java.jdt.ls.java.home": "/docker-java-home"
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"VARIANT": "17-bullseye",
+			"INSTALL_MAVEN": "true",
+			"INSTALL_GRADLE": "false",
+			"NODE_VERSION": "lts/*",
+			"LIQUIBASE_VERSION": "4.14.0"
+		}
 	},
-	
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"vscjava.vscode-java-pack",
-		"gabrielbb.vscode-lombok",
-		"redhat.vscode-yaml",
-		"visualstudioexptteam.vscodeintellicode",
-		"redhat.fabric8-analytics",
+
+	"mounts": [
+		// Pass through Maven settings and repository cache
+		"source=${localEnv:HOME}/.m2,target=/home/vscode/.m2,type=bind,consistency=cached"
 	],
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"customizations": {
+		"vscode": {
+			"settings": {
+			},
+
+			"extensions": [
+				"vscjava.vscode-java-pack",
+				"redhat.vscode-yaml",
+				"visualstudioexptteam.vscodeintellicode",
+				"redhat.fabric8-analytics",
+				"redhat.vscode-quarkus"
+			]
+		}
+	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "mvn compile spring-boot:run",
+	// "postCreateCommand": "mvn compile",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode",
 	"features": {
-		"kubectl-helm-minikube": "1.22"
+		"docker-from-docker": "latest"
 	}
 }
