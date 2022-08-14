@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useState } from "react";
+import React, { ChangeEvent, useMemo, useState } from "react";
 import { Button, Form, InputOnChangeData, Segment } from "semantic-ui-react";
 import { PantryItem } from "../model";
 

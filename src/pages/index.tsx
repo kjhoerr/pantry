@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 
 import styles from "../styles/Home.module.css";
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import AddItem from "../components/add-item";
 import {
   getGetItemsQueryKey,
