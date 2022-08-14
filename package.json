@@ -1,5 +1,13 @@
 {
   "name": "pantry",
+  "version": "0.1.0",
+  "description": "Kitchen inventory organizer and planner",
+  "repository": {
+    "type": "git",
+    "url": "https://git.submelon.dev/kjhoerr/pantry.git"
+  },
+  "author": "Kevin J Hoerr <kjhoerr@submelon.tech>",
+  "license": "BlueOak-1.0.0",
   "scripts": {
     "dev:fe": "nodemon --watch src/conf --watch src/components --watch src/model --watch src/pages --watch src/styles --watch src/util -e ts,tsx,css -x 'yarn inject'",
     "dev:be": "mvn quarkus:dev",
@@ -32,5 +40,6 @@
     "nodemon": "^2.0.19",
     "npm-run-all2": "^6.0.1",
     "typescript": "4.7.4"
-  }
+  },
+  "packageManager": "yarn@3.2.2"
 }

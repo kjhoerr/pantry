@@ -73,3 +73,13 @@ yarn-error.log*
 
 # build files of NextJS passed into Quarkus
 /src/main/resources/META-INF/resources/
+
+# yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
