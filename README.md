@@ -54,3 +54,7 @@ If you want to learn more about building native executables, please consult http
 - SmallRye JWT ([guide](https://quarkus.io/guides/security-jwt)): Secure your applications with JSON Web Token
 - Reactive PostgreSQL client ([guide](https://quarkus.io/guides/reactive-sql-clients)): Connect to the PostgreSQL database using the reactive pattern
 - SmallRye Health ([guide](https://quarkus.io/guides/microprofile-health)): Monitor service health
+
+## License
+
+This project is licensed under [the Blue Oak Model License 1.0.0](LICENSE.md).
