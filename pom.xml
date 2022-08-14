@@ -25,6 +25,11 @@
       <url>https://submelon.dev/</url>
     </developer>
   </developers>
+  <scm>
+    <connection>scm:git:https://git.submelon.dev/kjhoerr/pantry</connection>
+    <developerConnection>scm:git:https://git.submelon.dev/kjhoerr/pantry</developerConnection>
+    <url>https://git.submelon.dev/kjhoerr/pantry</url>
+  </scm>
   <licenses>
     <license>
       <name>Blue Oak Model License 1.0.0</name>
