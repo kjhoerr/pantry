@@ -1,0 +1,87 @@
+---
+openapi: 3.0.3
+info:
+  title: pantry API
+  version: 1.0.0-SNAPSHOT
+paths:
+  /items:
+    get:
+      tags:
+      - Pantry Item Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PantryItem'
+    post:
+      tags:
+      - Pantry Item Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PantryItem'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PantryItem'
+  /items/{id}:
+    put:
+      tags:
+      - Pantry Item Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PantryItem'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PantryItem'
+    delete:
+      tags:
+      - Pantry Item Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "204":
+          description: No Content
+components:
+  schemas:
+    PantryItem:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        quantity:
+          format: double
+          type: number
+        quantityUnitType:
+          type: string

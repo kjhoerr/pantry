@@ -1,0 +1,31 @@
+{
+  "name": "pantry",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "next lint",
+    "codegen": "orval --clean && prettier --write 'src/**/*.(ts|tsx)'",
+    "inject": "rm -rf src/main/resources/META-INF/resources && yarn build && cp -R out src/main/resources/META-INF/resources",
+    "develop": "yarn inject && mvn quarkus:dev"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.1.3",
+    "axios": "^0.27.2",
+    "immutable": "^4.1.0",
+    "next": "12.2.5",
+    "orval": "^6.9.6",
+    "prettier": "^2.7.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "18.7.3",
+    "@types/react": "18.0.17",
+    "eslint": "8.22.0",
+    "eslint-config-next": "12.2.5",
+    "typescript": "4.7.4"
+  }
+}
