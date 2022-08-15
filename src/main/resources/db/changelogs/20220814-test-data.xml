@@ -6,84 +6,84 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
    <changeSet id="20220814-test-data" author="kjhoerr" context="test">
         <insert tableName="pantryitem">
-            <column name="id" value="1"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Flour"/>
             <column name="description" value="Unbleached white"/>
             <column name="quantity" value="2.3"/>
             <column name="quantityunittype" value="lb"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="2"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Sugar"/>
             <column name="description" value="Granulated"/>
             <column name="quantity" value="9.3"/>
             <column name="quantityunittype" value="oz"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="3"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Eggs"/>
             <column name="description" value="Large white"/>
             <column name="quantity" value="10"/>
             <column name="quantityunittype" value="ct"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="4"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Baking Powder"/>
             <column name="description" value="Double acting"/>
             <column name="quantity" value="3.3"/>
             <column name="quantityunittype" value="oz"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="5"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Oat Milk"/>
             <column name="description" value="Unsweetened/no flavoring"/>
             <column name="quantity" value="107"/>
             <column name="quantityunittype" value="oz"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="6"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Vanilla Extract"/>
             <column name="description" value=""/>
             <column name="quantity" value="8.8"/>
             <column name="quantityunittype" value="oz"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="7"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Almond Extract"/>
             <column name="description" value=""/>
             <column name="quantity" value="1.07"/>
             <column name="quantityunittype" value="oz"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="8"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Canola Oil"/>
             <column name="description" value=""/>
             <column name="quantity" value="51"/>
             <column name="quantityunittype" value="oz"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="9"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Salt"/>
             <column name="description" value="Iodized"/>
             <column name="quantity" value="4.5"/>
             <column name="quantityunittype" value="oz"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="10"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Baking Soda"/>
             <column name="description" value=""/>
             <column name="quantity" value="6.5"/>
             <column name="quantityunittype" value="oz"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="11"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Butter"/>
             <column name="description" value="Salted"/>
             <column name="quantity" value="3.5"/>
             <column name="quantityunittype" value="cups"/>
         </insert>
         <insert tableName="pantryitem">
-            <column name="id" value="12"/>
+            <column name="id" valueSequenceNext="hibernate_sequence"/>
             <column name="name" value="Brown Sugar"/>
             <column name="description" value=""/>
             <column name="quantity" value="15"/>
