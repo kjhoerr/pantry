@@ -7,6 +7,8 @@ import {
   Message,
   Container,
   Pagination,
+  Input,
+  Grid,
 } from "semantic-ui-react";
 
 import styles from "../styles/Home.module.css";
@@ -40,6 +42,7 @@ const Home: NextPage = () => {
     },
   });
   const [activePage, setActivePage] = useState(1);
+  const [searchState, setSearchState] = useState<string>("");
   const [sortState, setSortState] = useState<SortStateProps>({
     field: "name",
     order: "ascending",
@@ -51,13 +54,26 @@ const Home: NextPage = () => {
   );
   const entries = useMemo(() => {
     const list = List<PantryItem>(data);
+
+    // case insensitive filter
+    const filterValue = searchState.trim().toUpperCase();
+    const filterList: List<PantryItem> =
+      filterValue !== ""
+        ? list.filter(
+            (item) =>
+              item.name?.toUpperCase().includes(filterValue) ||
+              item.description?.toUpperCase().includes(filterValue) ||
+              item.quantityUnitType?.toUpperCase().includes(filterValue)
+          )
+        : list;
+
     // case insensitive sort
-    const sorted = list.sortBy((item) =>
+    const sorted = filterList.sortBy((item) =>
       item[sortState.field]?.toString().toUpperCase()
     );
 
     return sortState.order === "ascending" ? sorted : sorted.reverse();
-  }, [data, sortState]);
+  }, [data, sortState, searchState]);
   const handleSortChange = (field: keyof PantryItem) => {
     setSortState((state) =>
       state.field === field
@@ -140,17 +156,30 @@ const Home: NextPage = () => {
         </Table.Body>
         <Table.Footer>
           <Table.Row>
-            <Table.HeaderCell colSpan="3">
-              <Pagination
-                activePage={activePage}
-                onPageChange={(_, { activePage }) =>
-                  setActivePage(Number(activePage ?? 1))
-                }
-                totalPages={Math.max(
-                  1,
-                  Math.ceil(entries.size / ENTRIES_PER_PAGE)
-                )}
-              />
+            <Table.HeaderCell colspan="3">
+              <Grid>
+                <Grid.Column width="4" />
+                <Grid.Column width="8" className="paginate-container">
+                  <Pagination
+                    activePage={activePage}
+                    onPageChange={(_, { activePage }) =>
+                      setActivePage(Number(activePage ?? 1))
+                    }
+                    totalPages={Math.max(
+                      1,
+                      Math.ceil(entries.size / ENTRIES_PER_PAGE)
+                    )}
+                  />
+                </Grid.Column>
+                <Grid.Column floated="right" width="4">
+                  <Input
+                    value={searchState}
+                    onChange={(_, { value }) => setSearchState(value)}
+                    placeholder="Search..."
+                    icon="search"
+                  />
+                </Grid.Column>
+              </Grid>
             </Table.HeaderCell>
           </Table.Row>
         </Table.Footer>
