@@ -1,7 +1,7 @@
 {
   "name": "pantry",
   "scripts": {
-    "dev:fe": "nodemon --watch src/conf --watch src/components --watch src/model --watch src/pages --watch src/styles --watch src/util -e ts,tsx,css -x 'yarn inject'",
+    "dev:fe": "nodemon --watch src/conf --watch src/components --watch src/model --watch src/pages --watch src/styles --watch src/util -e ts,tsx,css -x 'APP_ENV=development yarn inject'",
     "dev:be": "mvn quarkus:dev",
     "dev": "npm-run-all --parallel dev:*",
     "build": "next build && next export",
