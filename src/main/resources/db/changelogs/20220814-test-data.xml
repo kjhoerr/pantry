@@ -70,10 +70,10 @@
         </insert>
         <insert tableName="pantryitem">
             <column name="id" value="10"/>
-            <column name="name" value="Eggs"/>
-            <column name="description" value="Large white"/>
-            <column name="quantity" value="10"/>
-            <column name="quantityunittype" value="ct"/>
+            <column name="name" value="Baking Soda"/>
+            <column name="description" value=""/>
+            <column name="quantity" value="6.5"/>
+            <column name="quantityunittype" value="oz"/>
         </insert>
         <insert tableName="pantryitem">
             <column name="id" value="11"/>
