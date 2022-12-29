@@ -1,6 +1,7 @@
 package dev.submelon.rest.json;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.DELETE;
@@ -16,7 +17,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/items")
 public class PantryItemResource {
-    
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<PantryItem> getItems() {
@@ -36,8 +37,9 @@ public class PantryItemResource {
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public PantryItem putItem(@PathParam("id") Long id, PantryItem item) {
-        if (item.id.equals(id)) {
+    public PantryItem putItem(@PathParam("id") String id, PantryItem item) {
+        UUID _id = UUID.fromString(id);
+        if (item.getId().equals(_id)) {
             PantryItem.persist(item);
         } else {
             throw new WebApplicationException(Response.status(400).entity("ID does not match body").build());
@@ -49,11 +51,13 @@ public class PantryItemResource {
     @Transactional
     @DELETE
     @Path("/{id}")
-    public void deleteItem(@PathParam("id") Long id) {
-        boolean result = PantryItem.deleteById(id);
-
-        if (!result) {
-            throw new WebApplicationException(Response.status(404).entity("Could not find item").build());
+    public Response deleteItem(@PathParam("id") String id) {
+        UUID _id = UUID.fromString(id);
+        boolean result = PantryItem.deleteById(_id);
+        if (result) {
+            return Response.ok().build();
+        } else {
+            return Response.status(404).entity("Could not find item").build();
         }
     }
 }

@@ -1,5 +1,13 @@
 {
   "name": "pantry",
+  "version": "0.1.0",
+  "description": "Kitchen inventory organizer and planner",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kjhoerr/pantry.git"
+  },
+  "author": "Kevin J Hoerr <kjhoerr@submelon.tech>",
+  "license": "BlueOak-1.0.0",
   "scripts": {
     "dev:fe": "mkdir -p src/main/resources/META-INF/resources && nodemon --watch src/conf --watch src/components --watch src/model --watch src/pages --watch src/styles --watch src/util -e ts,tsx,css -x 'APP_ENV=development yarn inject'",
     "dev:be": "mvn quarkus:dev",

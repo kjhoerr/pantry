@@ -1,15 +1,14 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.241.1/containers/java
 {
 	"name": "Pantry",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": {
-			"VARIANT": "17-bullseye",
-			"INSTALL_MAVEN": "true",
-			"INSTALL_GRADLE": "false",
-			"NODE_VERSION": "lts/*",
-			"LIQUIBASE_VERSION": "4.14.0"
+	"image": "mcr.microsoft.com/devcontainers/java:17-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/java:1": {
+		   "version": "none",
+		   "installMaven": "true"
+	   	},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "latest"
 		}
 	},
 
@@ -37,8 +36,5 @@
 	// "postCreateCommand": "mvn compile",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode",
-	"features": {
-		"docker-from-docker": "latest"
-	}
+	"remoteUser": "vscode"
 }
