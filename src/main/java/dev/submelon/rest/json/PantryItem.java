@@ -1,29 +1,29 @@
 package dev.submelon.rest.json;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.util.UUID;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import org.bson.codecs.pojo.annotations.BsonId;
+
+import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
+import io.quarkus.mongodb.panache.common.MongoEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Entity
-@Table(name = "pantryitem")
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class PantryItem extends PanacheEntity {
+@EqualsAndHashCode(callSuper = false, onlyExplicitlyIncluded = true)
+@MongoEntity(collection = "item")
+public class PantryItem extends PanacheMongoEntityBase {
     
-    @Column(nullable = false)
+    @BsonId
+    @EqualsAndHashCode.Include
+    private UUID id;
+
     private String name;
 
-    @Column
     private String description;
 
-    @Column(nullable = false)
     private double quantity;
 
-    @Column(nullable = false)
     private String quantityUnitType;
 
 }

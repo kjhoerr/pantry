@@ -4,7 +4,7 @@
   "description": "Kitchen inventory organizer and planner",
   "repository": {
     "type": "git",
-    "url": "https://git.submelon.dev/kjhoerr/pantry.git"
+    "url": "https://github.com/kjhoerr/pantry.git"
   },
   "author": "Kevin J Hoerr <kjhoerr@submelon.tech>",
   "license": "BlueOak-1.0.0",
