@@ -4601,9 +4601,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-run-all2@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "npm-run-all2@npm:6.0.1"
+"npm-run-all2@npm:^6.0.4":
+  version: 6.0.4
+  resolution: "npm-run-all2@npm:6.0.4"
   dependencies:
     ansi-styles: ^5.0.0
     cross-spawn: ^7.0.3
@@ -4611,12 +4611,12 @@ __metadata:
     minimatch: ^5.0.0
     pidtree: ^0.6.0
     read-pkg: ^5.2.0
-    shell-quote: ^1.6.1
+    shell-quote: ^1.7.3
   bin:
     npm-run-all: bin/npm-run-all/index.js
     run-p: bin/run-p/index.js
     run-s: bin/run-s/index.js
-  checksum: 917b37030f43401aa98e4ce5204f585a72f6da7d3183833e74e95a4be101c20b146753b1bf67606889025bd877a18c3a14315fdc1b68194568f1dfc0690c3c51
+  checksum: b19db41325150ccbd13e3f5efa1e98b06354da8e6590da346b050492f1f7f480f8167250b39c778b541b7717f77a5e55220ccd8d4e83ada757a04df8472004d6
   languageName: node
   linkType: hard
 
@@ -5013,7 +5013,7 @@ __metadata:
     immutable: ^4.1.0
     next: 12.2.5
     nodemon: ^2.0.19
-    npm-run-all2: ^6.0.1
+    npm-run-all2: ^6.0.4
     orval: ^6.9.6
     prettier: ^2.7.1
     react: 18.2.0
@@ -5707,10 +5707,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shell-quote@npm:^1.6.1":
-  version: 1.7.3
-  resolution: "shell-quote@npm:1.7.3"
-  checksum: aca58e73a3a5d933d02e0bdddedc53ee14f7c2ec264f97ac915b9d4482d077a38e422aa664631d60a672cd3cdb4054eb2e6c0303f54882453dacb6483e482d34
+"shell-quote@npm:^1.7.3":
+  version: 1.7.4
+  resolution: "shell-quote@npm:1.7.4"
+  checksum: 2874ea9c1a7c3ebfc9ec5734a897e16533d0d06f2e4cddc22ba3d1cab5cdc07d0f825364c1b1e39abe61236f44d8e60e933c7ad7349ce44de4f5dddc7b4354e9
   languageName: node
   linkType: hard
 
