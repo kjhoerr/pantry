@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import { Provider } from "react-redux";
-import { wrapper } from "../store/store";
+import { wrapper } from "../store";
 
 const queryClient = new QueryClient();
 
