@@ -1,5 +1,7 @@
-import React, { ChangeEvent, useMemo, useState } from "react";
-import { Button, Form, InputOnChangeData, Segment } from "semantic-ui-react";
+import React, { ChangeEvent, useMemo, useRef, useState } from "react";
+import { Transition } from "@headlessui/react";
+import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
+import { PlusIcon } from "@heroicons/react/24/solid";
 import { PantryItem } from "../model";
 
 const defaultPantryItem = () =>
@@ -15,16 +17,14 @@ interface AddItemProps {
 }
 
 const AddItem = ({ addItem }: AddItemProps) => {
+  const nameInput = useRef<HTMLInputElement>(null);
   const [additionItem, setAdditionItem] = useState<PantryItem | undefined>();
   const [additionItemLoading, setAdditionItemLoading] = useState(false);
 
-  const handleItemChange = (
-    _: ChangeEvent<HTMLInputElement>,
-    { name, value }: InputOnChangeData
-  ) =>
+  const handleItemChange = ({ target }: ChangeEvent<HTMLInputElement>) =>
     setAdditionItem((item) => ({
       ...(item !== undefined ? item : defaultPantryItem()),
-      [name]: value,
+      [target.name]: target.value,
     }));
 
   const newItem = useMemo(
@@ -33,68 +33,167 @@ const AddItem = ({ addItem }: AddItemProps) => {
   );
 
   return (
-    <>
-      <Segment attached="top" hidden={additionItem !== undefined}>
-        <Button primary onClick={() => setAdditionItem(defaultPantryItem())}>
-          Add Item
-        </Button>
-      </Segment>
-      <Segment attached="top" hidden={additionItem === undefined}>
-        <Form
-          loading={additionItemLoading}
-          onSubmit={() => {
-            setAdditionItemLoading(true);
-            addItem(newItem).then(() => {
-              setAdditionItem(undefined);
-              setAdditionItemLoading(false);
-            });
+    <Card className="px-24">
+      <Transition
+        show={additionItem === undefined}
+        enter="transition ease-linear duration-100"
+        enterFrom="-translate-x-full"
+        enterTo="translate-x-0"
+        leave="transition ease-in-out duration-100 transform"
+        leaveFrom="translate-x-0"
+        leaveTo="-translate-x-full"
+      >
+        <div>
+          <Button
+            onClick={() => {
+              setAdditionItem(defaultPantryItem());
+              setTimeout(() => nameInput.current!.focus(), 350);
+            }}
+          >
+            <PlusIcon className="mr-2 h-5 w-5" />
+            Add Item
+          </Button>
+        </div>
+      </Transition>
+      <Transition show={additionItem !== undefined}>
+        <form
+          className="flex flex-col gap-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const scrubbed = {
+              ...newItem,
+              name: newItem.name?.trim(),
+              description: newItem.description?.trim(),
+              quantityUnitType: newItem.quantityUnitType?.trim(),
+            };
+            if (scrubbed.name !== "") {
+              setAdditionItemLoading(true);
+              addItem(scrubbed).then(() => {
+                setAdditionItem(undefined);
+                setAdditionItemLoading(false);
+              });
+            }
           }}
         >
-          <Form.Group widths="equal">
-            <Form.Input
+          <Transition.Child
+            enter="transition ease-linear duration-75"
+            enterFrom="-translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition ease-in-out duration-100 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="-translate-x-full"
+          >
+            <div className="mb-2 block">
+              <Label htmlFor="addition-item-name" value="Item Name" />
+            </div>
+            <TextInput
+              id="addition-item-name"
+              ref={nameInput}
               name="name"
-              label="Item Name"
+              type="text"
               placeholder="Item name"
               value={newItem.name}
               onChange={handleItemChange}
             />
-            <Form.Input
-              fluid
+          </Transition.Child>
+          <Transition.Child
+            enter="transition ease-linear duration-150"
+            enterFrom="-translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition ease-in-out duration-100 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="-translate-x-full"
+          >
+            <div className="mb-2 block">
+              <Label htmlFor="addition-item-desc" value="Item Description" />
+            </div>
+            <TextInput
+              id="addition-item-desc"
               name="description"
-              label="Item Description"
+              type="text"
               placeholder="Item description"
               value={newItem.description}
               onChange={handleItemChange}
             />
-            <Form.Input
-              fluid
+          </Transition.Child>
+          <Transition.Child
+            enter="transition ease-linear duration-225"
+            enterFrom="-translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition ease-in-out duration-100 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="-translate-x-full"
+          >
+          <div className="flex flex-row gap-4">
+            <div className="basis-1/2">
+            <div className="mb-2 block">
+              <Label htmlFor="addition-item-quantity" value="Item Quantity" />
+            </div>
+            <TextInput
+              id="addition-item-quantity"
               name="quantity"
-              label="Item Quantity"
+              type="number"
               placeholder="Item quantity"
               value={newItem.quantity}
               onChange={handleItemChange}
-            />
-            <Form.Input
+            /></div>
+          {/* </Transition.Child>
+          <Transition.Child
+            enter="transition ease-linear duration-300"
+            enterFrom="-translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition ease-in-out duration-100 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="-translate-x-full"
+          > */}
+          <div className="basis-1/2">
+            <div className="mb-2 block">
+              <Label htmlFor="addition-item-qut" value="Quantity Type" />
+            </div>
+            <TextInput
+              id="addition-item-qut"
               name="quantityUnitType"
-              label="Quantity Type"
+              type="text"
               placeholder="Quantity type"
               value={newItem.quantityUnitType}
               onChange={handleItemChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Button primary content="Submit Item" type="submit" />
-            <Form.Button
-              content="Cancel"
-              onClick={(e) => {
-                e.preventDefault();
-                setAdditionItem(undefined);
-              }}
-            />
-          </Form.Group>
-        </Form>
-      </Segment>
-    </>
+            /></div>
+            </div>
+          </Transition.Child>
+          <Transition.Child
+            enter="transition ease-linear duration-500"
+            enterFrom="-translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition ease-in-out duration-100 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="-translate-x-full"
+          >
+            <div className="flex flex-wrap items-center gap-2">
+              <div>
+                <Button
+                  type="submit"
+                  disabled={newItem.name?.trim() === "" || additionItemLoading}
+                >
+                  {additionItemLoading ? <Spinner /> : "Submit Item"}
+                </Button>
+              </div>
+              <div>
+                <Button
+                  color="light"
+                  disabled={additionItemLoading}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setAdditionItem(undefined);
+                  }}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </Transition.Child>
+        </form>
+      </Transition>
+    </Card>
   );
 };
 

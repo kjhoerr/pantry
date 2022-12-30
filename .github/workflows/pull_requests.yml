@@ -1,4 +1,4 @@
-name: submelon.dev PR
+name: Pantry PR
 
 on:
   pull_request:

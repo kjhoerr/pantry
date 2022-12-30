@@ -1,17 +1,14 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { List } from "immutable";
+import { Alert, Pagination, Table, TextInput } from "flowbite-react";
 import {
-  Header,
-  Table,
-  Message,
-  Container,
-  Pagination,
-  Input,
-  Grid,
-} from "semantic-ui-react";
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ChevronUpDownIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/solid";
 
-import styles from "../styles/Home.module.css";
 import React, { useMemo, useState } from "react";
 import AddItem from "../components/add-item";
 import {
@@ -61,15 +58,17 @@ const Home: NextPage = () => {
       filterValue !== ""
         ? list.filter(
             (item) =>
-              item.name?.toUpperCase().includes(filterValue) ||
-              item.description?.toUpperCase().includes(filterValue) ||
-              item.quantityUnitType?.toUpperCase().includes(filterValue)
+              item.name?.toUpperCase().trim().includes(filterValue) ||
+              item.description?.toUpperCase().trim().includes(filterValue) ||
+              item.quantityUnitType?.toUpperCase().trim().includes(filterValue)
           )
         : list;
 
     // case insensitive sort
     const sorted = filterList.sortBy((item) =>
-      item[sortState.field]?.toString().toUpperCase()
+      typeof item[sortState.field] === "string"
+        ? item[sortState.field]?.toString().trim().toUpperCase()
+        : item[sortState.field]
     );
 
     return sortState.order === "ascending" ? sorted : sorted.reverse();
@@ -85,8 +84,31 @@ const Home: NextPage = () => {
     );
   };
 
+  const HeadCell = ({
+    field,
+    children,
+  }: {
+    field: keyof PantryItem;
+    children: React.ReactNode;
+  }) => (
+    <Table.HeadCell onClick={() => handleSortChange(field)}>
+      <div className="flex space-x-2">
+        {children}
+        {sortState.field === field ? (
+          sortState.order === "ascending" ? (
+            <ChevronUpIcon className="ml-2 h-4 w-4" />
+          ) : (
+            <ChevronDownIcon className="ml-2 h-4 w-4" />
+          )
+        ) : (
+          <ChevronUpDownIcon className="ml-2 h-4 w-4" />
+        )}
+      </div>
+    </Table.HeadCell>
+  );
+
   return (
-    <Container className={styles.container}>
+    <div>
       <Head>
         <title>Pantry</title>
         <meta
@@ -96,46 +118,31 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header as="h1" className="title">
-        Pantry
-      </Header>
+      <header className="bg-white shadow">
+        <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+            Pantry
+          </h1>
+        </div>
+      </header>
 
       <AddItem addItem={(newItem) => Promise.resolve(mutate(newItem))} />
-      <Message error={error !== null} attached hidden={hasEntries}>
-        {error !== null
-          ? error.message !== undefined
-            ? `Network error occurred: ${error.message}`
-            : "Unknown network error occurred"
-          : "Nothing's in the pantry at the moment!"}
-      </Message>
-      <Table sortable attached="bottom">
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell
-              sorted={sortState.field === "name" ? sortState.order : undefined}
-              onClick={() => handleSortChange("name")}
-            >
-              Name
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={
-                sortState.field === "description" ? sortState.order : undefined
-              }
-              onClick={() => handleSortChange("description")}
-            >
-              Description
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={
-                sortState.field === "quantity" ? sortState.order : undefined
-              }
-              onClick={() => handleSortChange("quantity")}
-            >
-              Quantity
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+      <Table>
+        <Table.Head>
+          <HeadCell field="name">Name</HeadCell>
+          <HeadCell field="description">Description</HeadCell>
+          <HeadCell field="quantity">Quantity</HeadCell>
+        </Table.Head>
         <Table.Body>
+          {!hasEntries && (
+            <Alert>
+              {error !== null
+                ? error.message !== undefined
+                  ? `Network error occurred: ${error.message}`
+                  : "Unknown network error occurred"
+                : "Nothing's in the pantry at the moment!"}
+            </Alert>
+          )}
           {entries
             .valueSeq()
             .slice(
@@ -154,37 +161,41 @@ const Home: NextPage = () => {
               </Table.Row>
             ))}
         </Table.Body>
-        <Table.Footer>
-          <Table.Row>
-            <Table.HeaderCell colspan="3">
-              <Grid>
-                <Grid.Column width="4" />
-                <Grid.Column width="8" className="paginate-container">
+        <Table.Head>
+          <Table.HeadCell colSpan={3}>
+            <div className="flex">
+              <div className="basis-1/4" />
+              <div className="basis-1/2">
+                <div className="flex items-center justify-center text-center">
                   <Pagination
-                    activePage={activePage}
-                    onPageChange={(_, { activePage }) =>
-                      setActivePage(Number(activePage ?? 1))
-                    }
+                    className="-mt-1.5"
+                    layout="pagination"
+                    showIcons={true}
+                    previousLabel=""
+                    nextLabel=""
+                    currentPage={activePage}
                     totalPages={Math.max(
                       1,
                       Math.ceil(entries.size / ENTRIES_PER_PAGE)
                     )}
+                    onPageChange={setActivePage}
+                    renderPaginationButton={(props) => <Pagination.Button {...props} className={props.className + " py-2.5 h-10"} />}
                   />
-                </Grid.Column>
-                <Grid.Column floated="right" width="4">
-                  <Input
-                    value={searchState}
-                    onChange={(_, { value }) => setSearchState(value)}
-                    placeholder="Search..."
-                    icon="search"
-                  />
-                </Grid.Column>
-              </Grid>
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
+                </div>
+              </div>
+              <div className="basis-1/4">
+                <TextInput
+                  value={searchState}
+                  onChange={({ target }) => setSearchState(target.value)}
+                  placeholder="Search..."
+                  icon={MagnifyingGlassIcon}
+                />
+              </div>
+            </div>
+          </Table.HeadCell>
+        </Table.Head>
       </Table>
-    </Container>
+    </div>
   );
 };
 

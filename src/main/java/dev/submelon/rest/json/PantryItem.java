@@ -1,8 +1,7 @@
 package dev.submelon.rest.json;
 
-import java.util.UUID;
-
 import org.bson.codecs.pojo.annotations.BsonId;
+import org.bson.types.ObjectId;
 
 import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
 import io.quarkus.mongodb.panache.common.MongoEntity;
@@ -16,7 +15,7 @@ public class PantryItem extends PanacheMongoEntityBase {
     
     @BsonId
     @EqualsAndHashCode.Include
-    private UUID id;
+    private ObjectId id;
 
     private String name;
 
