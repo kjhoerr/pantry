@@ -16,7 +16,7 @@ interface AddItemProps {
   addItem: (item: PantryItem) => Promise<void>;
 }
 
-const AddItem = ({ addItem }: AddItemProps) => {
+export const AddItem = ({ addItem }: AddItemProps) => {
   const nameInput = useRef<HTMLInputElement>(null);
   const [additionItem, setAdditionItem] = useState<PantryItem | undefined>();
   const [additionItemLoading, setAdditionItemLoading] = useState(false);
@@ -192,5 +192,3 @@ const AddItem = ({ addItem }: AddItemProps) => {
     </Card>
   );
 };
-
-export default AddItem;

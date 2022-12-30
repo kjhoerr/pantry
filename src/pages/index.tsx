@@ -1,42 +1,44 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useDispatch } from "../store";
-import { List } from "immutable";
 
-import React, { useCallback } from "react";
-import AddItem from "../components/add-item";
+import React from "react";
+import { v4 } from "uuid";
 import { useGetItems, usePostItemsHook } from "../util/pantry-item-resource";
-import { PantryItem } from "../model";
 import { useMutation } from "@tanstack/react-query";
-import { addItem, setItems } from "../store/actions";
-import ItemsTable from "../components/items-table";
+import {
+  useAddItem,
+  useSetItems,
+  useToastAPIError,
+  useToastMessage,
+} from "../store/actions";
+import { AddItem, GlobalToast, ItemsTable } from "../components";
 
 const Home: NextPage = () => {
-  const dispatch = useDispatch();
-  const actSetItems = useCallback(
-    (items: PantryItem[]) => dispatch(setItems(List(items))),
-    [dispatch]
-  );
-  const actAddItem = useCallback(
-    (item: PantryItem) => dispatch(addItem(item)),
-    [dispatch]
-  );
+  const setItems = useSetItems();
+  const addItem = useAddItem();
+  const toastMessage = useToastMessage();
+  const toastAPIError = useToastAPIError();
   useGetItems({
     query: {
-      onSuccess: actSetItems,
-      onError: (e) => {
-        console.log(e);
-        //TODO display toast
-      },
+      onSuccess: setItems,
+      onError: toastAPIError,
     },
   });
   const postItems = usePostItemsHook();
   const { mutate } = useMutation(postItems, {
-    onSuccess: actAddItem,
-    onError: (e) => {
-      console.log(e);
-      //TODO display toast
+    onSuccess: (d) => {
+      addItem(d);
+      toastMessage(
+        {
+          key: v4(),
+          level: "success",
+          message: "Item added successfully",
+          detail: `Loaded "${d.name}" into database!`,
+        },
+        5
+      );
     },
+    onError: toastAPIError,
   });
 
   return (
@@ -57,6 +59,8 @@ const Home: NextPage = () => {
           </h1>
         </div>
       </header>
+
+      <GlobalToast />
 
       <AddItem addItem={(newItem) => Promise.resolve(mutate(newItem))} />
       <ItemsTable />

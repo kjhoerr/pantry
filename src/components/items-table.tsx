@@ -1,7 +1,7 @@
 import { List } from "immutable";
 import { useCallback, useMemo, useState } from "react";
 import { PantryItem } from "../model";
-import { Alert, Pagination, Table, TextInput } from "flowbite-react";
+import { Pagination, Table, TextInput } from "flowbite-react";
 import {
   ChevronDownIcon,
   ChevronUpIcon,
@@ -17,7 +17,7 @@ interface SortStateProps {
   order: "ascending" | "descending";
 }
 
-const ItemsTable = () => {
+export const ItemsTable = () => {
   // global state
   const data = useSelector((state) => state.items);
 
@@ -170,5 +170,3 @@ const ItemsTable = () => {
     </Table>
   );
 };
-
-export default ItemsTable;

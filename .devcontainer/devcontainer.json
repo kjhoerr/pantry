@@ -27,7 +27,8 @@
 				"redhat.vscode-yaml",
 				"visualstudioexptteam.vscodeintellicode",
 				"redhat.fabric8-analytics",
-				"redhat.vscode-quarkus"
+				"redhat.vscode-quarkus",
+				"bradlc.vscode-tailwindcss"
 			]
 		}
 	},
