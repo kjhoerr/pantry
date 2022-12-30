@@ -179,7 +179,12 @@ const Home: NextPage = () => {
                       Math.ceil(entries.size / ENTRIES_PER_PAGE)
                     )}
                     onPageChange={setActivePage}
-                    renderPaginationButton={(props) => <Pagination.Button {...props} className={props.className + " py-2.5 h-10"} />}
+                    renderPaginationButton={(props) => (
+                      <Pagination.Button
+                        {...props}
+                        className={props.className + " py-2.5 h-10"}
+                      />
+                    )}
                   />
                 </div>
               </div>

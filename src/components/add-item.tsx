@@ -124,40 +124,36 @@ const AddItem = ({ addItem }: AddItemProps) => {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-          <div className="flex flex-row gap-4">
-            <div className="basis-1/2">
-            <div className="mb-2 block">
-              <Label htmlFor="addition-item-quantity" value="Item Quantity" />
-            </div>
-            <TextInput
-              id="addition-item-quantity"
-              name="quantity"
-              type="number"
-              placeholder="Item quantity"
-              value={newItem.quantity}
-              onChange={handleItemChange}
-            /></div>
-          {/* </Transition.Child>
-          <Transition.Child
-            enter="transition ease-linear duration-300"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-100 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          > */}
-          <div className="basis-1/2">
-            <div className="mb-2 block">
-              <Label htmlFor="addition-item-qut" value="Quantity Type" />
-            </div>
-            <TextInput
-              id="addition-item-qut"
-              name="quantityUnitType"
-              type="text"
-              placeholder="Quantity type"
-              value={newItem.quantityUnitType}
-              onChange={handleItemChange}
-            /></div>
+            <div className="flex flex-row gap-4">
+              <div className="basis-1/2">
+                <div className="mb-2 block">
+                  <Label
+                    htmlFor="addition-item-quantity"
+                    value="Item Quantity"
+                  />
+                </div>
+                <TextInput
+                  id="addition-item-quantity"
+                  name="quantity"
+                  type="number"
+                  placeholder="Item quantity"
+                  value={newItem.quantity}
+                  onChange={handleItemChange}
+                />
+              </div>
+              <div className="basis-1/2">
+                <div className="mb-2 block">
+                  <Label htmlFor="addition-item-qut" value="Quantity Type" />
+                </div>
+                <TextInput
+                  id="addition-item-qut"
+                  name="quantityUnitType"
+                  type="text"
+                  placeholder="Quantity type"
+                  value={newItem.quantityUnitType}
+                  onChange={handleItemChange}
+                />
+              </div>
             </div>
           </Transition.Child>
           <Transition.Child
