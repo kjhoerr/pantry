@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useAppDispatch, useAppSelector } from "../store";
 import { List } from "immutable";
 import { Alert, Pagination, Table, TextInput } from "flowbite-react";
 import {
@@ -9,15 +10,12 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
 
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import AddItem from "../components/add-item";
-import {
-  getGetItemsQueryKey,
-  useGetItems,
-  usePostItemsHook,
-} from "../util/pantry-item-resource";
+import { useGetItems, usePostItemsHook } from "../util/pantry-item-resource";
 import { PantryItem } from "../model";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { addItem, setItems } from "../store/actions";
 
 const ENTRIES_PER_PAGE = Number(process.env.ENTRIES_PER_PAGE ?? "10");
 
@@ -27,16 +25,24 @@ interface SortStateProps {
 }
 
 const Home: NextPage = () => {
-  const { data, error } = useGetItems();
-  const postItems = usePostItemsHook();
-  const queryClient = useQueryClient();
-  const { mutate } = useMutation(postItems, {
-    onSuccess: async (item) => {
-      queryClient.setQueryData(
-        getGetItemsQueryKey(),
-        (data ?? []).concat(item)
-      );
+  const dispatch = useAppDispatch();
+  const actSetItems = useCallback(
+    (items: PantryItem[]) => dispatch(setItems(List(items))),
+    [dispatch]
+  );
+  const actAddItem = useCallback(
+    (item: PantryItem) => dispatch(addItem(item)),
+    [dispatch]
+  );
+  const { error } = useGetItems({
+    query: {
+      onSuccess: actSetItems,
     },
+  });
+  const data = useAppSelector((state) => state.items);
+  const postItems = usePostItemsHook();
+  const { mutate } = useMutation(postItems, {
+    onSuccess: actAddItem,
   });
   const [activePage, setActivePage] = useState(1);
   const [searchState, setSearchState] = useState<string>("");
@@ -46,23 +52,21 @@ const Home: NextPage = () => {
   });
 
   const hasEntries = useMemo(
-    () => error === null && (data === undefined || data.length > 0),
+    () => error === null && data.size > 0,
     [error, data]
   );
   const entries = useMemo(() => {
-    const list = List<PantryItem>(data);
-
     // case insensitive filter
     const filterValue = searchState.trim().toUpperCase();
     const filterList: List<PantryItem> =
       filterValue !== ""
-        ? list.filter(
+        ? data.filter(
             (item) =>
               item.name?.toUpperCase().trim().includes(filterValue) ||
               item.description?.toUpperCase().trim().includes(filterValue) ||
               item.quantityUnitType?.toUpperCase().trim().includes(filterValue)
           )
-        : list;
+        : data;
 
     // case insensitive sort
     const sorted = filterList.sortBy((item) =>
