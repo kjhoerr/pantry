@@ -10,7 +10,6 @@ const initialState: ItemState = List();
 
 const itemsReducer = (state: ItemState = initialState, action: Action) => {
   switch (action.type) {
-
     case actionIds.setItems:
       return (action as SetItemsAction).payload.items;
 

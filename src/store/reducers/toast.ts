@@ -11,7 +11,6 @@ const initialState: ToastState = OrderedMap();
 
 const toastReducer = (state: ToastState = initialState, action: Action) => {
   switch (action.type) {
-
     case actionIds.toastMessage: {
       const message = (action as ToastMessageAction).payload;
       const key = message.key ?? v4();
