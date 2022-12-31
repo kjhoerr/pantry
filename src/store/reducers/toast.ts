@@ -11,19 +11,24 @@ const initialState: ToastState = OrderedMap();
 
 const toastReducer = (state: ToastState = initialState, action: Action) => {
   switch (action.type) {
+
     case actionIds.toastMessage: {
       const message = (action as ToastMessageAction).payload;
       const key = message.key ?? v4();
+
       return state.set(key, {
         open: true,
         ...message,
         key,
       });
     }
+
     case actionIds.closeMessage: {
-      const key = (action as CloseMessageAction).payload.messageKey;
-      return state.setIn([key, "open"], false);
+      const { messageKey } = (action as CloseMessageAction).payload;
+
+      return state.setIn([messageKey, "open"], false);
     }
+
     default:
       return state;
   }

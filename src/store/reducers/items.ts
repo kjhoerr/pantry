@@ -10,10 +10,15 @@ const initialState: ItemState = List();
 
 const itemsReducer = (state: ItemState = initialState, action: Action) => {
   switch (action.type) {
+
     case actionIds.setItems:
       return (action as SetItemsAction).payload.items;
+
     case actionIds.addItem:
-      return state.concat((action as AddItemAction).payload.item);
+      const { item } = (action as AddItemAction).payload;
+
+      return state.concat(item);
+
     default:
       return state;
   }
