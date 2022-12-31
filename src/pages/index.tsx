@@ -11,7 +11,7 @@ import {
   useToastAPIError,
   useToastMessage,
 } from "../store/actions";
-import { AddItem, GlobalToast, ItemsTable } from "../components";
+import { AddItem, ItemsTable } from "../components";
 
 const Home: NextPage = () => {
   const setItems = useSetItems();
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
           message: "Item added successfully",
           detail: `Loaded "${d.name}" into database!`,
         },
-        5
+        10
       );
     },
     onError: toastAPIError,
@@ -59,8 +59,6 @@ const Home: NextPage = () => {
           </h1>
         </div>
       </header>
-
-      <GlobalToast />
 
       <AddItem addItem={(newItem) => Promise.resolve(mutate(newItem))} />
       <ItemsTable />

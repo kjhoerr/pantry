@@ -6,19 +6,22 @@ import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/24/solid";
+import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { ToastMessage } from "../model";
 import { Transition } from "@headlessui/react";
 
 const getColor = (level: ToastMessage["level"]) => {
   switch (level) {
     case "error":
+    case "network":
       return "red";
-    case "info":
-      return "blue";
-    case "success":
-      return "green";
     case "warning":
       return "yellow";
+    case "success":
+      return "green";
+    case "info":
+    default:
+      return "blue";
   }
 };
 
@@ -26,11 +29,14 @@ const getIcon = (level: ToastMessage["level"]) => {
   switch (level) {
     case "error":
       return ExclamationCircleIcon;
+    case "network":
+      return GlobeAltIcon;
     case "warning":
       return ExclamationTriangleIcon;
     case "success":
       return CheckIcon;
     case "info":
+    default:
       return InformationCircleIcon;
   }
 };
@@ -54,7 +60,7 @@ export const GlobalToast = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Toast className="mb-5 mr-8">
+            <Toast className="mb-5 mr-10">
               <div
                 className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-${color}-100 text-${color}-500 dark:bg-${color}-800 dark:text-${color}-200`}
               >

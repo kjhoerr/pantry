@@ -1,7 +1,8 @@
+import { networkInterfaces } from "os";
 import { Action } from "redux";
 import { useDispatch } from "..";
 import { ErrorType } from "../../conf/mutator";
-import { ToastMessage } from "../../model/toastMessage";
+import { ToastMessage } from "../../model";
 import actionIds from "./actionIds";
 
 export type CloseMessageAction = Action & {
@@ -33,11 +34,19 @@ export const useToastAPIError = () => {
 
   return (error: ErrorType<unknown>) =>
     dispatch(
-      toastMessage({
-        level: "error",
-        message: "API error occurred",
-        detail: error.message,
-      } as ToastMessage)
+      toastMessage(
+        error.message === "Network Error"
+          ? {
+              level: "network",
+              message: "Could not communicate with API",
+              detail: error.message,
+            }
+          : {
+              level: "error",
+              message: "API error occurred",
+              detail: error.message,
+            }
+      )
     );
 };
 
