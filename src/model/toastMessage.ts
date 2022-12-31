@@ -4,4 +4,5 @@ export interface ToastMessage {
   message: string;
   detail?: string;
   open?: boolean;
+  duration?: number;
 }

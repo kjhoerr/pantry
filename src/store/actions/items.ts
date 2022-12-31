@@ -13,6 +13,9 @@ export const setItems = (items: List<PantryItem>) => ({
   payload: { items },
 });
 
+/**
+ * Hook to dispatch a {@link SetItemsAction}.
+ */
 export const useSetItems = () => {
   const dispatch = useDispatch();
 
@@ -28,6 +31,9 @@ export const addItem = (item: PantryItem) => ({
   payload: { item },
 });
 
+/**
+ * Hook to dispatch an {@link AddItemAction}.
+ */
 export const useAddItem = () => {
   const dispatch = useDispatch();
 

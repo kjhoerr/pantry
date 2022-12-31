@@ -1,5 +1,6 @@
 import { networkInterfaces } from "os";
 import { Action } from "redux";
+import { v4 } from "uuid";
 import { useDispatch } from "..";
 import { ErrorType } from "../../conf/mutator";
 import { ToastMessage } from "../../model";
@@ -14,6 +15,9 @@ export const closeMessage = (messageKey: string) => ({
   payload: { messageKey },
 });
 
+/**
+ * Hook to dispatch a {@link CloseMessageAction}.
+ */
 export const useCloseMessage = () => {
   const dispatch = useDispatch();
 
@@ -29,9 +33,17 @@ export const toastMessage = (message: ToastMessage) => ({
   payload: message,
 });
 
+/**
+ * Hook to dispatch a {@link ToastMessageAction} based on an error response from the
+ * API. Will dispatch different messages based on the error context.
+ */
 export const useToastAPIError = () => {
   const dispatch = useDispatch();
 
+  /**
+   * Dispatch a {@link ToastMessageAction} based on an error response from the API.
+   * Will dispatch different messages based on the error context.
+   */
   return (error: ErrorType<unknown>) =>
     dispatch(
       toastMessage(
@@ -50,14 +62,23 @@ export const useToastAPIError = () => {
     );
 };
 
+/**
+ * Hook to dispatch a {@link ToastMessageAction}. If a duration is defined, an
+ * additional action ({@link CloseMessageAction}) is dispatched after the set timeout.
+ */
 export const useToastMessage = () => {
   const dispatch = useDispatch();
 
-  return (message: ToastMessage, duration?: number) => {
-    const { key } = message;
-    if (duration !== undefined && key !== undefined) {
+  /**
+   * Dispatch a {@link ToastMessageAction}. If a duration is defined, an additional
+   * action ({@link CloseMessageAction}) is dispatched after the set timeout.
+   */
+  return (message: ToastMessage) => {
+    const { duration } = message;
+    const key = message.key ?? v4();
+    if (duration !== undefined) {
       setTimeout(() => dispatch(closeMessage(key)), duration * 1000);
     }
-    dispatch(toastMessage(message));
+    dispatch(toastMessage({ ...message, key }));
   };
 };

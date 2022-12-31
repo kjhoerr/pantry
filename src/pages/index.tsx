@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import React from "react";
-import { v4 } from "uuid";
 import { useGetItems, usePostItemsHook } from "../util/pantry-item-resource";
 import { useMutation } from "@tanstack/react-query";
 import {
@@ -28,15 +27,12 @@ const Home: NextPage = () => {
   const { mutate } = useMutation(postItems, {
     onSuccess: (d) => {
       addItem(d);
-      toastMessage(
-        {
-          key: v4(),
-          level: "success",
-          message: "Item added successfully",
-          detail: `Loaded "${d.name}" into database!`,
-        },
-        10
-      );
+      toastMessage({
+        level: "success",
+        message: "Item added successfully",
+        detail: `Loaded "${d.name}" into database!`,
+        duration: 10,
+      });
     },
     onError: toastAPIError,
   });

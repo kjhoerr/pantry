@@ -42,7 +42,7 @@ const getIcon = (level: ToastMessage["level"]) => {
 };
 
 export const GlobalToast = () => {
-  const messages = useSelector((state) => state.toast);
+  const messages = useSelector((state) => state.toast.valueSeq());
   return (
     <div id="toast-holder" className="absolute right-0 bottom-0">
       {messages.map((message) => {
