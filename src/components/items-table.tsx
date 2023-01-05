@@ -5,11 +5,10 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
 import { Pagination, Table, TextInput } from "flowbite-react";
-import { List } from "immutable";
 import { useCallback, useMemo, useState } from "react";
 
-import { PantryItem } from "../model/graphql";
-import { useSelector } from "../store";
+import { useSelector } from "../hooks";
+import { PantryItem } from "../model";
 
 const ENTRIES_PER_PAGE = Number(process.env.ENTRIES_PER_PAGE ?? "10");
 
@@ -34,7 +33,7 @@ export const ItemsTable = () => {
   const entries = useMemo(() => {
     // case insensitive filter
     const filterValue = searchState.trim().toUpperCase();
-    const filterList: List<PantryItem> =
+    const filterList: PantryItem[] =
       filterValue !== ""
         ? data.filter(
             (item) =>
@@ -45,11 +44,19 @@ export const ItemsTable = () => {
         : data;
 
     // case insensitive sort
-    const sorted = filterList.sortBy((item) =>
-      typeof item[sortState.field] === "string"
-        ? item[sortState.field]?.toString().trim().toUpperCase()
-        : item[sortState.field],
-    );
+    const sorted = filterList.sort((itemA, itemB) => {
+      const fieldA = itemA[sortState.field] ?? "";
+      const fieldB = itemB[sortState.field] ?? "";
+      if (fieldA < fieldB) {
+        return 1;
+      }
+
+      if (fieldA > fieldB) {
+        return -1;
+      }
+
+      return 0;
+    });
 
     return sortState.order === "ascending" ? sorted : sorted.reverse();
   }, [data, sortState, searchState]);
@@ -102,25 +109,29 @@ export const ItemsTable = () => {
         <HeadCell field="description">Description</HeadCell>
         <HeadCell field="quantity">Quantity</HeadCell>
       </Table.Head>
-      <Table.Body>
-        {data.isEmpty() && (
-          <Table.Row>
+      <Table.Body className="divide-y">
+        {data.length === 0 && (
+          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
             <Table.Cell colSpan={3}>
-              <div className="text-center">
+              <div className="text-center whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 Nothing&apos;s in the pantry at the moment!
               </div>
             </Table.Cell>
           </Table.Row>
         )}
         {entries
-          .valueSeq()
           .slice(
             (activePage - 1) * ENTRIES_PER_PAGE,
             activePage * ENTRIES_PER_PAGE,
           )
           .map((item: PantryItem) => (
-            <Table.Row key={item.id}>
-              <Table.Cell>{item.name}</Table.Cell>
+            <Table.Row
+              key={item.id}
+              className="bg-white dark:border-gray-700 dark:bg-gray-800"
+            >
+              <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                {item.name}
+              </Table.Cell>
               <Table.Cell>
                 {item.description === "" ? "—" : item.description}
               </Table.Cell>
@@ -131,7 +142,10 @@ export const ItemsTable = () => {
           ))}
       </Table.Body>
       <Table.Head>
-        <Table.HeadCell colSpan={3}>
+        <Table.HeadCell
+          colSpan={3}
+          className="dark:bg-gray-800 border-t-2 border-gray-200 dark:border-gray-700"
+        >
           <div className="flex">
             <div className="basis-1/4" />
             <div className="basis-1/2">
@@ -145,7 +159,7 @@ export const ItemsTable = () => {
                   currentPage={activePage}
                   totalPages={Math.max(
                     1,
-                    Math.ceil(entries.size / ENTRIES_PER_PAGE),
+                    Math.ceil(entries.length / ENTRIES_PER_PAGE),
                   )}
                   onPageChange={setActivePage}
                   renderPaginationButton={(props) => (

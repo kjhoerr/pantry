@@ -2,7 +2,7 @@ import { Action } from "redux";
 import { v4 } from "uuid";
 
 import { useDispatch } from "..";
-import { ToastMessage } from "../../model/toastMessage";
+import { ToastMessage } from "../../model";
 import actionIds from "./actionIds";
 
 export type CloseMessageAction = Action & {

@@ -1,3 +1,3 @@
-export { AddItem } from "./add-item";
-export { GlobalToast } from "./global-toast";
-export { ItemsTable } from "./items-table";
+export * from "./add-item";
+export * from "./global-toast";
+export * from "./items-table";

@@ -4705,13 +4705,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"heroicons@npm:^2.0.13":
-  version: 2.0.13
-  resolution: "heroicons@npm:2.0.13"
-  checksum: faf188c80d555ef35ea4ef3eb3cffe562a2ec8ed29cc56d3bf1cc556f967cf3db3fa6140249da997f7ebf19395673b18b0be91d2a4539a5a91bcb608a49f651d
-  languageName: node
-  linkType: hard
-
 "hoist-non-react-statics@npm:^3.3.0, hoist-non-react-statics@npm:^3.3.2":
   version: 3.3.2
   resolution: "hoist-non-react-statics@npm:3.3.2"
@@ -4817,13 +4810,6 @@ __metadata:
   version: 9.0.16
   resolution: "immer@npm:9.0.16"
   checksum: e9a5ca65c929b329da7a3b7beccf7984271cda7bdd47b2cab619eac3277dcd56598c211b55cc340786b6eff0c06652ac018808d9fd744443f06882364dece6bc
-  languageName: node
-  linkType: hard
-
-"immutable@npm:^4.2.1":
-  version: 4.2.1
-  resolution: "immutable@npm:4.2.1"
-  checksum: 525bd78c4b8550df1b5f12d3bc7eb8bb3daed24f97df4018ec99a16436fc2a03fcebfcb4d3d36c86c46039292a583ea9eceb8a55704932f70a0cc5f15695b42a
   languageName: node
   linkType: hard
 
@@ -6466,14 +6452,12 @@ __metadata:
     flowbite-react: ^0.3.7
     graphql: ^16.6.0
     graphql-request: ^5.1.0
-    heroicons: ^2.0.13
-    immutable: ^4.2.1
     next: 13.1.1
     next-redux-wrapper: ^8.1.0
     nodemon: latest
     npm-run-all2: latest
     postcss: ^8.4.20
-    prettier: ^2.8.1
+    prettier: latest
     react: 18.2.0
     react-dom: 18.2.0
     react-redux: ^8.0.5
@@ -6734,7 +6718,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.8.1":
+"prettier@npm:latest":
   version: 2.8.1
   resolution: "prettier@npm:2.8.1"
   bin:

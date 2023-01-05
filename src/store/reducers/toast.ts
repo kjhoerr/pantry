@@ -1,14 +1,13 @@
-import { OrderedMap } from "immutable";
 import { Action } from "redux";
 import { v4 } from "uuid";
 
-import { ToastMessage } from "../../model/toastMessage";
+import { ToastMessage } from "../../model";
+import { CloseMessageAction, ToastMessageAction } from "../actions";
 import actionIds from "../actions/actionIds";
-import { CloseMessageAction, ToastMessageAction } from "../actions/toast";
 
-export type ToastState = OrderedMap<string, ToastMessage>;
+export type ToastState = Record<string, ToastMessage>;
 
-const initialState: ToastState = OrderedMap();
+const initialState: ToastState = {};
 
 const toastReducer = (state: ToastState = initialState, action: Action) => {
   switch (action.type) {
@@ -16,17 +15,28 @@ const toastReducer = (state: ToastState = initialState, action: Action) => {
       const message = (action as ToastMessageAction).payload;
       const key = message.key ?? v4();
 
-      return state.set(key, {
-        open: true,
-        ...message,
-        key,
-      });
+      return {
+        ...state,
+        [key]: {
+          open: true,
+          ...message,
+          key,
+        },
+      };
     }
 
     case actionIds.closeMessage: {
       const { messageKey } = (action as CloseMessageAction).payload;
 
-      return state.setIn([messageKey, "open"], false);
+      return state[messageKey] !== undefined
+        ? {
+            ...state,
+            [messageKey]: {
+              ...state[messageKey],
+              open: false,
+            },
+          }
+        : state;
     }
 
     default:

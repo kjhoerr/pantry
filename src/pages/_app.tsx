@@ -13,8 +13,16 @@ function MyApp({ Component, ...rest }: AppProps) {
       <Component {...props.pageProps} />
       <GlobalToast />
       {process.env.APP_ENV === "development" ? (
-        <div className="text-center mt-5">
-          <a href="/q/dev/">Visit Quarkus dev page</a>
+        <div
+          id="footer"
+          className="flex justify-center pb-2 flex-grow items-end text-sm"
+        >
+          <a
+            href="/q/dev/"
+            className="text-gray-400 dark:text-gray-600 hover:text-gray-500"
+          >
+            Visit Quarkus dev page
+          </a>
         </div>
       ) : undefined}
     </Provider>

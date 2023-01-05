@@ -3,9 +3,8 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
 import React, { ChangeEvent, useMemo, useRef, useState } from "react";
 
-import { useMutationStoreItem } from "../gql/items";
-import { PantryItem } from "../model/graphql";
-import { useToastMessage } from "../store/actions";
+import { useMutationStoreItem, useToastMessage } from "../hooks";
+import { PantryItem } from "../model";
 
 const defaultPantryItem = () =>
   ({
@@ -73,7 +72,7 @@ export const AddItem = () => {
                 toastMessage({
                   level: "success",
                   message: "Item added successfully",
-                  detail: `Loaded "${scrubbed.name}" into database!`,
+                  detail: `Stored "${scrubbed.name}" in the pantry!`,
                   duration: 10,
                 });
 

@@ -1,13 +1,12 @@
-import { List } from "immutable";
 import { Action } from "redux";
 
-import { PantryItem } from "../../model/graphql";
+import { PantryItem } from "../../model";
+import { AddItemAction, SetItemsAction } from "../actions";
 import actionIds from "../actions/actionIds";
-import { AddItemAction, SetItemsAction } from "../actions/items";
 
-export type ItemState = List<PantryItem>;
+export type ItemState = PantryItem[];
 
-const initialState: ItemState = List();
+const initialState: ItemState = [];
 
 const itemsReducer = (state: ItemState = initialState, action: Action) => {
   switch (action.type) {

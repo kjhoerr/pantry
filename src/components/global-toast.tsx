@@ -8,21 +8,21 @@ import {
 } from "@heroicons/react/24/solid";
 import { Toast } from "flowbite-react";
 
-import { ToastMessage } from "../model/toastMessage";
-import { useSelector } from "../store";
+import { useSelector } from "../hooks";
+import { ToastMessage } from "../model";
 
 const getColor = (level: ToastMessage["level"]) => {
   switch (level) {
     case "error":
     case "network":
-      return "red";
+      return "bg-red-100 text-red-500 dark:bg-red-800 dark:text-red-200";
     case "warning":
-      return "yellow";
+      return "bg-yellow-100 text-yellow-500 dark:bg-yellow-800 dark:text-yellow-200";
     case "success":
-      return "green";
+      return "bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200";
     case "info":
     default:
-      return "blue";
+      return "bg-blue-100 text-blue-500 dark:bg-blue-800 dark:text-blue-200";
   }
 };
 
@@ -43,9 +43,9 @@ const getIcon = (level: ToastMessage["level"]) => {
 };
 
 export const GlobalToast = () => {
-  const messages = useSelector((state) => state.toast.valueSeq());
+  const messages = useSelector((state) => Object.values(state.toast));
   return (
-    <div id="toast-holder" className="absolute right-0 bottom-0">
+    <div id="toast-holder" className="fixed right-5 bottom-0">
       {messages.map((message) => {
         const color = getColor(message.level);
         const Icon = getIcon(message.level);
@@ -61,9 +61,9 @@ export const GlobalToast = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Toast className="mb-5 mr-10">
+            <Toast className="mb-5">
               <div
-                className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-${color}-100 text-${color}-500 dark:bg-${color}-800 dark:text-${color}-200`}
+                className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${color}`}
               >
                 <Icon className="h-5 w-5" />
               </div>

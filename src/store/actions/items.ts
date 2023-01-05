@@ -1,15 +1,14 @@
-import { List } from "immutable";
 import { Action } from "redux";
 
 import { useDispatch } from "..";
-import { PantryItem } from "../../model/graphql";
+import { PantryItem } from "../../model";
 import actionIds from "./actionIds";
 
 export type SetItemsAction = Action & {
-  payload: { items: List<PantryItem> };
+  payload: { items: PantryItem[] };
 };
 
-export const setItems = (items: List<PantryItem>) => ({
+export const setItems = (items: PantryItem[]) => ({
   type: actionIds.setItems,
   payload: { items },
 });
@@ -20,7 +19,7 @@ export const setItems = (items: List<PantryItem>) => ({
 export const useSetItems = () => {
   const dispatch = useDispatch();
 
-  return (items: PantryItem[]) => dispatch(setItems(List(items)));
+  return (items: PantryItem[]) => dispatch(setItems(items));
 };
 
 export type AddItemAction = Action & {
