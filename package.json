@@ -10,7 +10,7 @@
   "license": "BlueOak-1.0.0",
   "scripts": {
     "dev:be": "mvn quarkus:dev",
-    "dev:fe": "mkdir -p src/main/resources/META-INF/resources && nodemon --watch src/conf --watch src/components --watch src/model --watch src/pages --watch src/styles --watch src/util -e ts,tsx,css -x 'APP_ENV=development yarn inject'",
+    "dev:fe": "mkdir -p src/main/resources/META-INF/resources && nodemon --watch src/gql --watch src/components --watch src/hooks --watch src/model --watch src/pages --watch src/store --watch src/styles --watch src/util -e ts,tsx,css -x 'APP_ENV=development yarn inject'",
     "dev:schema": "graphql-codegen --watch 'src/main/java/**/*.java'",
     "dev": "npm-run-all --parallel dev:*",
     "build": "next build && next export",

@@ -17,7 +17,7 @@ const toastReducer = (state: ToastState = initialState, action: Action) => {
 
       return {
         ...state,
-        key: {
+        [key]: {
           open: true,
           ...message,
           key,
@@ -28,10 +28,13 @@ const toastReducer = (state: ToastState = initialState, action: Action) => {
     case actionIds.closeMessage: {
       const { messageKey } = (action as CloseMessageAction).payload;
 
-      // mutable change - handled by Redux toolkit??
-      state[messageKey].open = false;
-
-      return state;
+      return {
+        ...state,
+        [messageKey]: {
+          ...state[messageKey],
+          open: false,
+        },
+      };
     }
 
     default:

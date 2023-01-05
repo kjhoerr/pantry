@@ -72,7 +72,7 @@ export const AddItem = () => {
                 toastMessage({
                   level: "success",
                   message: "Item added successfully",
-                  detail: `Loaded "${scrubbed.name}" into database!`,
+                  detail: `Stored "${scrubbed.name}" in the pantry!`,
                   duration: 10,
                 });
 
