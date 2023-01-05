@@ -1,8 +1,8 @@
 import { Action } from "redux";
 
 import { PantryItem } from "../../model";
-import actionIds from "../actions/actionIds";
 import { AddItemAction, SetItemsAction } from "../actions";
+import actionIds from "../actions/actionIds";
 
 export type ItemState = PantryItem[];
 

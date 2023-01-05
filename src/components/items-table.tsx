@@ -109,11 +109,11 @@ export const ItemsTable = () => {
         <HeadCell field="description">Description</HeadCell>
         <HeadCell field="quantity">Quantity</HeadCell>
       </Table.Head>
-      <Table.Body>
+      <Table.Body className="divide-y">
         {data.length === 0 && (
-          <Table.Row>
+          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
             <Table.Cell colSpan={3}>
-              <div className="text-center">
+              <div className="text-center whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 Nothing&apos;s in the pantry at the moment!
               </div>
             </Table.Cell>
@@ -125,8 +125,13 @@ export const ItemsTable = () => {
             activePage * ENTRIES_PER_PAGE,
           )
           .map((item: PantryItem) => (
-            <Table.Row key={item.id}>
-              <Table.Cell>{item.name}</Table.Cell>
+            <Table.Row
+              key={item.id}
+              className="bg-white dark:border-gray-700 dark:bg-gray-800"
+            >
+              <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                {item.name}
+              </Table.Cell>
               <Table.Cell>
                 {item.description === "" ? "—" : item.description}
               </Table.Cell>
@@ -137,7 +142,7 @@ export const ItemsTable = () => {
           ))}
       </Table.Body>
       <Table.Head>
-        <Table.HeadCell colSpan={3}>
+        <Table.HeadCell colSpan={3} className="dark:bg-gray-800 border-t-2 border-gray-200 dark:border-gray-700">
           <div className="flex">
             <div className="basis-1/4" />
             <div className="basis-1/2">

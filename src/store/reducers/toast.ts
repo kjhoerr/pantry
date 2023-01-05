@@ -2,8 +2,8 @@ import { Action } from "redux";
 import { v4 } from "uuid";
 
 import { ToastMessage } from "../../model";
-import actionIds from "../actions/actionIds";
 import { CloseMessageAction, ToastMessageAction } from "../actions";
+import actionIds from "../actions/actionIds";
 
 export type ToastState = Record<string, ToastMessage>;
 
@@ -28,13 +28,15 @@ const toastReducer = (state: ToastState = initialState, action: Action) => {
     case actionIds.closeMessage: {
       const { messageKey } = (action as CloseMessageAction).payload;
 
-      return {
-        ...state,
-        [messageKey]: {
-          ...state[messageKey],
-          open: false,
-        },
-      };
+      return state[messageKey] !== undefined
+        ? {
+            ...state,
+            [messageKey]: {
+              ...state[messageKey],
+              open: false,
+            },
+          }
+        : state;
     }
 
     default:
