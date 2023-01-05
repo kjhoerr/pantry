@@ -1,16 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { List, OrderedMap } from "immutable";
+import { combineReducers } from "redux";
 
-import rootReducer from "./reducers";
-
-// initial states here
-const initalState = {
-  items: List(),
-  toast: OrderedMap(),
-};
+import itemsReducer from "./reducers/items";
+import toastReducer from "./reducers/toast";
 
 // creating store
 export const store = configureStore({
-  reducer: rootReducer,
-  preloadedState: initalState,
+  reducer: combineReducers({
+    items: itemsReducer,
+    toast: toastReducer,
+  }),
 });

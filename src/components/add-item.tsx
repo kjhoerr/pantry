@@ -3,9 +3,8 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
 import React, { ChangeEvent, useMemo, useRef, useState } from "react";
 
-import { useMutationStoreItem } from "../gql/items";
-import { PantryItem } from "../model/graphql";
-import { useToastMessage } from "../store/actions";
+import { useMutationStoreItem, useToastMessage } from "../hooks";
+import { PantryItem } from "../model";
 
 const defaultPantryItem = () =>
   ({

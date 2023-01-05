@@ -8,8 +8,8 @@ import {
 } from "@heroicons/react/24/solid";
 import { Toast } from "flowbite-react";
 
-import { ToastMessage } from "../model/toastMessage";
-import { useSelector } from "../store";
+import { useSelector } from "../hooks";
+import { ToastMessage } from "../model";
 
 const getColor = (level: ToastMessage["level"]) => {
   switch (level) {
@@ -43,7 +43,7 @@ const getIcon = (level: ToastMessage["level"]) => {
 };
 
 export const GlobalToast = () => {
-  const messages = useSelector((state) => state.toast.valueSeq());
+  const messages = useSelector((state) => Object.values(state.toast));
   return (
     <div id="toast-holder" className="absolute right-0 bottom-0">
       {messages.map((message) => {

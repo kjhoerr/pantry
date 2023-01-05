@@ -1,10 +1,10 @@
 import request from "graphql-request";
 
-import { graphql } from "../model/gql";
-import { PantryItem, StoreItemMutationVariables } from "../model/graphql";
-import { useAddItem, useSetItems, useToastAPIError } from "../store/actions";
+import { useAddItem, useSetItems, useToastAPIError } from "../hooks";
 import nullcheck from "../util/nullcheck";
-import endpoint from "./endpoint";
+import endpoint from "./conf/endpoint";
+import { graphql } from "./conf/gql";
+import { PantryItem, StoreItemMutationVariables } from "./conf/graphql";
 
 export const queryAllItems = graphql(`
   query allItems {

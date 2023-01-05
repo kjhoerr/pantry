@@ -3,7 +3,7 @@ import Head from "next/head";
 import React from "react";
 
 import { AddItem, ItemsTable } from "../components";
-import { useQueryAllItems } from "../gql/items";
+import { useQueryAllItems } from "../hooks";
 
 const Home: NextPage = () => {
   // issue `allItems` query on mount
