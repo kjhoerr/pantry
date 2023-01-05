@@ -2,8 +2,6 @@ package dev.submelon.view;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.bson.types.ObjectId;
 import org.eclipse.microprofile.graphql.Description;
 import org.eclipse.microprofile.graphql.GraphQLApi;
@@ -31,18 +29,18 @@ public class PantryItemResource {
         return PantryItem.findById(_id);
     }
 
-    @Transactional
     @Mutation
-    public Uni<PantryItem> postItem(PantryItem item) {
+    @Description("Store an item in the pantry")
+    public Uni<PantryItem> storeItem(PantryItem item) {
         return PantryItem.persist(item).replaceWith(item);
     }
 
-    @Transactional
     @Mutation
-    public Uni<Void> deleteItem(String id) {
+    @Description("Remove an item from the pantry")
+    public Uni<Boolean> deleteItem(String id) {
         ObjectId _id = new ObjectId(id);
         return PantryItem.deleteById(_id)
-        .replaceWithVoid()
-        .onFailure().transform(ItemNotFoundException::new);
+                .onFailure()
+                .transform(ItemNotFoundException::new);
     }
 }
