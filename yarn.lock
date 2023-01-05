@@ -1925,7 +1925,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trivago/prettier-plugin-sort-imports@npm:^4.0.0":
+"@trivago/prettier-plugin-sort-imports@npm:latest":
   version: 4.0.0
   resolution: "@trivago/prettier-plugin-sort-imports@npm:4.0.0"
   dependencies:
@@ -6454,7 +6454,7 @@ __metadata:
     "@headlessui/react": ^1.7.7
     "@heroicons/react": ^2.0.13
     "@reduxjs/toolkit": ^1.9.1
-    "@trivago/prettier-plugin-sort-imports": ^4.0.0
+    "@trivago/prettier-plugin-sort-imports": latest
     "@types/node": latest
     "@types/react": latest
     "@types/uuid": latest
