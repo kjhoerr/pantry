@@ -13,7 +13,7 @@ function MyApp({ Component, ...rest }: AppProps) {
       <Component {...props.pageProps} />
       <GlobalToast />
       {process.env.APP_ENV === "development" ? (
-        <div style={{ textAlign: "center", marginTop: "14px" }}>
+        <div className="text-center mt-5">
           <a href="/q/dev/">Visit Quarkus dev page</a>
         </div>
       ) : undefined}

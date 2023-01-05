@@ -2,7 +2,7 @@ import { OrderedMap } from "immutable";
 import { Action } from "redux";
 import { v4 } from "uuid";
 
-import { ToastMessage } from "../../model";
+import { ToastMessage } from "../../model/toastMessage";
 import actionIds from "../actions/actionIds";
 import { CloseMessageAction, ToastMessageAction } from "../actions/toast";
 
