@@ -72,29 +72,37 @@ export const AddItem = () => {
             }
           }}
         >
-          <div className="mb-2 block">
-            <Label htmlFor="addition-item-name" value="Item Name" />
+          <div className="flex flex-row gap-4">
+            <div className="basis-full">
+              <div className="mb-2 block">
+                <Label htmlFor="addition-item-name" value="Item Name" />
+              </div>
+              <TextInput
+                id="addition-item-name"
+                ref={nameInput}
+                name="name"
+                type="text"
+                placeholder="Item name"
+                value={newItem.name ?? ""}
+                onChange={handleItemChange}
+              />
+            </div>
           </div>
-          <TextInput
-            id="addition-item-name"
-            ref={nameInput}
-            name="name"
-            type="text"
-            placeholder="Item name"
-            value={newItem.name ?? ""}
-            onChange={handleItemChange}
-          />
-          <div className="mb-2 block">
-            <Label htmlFor="addition-item-desc" value="Item Description" />
+          <div className="flex flex-row gap-4">
+            <div className="basis-full">
+              <div className="mb-2 block">
+                <Label htmlFor="addition-item-desc" value="Item Description" />
+              </div>
+              <TextInput
+                id="addition-item-desc"
+                name="description"
+                type="text"
+                placeholder="Item description"
+                value={newItem.description ?? ""}
+                onChange={handleItemChange}
+              />
+            </div>
           </div>
-          <TextInput
-            id="addition-item-desc"
-            name="description"
-            type="text"
-            placeholder="Item description"
-            value={newItem.description ?? ""}
-            onChange={handleItemChange}
-          />
           <div className="flex flex-row gap-4">
             <div className="basis-1/2">
               <div className="mb-2 block">

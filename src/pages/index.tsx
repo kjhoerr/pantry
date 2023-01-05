@@ -1,9 +1,14 @@
 import type { NextPage } from "next";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import React from "react";
 
-import { AddItem, ItemsTable } from "../components";
 import { useQueryAllItems } from "../hooks";
+
+const AddItem = dynamic(() => import("../components").then((i) => i.AddItem));
+const ItemsTable = dynamic(() =>
+  import("../components").then((i) => i.ItemsTable),
+);
 
 const Home: NextPage = () => {
   // issue `allItems` query on mount
