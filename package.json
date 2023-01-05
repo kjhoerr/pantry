@@ -21,14 +21,14 @@
     "inject": "rm -rf src/main/resources/META-INF/resources && yarn build && cp -R out src/main/resources/META-INF/resources"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.7",
     "@heroicons/react": "^2.0.13",
     "@reduxjs/toolkit": "^1.9.1",
+    "@rtk-query/graphql-request-base-query": "^2.2.0",
     "autoprefixer": "^10.4.13",
     "flowbite": "^1.5.5",
     "flowbite-react": "^0.3.7",
     "graphql": "^16.6.0",
-    "graphql-request": "^5.1.0",
+    "graphql-request": "4.3.0",
     "next": "13.1.1",
     "next-redux-wrapper": "^8.1.0",
     "postcss": "^8.4.20",
@@ -41,7 +41,9 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "latest",
-    "@graphql-codegen/client-preset": "latest",
+    "@graphql-codegen/typescript": "latest",
+    "@graphql-codegen/typescript-operations": "latest",
+    "@graphql-codegen/typescript-rtk-query": "latest",
     "@trivago/prettier-plugin-sort-imports": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
@@ -49,10 +51,12 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
+    "graphql-tag": "latest",
     "nodemon": "latest",
     "npm-run-all2": "latest",
     "prettier": "latest",
     "redux-devtools-extension": "latest",
+    "ts-node": "latest",
     "typescript": "latest"
   },
   "packageManager": "yarn@3.2.2"

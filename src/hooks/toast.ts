@@ -1,18 +1,9 @@
-import { Action } from "redux";
+import { SerializedError } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
 
-import { useDispatch } from "..";
-import { ToastMessage } from "../../model";
-import actionIds from "./actionIds";
-
-export type CloseMessageAction = Action & {
-  payload: { messageKey: string };
-};
-
-export const closeMessage = (messageKey: string) => ({
-  type: actionIds.closeMessage,
-  payload: { messageKey },
-});
+import { ToastMessage } from "../model";
+import { useDispatch } from "../store";
+import { closeMessage, toastMessage } from "../store/reducers/toast";
 
 /**
  * Hook to dispatch a {@link CloseMessageAction}.
@@ -22,15 +13,6 @@ export const useCloseMessage = () => {
 
   return (key: string) => dispatch(closeMessage(key));
 };
-
-export type ToastMessageAction = Action & {
-  payload: ToastMessage;
-};
-
-export const toastMessage = (message: ToastMessage) => ({
-  type: actionIds.toastMessage,
-  payload: message,
-});
 
 /**
  * Hook to dispatch a {@link ToastMessageAction} based on an error response from the
@@ -43,23 +25,27 @@ export const useToastAPIError = () => {
    * Dispatch a {@link ToastMessageAction} based on an error response from the API.
    * Will dispatch different messages based on the error context.
    */
-  return (error: Error) => {
+  return (error: SerializedError) => {
     console.error("Error occurred while querying the GraphQL API", error);
+    const key = v4();
     dispatch(
       toastMessage(
         error.message === "Network Error"
           ? {
+              key,
               level: "network",
               message: "Could not communicate with API",
               detail: error.message,
             }
           : {
+              key,
               level: "error",
               message: "API error occurred",
               detail: error.message,
             },
       ),
     );
+    return key;
   };
 };
 

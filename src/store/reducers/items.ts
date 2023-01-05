@@ -1,26 +1,30 @@
-import { Action } from "redux";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { HYDRATE } from "next-redux-wrapper";
 
 import { PantryItem } from "../../model";
-import { AddItemAction, SetItemsAction } from "../actions";
-import actionIds from "../actions/actionIds";
 
-export type ItemState = PantryItem[];
+export type ItemState = Array<PantryItem>;
 
 const initialState: ItemState = [];
 
-const itemsReducer = (state: ItemState = initialState, action: Action) => {
-  switch (action.type) {
-    case actionIds.setItems:
-      return (action as SetItemsAction).payload.items;
+const itemsSlice = createSlice({
+  name: "items",
+  initialState,
+  reducers: {
+    setItems: (_state, action: PayloadAction<Array<PantryItem>>) =>
+      action.payload,
+    addItem: (state, action: PayloadAction<PantryItem>) => {
+      state.push(action.payload);
+    },
+  },
+  extraReducers: {
+    [HYDRATE]: (state, action) => ({
+      ...state,
+      ...action.payload.subject,
+    }),
+  },
+});
 
-    case actionIds.addItem:
-      const { item } = (action as AddItemAction).payload;
+export const { addItem, setItems } = itemsSlice.actions;
 
-      return state.concat(item);
-
-    default:
-      return state;
-  }
-};
-
-export default itemsReducer;
+export default itemsSlice.reducer;

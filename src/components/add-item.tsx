@@ -1,9 +1,8 @@
-import { Transition } from "@headlessui/react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
 import React, { ChangeEvent, useMemo, useRef, useState } from "react";
 
-import { useMutationStoreItem, useToastMessage } from "../hooks";
+import { useStoreItemController, useToastMessage } from "../hooks";
 import { PantryItem } from "../model";
 
 const defaultPantryItem = () =>
@@ -15,7 +14,7 @@ const defaultPantryItem = () =>
   } as PantryItem);
 
 export const AddItem = () => {
-  const storeItem = useMutationStoreItem();
+  const storeItem = useStoreItemController();
   const toastMessage = useToastMessage();
   const nameInput = useRef<HTMLInputElement>(null);
   const [additionItem, setAdditionItem] = useState<PantryItem | undefined>();
@@ -33,16 +32,8 @@ export const AddItem = () => {
   );
 
   return (
-    <Card className="px-24">
-      <Transition
-        show={additionItem === undefined}
-        enter="transition ease-linear duration-100"
-        enterFrom="-translate-x-full"
-        enterTo="translate-x-0"
-        leave="transition ease-in-out duration-100 transform"
-        leaveFrom="translate-x-0"
-        leaveTo="-translate-x-full"
-      >
+    <Card className="px-8">
+      {additionItem === undefined ? (
         <div>
           <Button
             onClick={() => {
@@ -54,8 +45,7 @@ export const AddItem = () => {
             Add Item
           </Button>
         </div>
-      </Transition>
-      <Transition show={additionItem !== undefined}>
+      ) : (
         <form
           className="flex flex-col gap-4"
           onSubmit={(e) => {
@@ -82,120 +72,89 @@ export const AddItem = () => {
             }
           }}
         >
-          <Transition.Child
-            enter="transition ease-linear duration-75"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-100 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
-            <div className="mb-2 block">
-              <Label htmlFor="addition-item-name" value="Item Name" />
-            </div>
-            <TextInput
-              id="addition-item-name"
-              ref={nameInput}
-              name="name"
-              type="text"
-              placeholder="Item name"
-              value={newItem.name ?? ""}
-              onChange={handleItemChange}
-            />
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-linear duration-150"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-100 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
-            <div className="mb-2 block">
-              <Label htmlFor="addition-item-desc" value="Item Description" />
-            </div>
-            <TextInput
-              id="addition-item-desc"
-              name="description"
-              type="text"
-              placeholder="Item description"
-              value={newItem.description ?? ""}
-              onChange={handleItemChange}
-            />
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-linear duration-225"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-100 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
-            <div className="flex flex-row gap-4">
-              <div className="basis-1/2">
-                <div className="mb-2 block">
-                  <Label
-                    htmlFor="addition-item-quantity"
-                    value="Item Quantity"
-                  />
-                </div>
-                <TextInput
-                  id="addition-item-quantity"
-                  name="quantity"
-                  type="number"
-                  placeholder="Item quantity"
-                  value={newItem.quantity}
-                  onChange={handleItemChange}
-                />
+          <div className="flex flex-row gap-4">
+            <div className="basis-full">
+              <div className="mb-2 block">
+                <Label htmlFor="addition-item-name" value="Item Name" />
               </div>
-              <div className="basis-1/2">
-                <div className="mb-2 block">
-                  <Label htmlFor="addition-item-qut" value="Quantity Type" />
-                </div>
-                <TextInput
-                  id="addition-item-qut"
-                  name="quantityUnitType"
-                  type="text"
-                  placeholder="Quantity type"
-                  value={newItem.quantityUnitType ?? ""}
-                  onChange={handleItemChange}
-                />
-              </div>
+              <TextInput
+                id="addition-item-name"
+                ref={nameInput}
+                name="name"
+                type="text"
+                placeholder="Item name"
+                value={newItem.name ?? ""}
+                onChange={handleItemChange}
+              />
             </div>
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-linear duration-500"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-100 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
-            <div className="flex flex-wrap items-center gap-2">
-              <div>
-                <Button
-                  type="submit"
-                  disabled={newItem.name?.trim() === "" || additionItemLoading}
-                >
-                  {additionItemLoading ? <Spinner /> : "Submit Item"}
-                </Button>
+          </div>
+          <div className="flex flex-row gap-4">
+            <div className="basis-full">
+              <div className="mb-2 block">
+                <Label htmlFor="addition-item-desc" value="Item Description" />
               </div>
-              <div>
-                <Button
-                  color="light"
-                  disabled={additionItemLoading}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setAdditionItem(undefined);
-                  }}
-                >
-                  Cancel
-                </Button>
-              </div>
+              <TextInput
+                id="addition-item-desc"
+                name="description"
+                type="text"
+                placeholder="Item description"
+                value={newItem.description ?? ""}
+                onChange={handleItemChange}
+              />
             </div>
-          </Transition.Child>
+          </div>
+          <div className="flex flex-row gap-4">
+            <div className="basis-1/2">
+              <div className="mb-2 block">
+                <Label htmlFor="addition-item-quantity" value="Item Quantity" />
+              </div>
+              <TextInput
+                id="addition-item-quantity"
+                name="quantity"
+                type="number"
+                placeholder="Item quantity"
+                value={newItem.quantity}
+                onChange={handleItemChange}
+              />
+            </div>
+            <div className="basis-1/2">
+              <div className="mb-2 block">
+                <Label htmlFor="addition-item-qut" value="Quantity Type" />
+              </div>
+              <TextInput
+                id="addition-item-qut"
+                name="quantityUnitType"
+                type="text"
+                placeholder="Quantity type"
+                value={newItem.quantityUnitType ?? ""}
+                onChange={handleItemChange}
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <div>
+              <Button
+                type="submit"
+                disabled={newItem.name?.trim() === "" || additionItemLoading}
+              >
+                {additionItemLoading ? <Spinner /> : "Submit Item"}
+              </Button>
+            </div>
+            <div>
+              <Button
+                color="light"
+                disabled={additionItemLoading}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAdditionItem(undefined);
+                }}
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
         </form>
-      </Transition>
+      )}
     </Card>
   );
 };
