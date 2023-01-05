@@ -7,7 +7,7 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/solid";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
-import { ToastMessage } from "../model";
+import { ToastMessage } from "../model/toastMessage";
 import { Transition } from "@headlessui/react";
 
 const getColor = (level: ToastMessage["level"]) => {

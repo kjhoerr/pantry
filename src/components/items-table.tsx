@@ -1,6 +1,6 @@
 import { List } from "immutable";
 import { useCallback, useMemo, useState } from "react";
-import { PantryItem } from "../model";
+import { PantryItem } from "../model/graphql";
 import { Pagination, Table, TextInput } from "flowbite-react";
 import {
   ChevronDownIcon,

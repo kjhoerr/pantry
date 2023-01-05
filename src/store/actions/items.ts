@@ -1,5 +1,5 @@
 import { List } from "immutable";
-import { PantryItem } from "../../model";
+import { PantryItem } from "../../model/graphql";
 import actionIds from "./actionIds";
 import { Action } from "redux";
 import { useDispatch } from "..";

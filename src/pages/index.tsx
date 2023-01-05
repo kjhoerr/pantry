@@ -2,40 +2,12 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import React from "react";
-import { useGetItems, usePostItemsHook } from "../util/pantry-item-resource";
-import { useMutation } from "@tanstack/react-query";
-import {
-  useAddItem,
-  useSetItems,
-  useToastAPIError,
-  useToastMessage,
-} from "../store/actions";
+import { useQueryAllItems } from "../gql/items";
 import { AddItem, ItemsTable } from "../components";
 
 const Home: NextPage = () => {
-  const setItems = useSetItems();
-  const addItem = useAddItem();
-  const toastMessage = useToastMessage();
-  const toastAPIError = useToastAPIError();
-  useGetItems({
-    query: {
-      onSuccess: setItems,
-      onError: toastAPIError,
-    },
-  });
-  const postItems = usePostItemsHook();
-  const { mutate } = useMutation(postItems, {
-    onSuccess: (d) => {
-      addItem(d);
-      toastMessage({
-        level: "success",
-        message: "Item added successfully",
-        detail: `Loaded "${d.name}" into database!`,
-        duration: 10,
-      });
-    },
-    onError: toastAPIError,
-  });
+  // issue `allItems` query on mount
+  useQueryAllItems();
 
   return (
     <div>
@@ -56,7 +28,7 @@ const Home: NextPage = () => {
         </div>
       </header>
 
-      <AddItem addItem={(newItem) => Promise.resolve(mutate(newItem))} />
+      <AddItem />
       <ItemsTable />
     </div>
   );
