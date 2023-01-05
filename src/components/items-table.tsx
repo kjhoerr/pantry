@@ -142,7 +142,10 @@ export const ItemsTable = () => {
           ))}
       </Table.Body>
       <Table.Head>
-        <Table.HeadCell colSpan={3} className="dark:bg-gray-800 border-t-2 border-gray-200 dark:border-gray-700">
+        <Table.HeadCell
+          colSpan={3}
+          className="dark:bg-gray-800 border-t-2 border-gray-200 dark:border-gray-700"
+        >
           <div className="flex">
             <div className="basis-1/4" />
             <div className="basis-1/2">

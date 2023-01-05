@@ -45,7 +45,7 @@ export const mutationStoreItem = graphql(`
 `);
 
 /**
- * Hook to issue query for `allItems` to retrieve list of {@link PantryItem}s.
+ * Issue query for `allItems` to retrieve list of {@link PantryItem}s.
  *
  * By default will issue the SET_PANTRY_ITEMS action with the list of items.
  */
@@ -57,28 +57,24 @@ export const useQueryAllItems = (
   const toastApiError = useToastAPIError();
 
   const update = onSuccess ?? setItems;
-  /**
-   * Issue query for `allItems` to retrieve list of {@link PantryItem}s.
-   */
-  return () =>
-    request(endpoint, queryAllItems)
-      .then(({ allItems }) =>
-        update(
-          (allItems ?? [])
-            .filter(nullcheck)
-            .map(({ id, name, description, quantity, quantityUnitType }) => {
-              // ensure object is uncoerced to model type
-              return {
-                id: id ?? undefined,
-                name: name ?? undefined,
-                description: description ?? undefined,
-                quantity,
-                quantityUnitType: quantityUnitType ?? undefined,
-              };
-            }),
-        ),
-      )
-      .catch(onError ?? toastApiError);
+  return request(endpoint, queryAllItems)
+    .then(({ allItems }) =>
+      update(
+        (allItems ?? [])
+          .filter(nullcheck)
+          .map(({ id, name, description, quantity, quantityUnitType }) => {
+            // ensure object is uncoerced to model type
+            return {
+              id: id ?? undefined,
+              name: name ?? undefined,
+              description: description ?? undefined,
+              quantity,
+              quantityUnitType: quantityUnitType ?? undefined,
+            };
+          }),
+      ),
+    )
+    .catch(onError ?? toastApiError);
 };
 
 /**

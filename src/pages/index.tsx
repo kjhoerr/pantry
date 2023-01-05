@@ -6,10 +6,8 @@ import { AddItem, ItemsTable } from "../components";
 import { useQueryAllItems } from "../hooks";
 
 const Home: NextPage = () => {
-  const queryAllItems = useQueryAllItems();
-
   // issue `allItems` query on mount
-  queryAllItems();
+  useQueryAllItems();
 
   return (
     <>
