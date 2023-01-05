@@ -3,12 +3,13 @@ import dynamic from "next/dynamic";
 import React from "react";
 import { Provider } from "react-redux";
 
-import { Header, Footer } from "../components";
+import { Header } from "../components/header";
+import { Footer } from "../components/footer";
 import { wrapper } from "../store";
 import "../styles/globals.css";
 
 const GlobalToast = dynamic(() =>
-  import("../components").then((i) => i.GlobalToast),
+  import("../components/global-toast").then((i) => i.GlobalToast),
 );
 
 const devMode = process.env.APP_ENV === "development";
