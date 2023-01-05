@@ -2,7 +2,7 @@ import { v4 } from "uuid";
 
 import { useDispatch } from "../store";
 import { ToastMessage } from "../model";
-import { closeMessage, toastMessage } from "../store/actions";
+import { closeMessage, toastMessage } from "../store/reducers/toast";
 
 /**
  * Hook to dispatch a {@link CloseMessageAction}.

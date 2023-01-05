@@ -4,8 +4,18 @@ import {
   useDispatch as useReduxDispatch,
   useSelector as useReduxSelector,
 } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
 
-import { store } from "./store";
+import itemsReducer from "./reducers/items";
+import toastReducer from "./reducers/toast";
+
+// creating store
+const store = configureStore({
+  reducer: {
+    items: itemsReducer,
+    toast: toastReducer,
+  },
+});
 
 // wrapper for Redux setup with NextJS
 export const wrapper = createWrapper(() => store);

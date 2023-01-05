@@ -1,6 +1,6 @@
 import { useDispatch } from "../store";
 import { PantryItem } from "../model";
-import { addItem, setItems } from "../store/actions";
+import { addItem, setItems } from "../store/reducers/items";
 
 /**
  * Hook to dispatch a {@link SetItemsAction}.
