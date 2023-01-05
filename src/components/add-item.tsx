@@ -72,84 +72,81 @@ export const AddItem = () => {
             }
           }}
         >
-            <div className="mb-2 block">
-              <Label htmlFor="addition-item-name" value="Item Name" />
-            </div>
-            <TextInput
-              id="addition-item-name"
-              ref={nameInput}
-              name="name"
-              type="text"
-              placeholder="Item name"
-              value={newItem.name ?? ""}
-              onChange={handleItemChange}
-            />
-            <div className="mb-2 block">
-              <Label htmlFor="addition-item-desc" value="Item Description" />
-            </div>
-            <TextInput
-              id="addition-item-desc"
-              name="description"
-              type="text"
-              placeholder="Item description"
-              value={newItem.description ?? ""}
-              onChange={handleItemChange}
-            />
-            <div className="flex flex-row gap-4">
-              <div className="basis-1/2">
-                <div className="mb-2 block">
-                  <Label
-                    htmlFor="addition-item-quantity"
-                    value="Item Quantity"
-                  />
-                </div>
-                <TextInput
-                  id="addition-item-quantity"
-                  name="quantity"
-                  type="number"
-                  placeholder="Item quantity"
-                  value={newItem.quantity}
-                  onChange={handleItemChange}
-                />
+          <div className="mb-2 block">
+            <Label htmlFor="addition-item-name" value="Item Name" />
+          </div>
+          <TextInput
+            id="addition-item-name"
+            ref={nameInput}
+            name="name"
+            type="text"
+            placeholder="Item name"
+            value={newItem.name ?? ""}
+            onChange={handleItemChange}
+          />
+          <div className="mb-2 block">
+            <Label htmlFor="addition-item-desc" value="Item Description" />
+          </div>
+          <TextInput
+            id="addition-item-desc"
+            name="description"
+            type="text"
+            placeholder="Item description"
+            value={newItem.description ?? ""}
+            onChange={handleItemChange}
+          />
+          <div className="flex flex-row gap-4">
+            <div className="basis-1/2">
+              <div className="mb-2 block">
+                <Label htmlFor="addition-item-quantity" value="Item Quantity" />
               </div>
-              <div className="basis-1/2">
-                <div className="mb-2 block">
-                  <Label htmlFor="addition-item-qut" value="Quantity Type" />
-                </div>
-                <TextInput
-                  id="addition-item-qut"
-                  name="quantityUnitType"
-                  type="text"
-                  placeholder="Quantity type"
-                  value={newItem.quantityUnitType ?? ""}
-                  onChange={handleItemChange}
-                />
-              </div>
+              <TextInput
+                id="addition-item-quantity"
+                name="quantity"
+                type="number"
+                placeholder="Item quantity"
+                value={newItem.quantity}
+                onChange={handleItemChange}
+              />
             </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <div>
-                <Button
-                  type="submit"
-                  disabled={newItem.name?.trim() === "" || additionItemLoading}
-                >
-                  {additionItemLoading ? <Spinner /> : "Submit Item"}
-                </Button>
+            <div className="basis-1/2">
+              <div className="mb-2 block">
+                <Label htmlFor="addition-item-qut" value="Quantity Type" />
               </div>
-              <div>
-                <Button
-                  color="light"
-                  disabled={additionItemLoading}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setAdditionItem(undefined);
-                  }}
-                >
-                  Cancel
-                </Button>
-              </div>
+              <TextInput
+                id="addition-item-qut"
+                name="quantityUnitType"
+                type="text"
+                placeholder="Quantity type"
+                value={newItem.quantityUnitType ?? ""}
+                onChange={handleItemChange}
+              />
             </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <div>
+              <Button
+                type="submit"
+                disabled={newItem.name?.trim() === "" || additionItemLoading}
+              >
+                {additionItemLoading ? <Spinner /> : "Submit Item"}
+              </Button>
+            </div>
+            <div>
+              <Button
+                color="light"
+                disabled={additionItemLoading}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAdditionItem(undefined);
+                }}
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
         </form>
-)}
+      )}
     </Card>
   );
 };

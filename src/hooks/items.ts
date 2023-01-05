@@ -1,5 +1,5 @@
-import { useDispatch } from "../store";
 import { PantryItem } from "../model";
+import { useDispatch } from "../store";
 import { addItem, setItems } from "../store/reducers/items";
 
 /**

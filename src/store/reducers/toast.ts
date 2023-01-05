@@ -12,7 +12,10 @@ const toastSlice = createSlice({
   name: "toast",
   initialState,
   reducers: {
-    toastMessage: (state, { payload: message }: PayloadAction<ToastMessage>) => {
+    toastMessage: (
+      state,
+      { payload: message }: PayloadAction<ToastMessage>,
+    ) => {
       const key = message.key ?? v4();
       state[key] = {
         open: true,
@@ -25,13 +28,10 @@ const toastSlice = createSlice({
     },
   },
   extraReducers: {
-    [HYDRATE]: (state, action) => {
-      console.log('HYDRATE', state, action.payload);
-      return {
-        ...state,
-        ...action.payload.subject,
-      };
-    },
+    [HYDRATE]: (state, action) => ({
+      ...state,
+      ...action.payload.subject,
+    }),
   },
 });
 

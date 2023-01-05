@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 
-import { useDispatch } from "../store";
 import { ToastMessage } from "../model";
+import { useDispatch } from "../store";
 import { closeMessage, toastMessage } from "../store/reducers/toast";
 
 /**

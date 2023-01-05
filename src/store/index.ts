@@ -1,10 +1,10 @@
+import { configureStore } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import {
   TypedUseSelectorHook,
   useDispatch as useReduxDispatch,
   useSelector as useReduxSelector,
 } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
 
 import itemsReducer from "./reducers/items";
 import toastReducer from "./reducers/toast";

@@ -11,19 +11,17 @@ const itemsSlice = createSlice({
   name: "items",
   initialState,
   reducers: {
-    setItems: (_state, action: PayloadAction<Array<PantryItem>>) => action.payload,
+    setItems: (_state, action: PayloadAction<Array<PantryItem>>) =>
+      action.payload,
     addItem: (state, action: PayloadAction<PantryItem>) => {
       state.push(action.payload);
     },
   },
   extraReducers: {
-    [HYDRATE]: (state, action) => {
-      console.log('HYDRATE', state, action.payload);
-      return {
-        ...state,
-        ...action.payload.subject,
-      };
-    },
+    [HYDRATE]: (state, action) => ({
+      ...state,
+      ...action.payload.subject,
+    }),
   },
 });
 

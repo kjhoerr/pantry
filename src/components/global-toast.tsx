@@ -45,32 +45,32 @@ export const GlobalToast = () => {
   const messages = useSelector((state) => Object.values(state.toast));
   return (
     <div id="toast-holder" className="fixed right-10 bottom-0">
-      {messages.filter(m => m.open !== false).map((message) => {
-        const color = getColor(message.level);
-        const Icon = getIcon(message.level);
-        return (
-          <div
-            key={message.key}
-          >
-            <Toast className="mb-7 w-80">
-              <div
-                className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${color}`}
-              >
-                <Icon className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="block ml-3 text-sm font-semibold text-gray-900 dark:text-white">
-                  {message.message}
+      {messages
+        .filter((m) => m.open !== false)
+        .map((message) => {
+          const color = getColor(message.level);
+          const Icon = getIcon(message.level);
+          return (
+            <div key={message.key}>
+              <Toast className="mb-7 w-80">
+                <div
+                  className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${color}`}
+                >
+                  <Icon className="h-5 w-5" />
                 </div>
-                <div className="block ml-3 text-sm font-normal">
-                  {message.detail}
+                <div>
+                  <div className="block ml-3 text-sm font-semibold text-gray-900 dark:text-white">
+                    {message.message}
+                  </div>
+                  <div className="block ml-3 text-sm font-normal">
+                    {message.detail}
+                  </div>
                 </div>
-              </div>
-              <Toast.Toggle />
-            </Toast>
-          </div>
-        );
-      })}
+                <Toast.Toggle />
+              </Toast>
+            </div>
+          );
+        })}
     </div>
   );
 };
