@@ -1,18 +1,8 @@
-import { Action } from "redux";
 import { v4 } from "uuid";
 
-import { useDispatch } from "..";
-import { ToastMessage } from "../../model";
-import actionIds from "./actionIds";
-
-export type CloseMessageAction = Action & {
-  payload: { messageKey: string };
-};
-
-export const closeMessage = (messageKey: string) => ({
-  type: actionIds.closeMessage,
-  payload: { messageKey },
-});
+import { useDispatch } from "../store";
+import { ToastMessage } from "../model";
+import { closeMessage, toastMessage } from "../store/actions";
 
 /**
  * Hook to dispatch a {@link CloseMessageAction}.
@@ -22,15 +12,6 @@ export const useCloseMessage = () => {
 
   return (key: string) => dispatch(closeMessage(key));
 };
-
-export type ToastMessageAction = Action & {
-  payload: ToastMessage;
-};
-
-export const toastMessage = (message: ToastMessage) => ({
-  type: actionIds.toastMessage,
-  payload: message,
-});
 
 /**
  * Hook to dispatch a {@link ToastMessageAction} based on an error response from the

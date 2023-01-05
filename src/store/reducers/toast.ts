@@ -1,47 +1,40 @@
-import { Action } from "redux";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { HYDRATE } from "next-redux-wrapper";
 import { v4 } from "uuid";
 
 import { ToastMessage } from "../../model";
-import { CloseMessageAction, ToastMessageAction } from "../actions";
-import actionIds from "../actions/actionIds";
 
 export type ToastState = Record<string, ToastMessage>;
 
 const initialState: ToastState = {};
 
-const toastReducer = (state: ToastState = initialState, action: Action) => {
-  switch (action.type) {
-    case actionIds.toastMessage: {
-      const message = (action as ToastMessageAction).payload;
+const toastSlice = createSlice({
+  name: "toast",
+  initialState,
+  reducers: {
+    toastMessage: (state, { payload: message }: PayloadAction<ToastMessage>) => {
       const key = message.key ?? v4();
-
+      state[key] = {
+        open: true,
+        ...message,
+        key,
+      };
+    },
+    closeMessage: (state, { payload: key }: PayloadAction<string>) => {
+      state[key].open = false;
+    },
+  },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      console.log('HYDRATE', state, action.payload);
       return {
         ...state,
-        [key]: {
-          open: true,
-          ...message,
-          key,
-        },
+        ...action.payload.subject,
       };
-    }
+    },
+  },
+});
 
-    case actionIds.closeMessage: {
-      const { messageKey } = (action as CloseMessageAction).payload;
+export const { toastMessage, closeMessage } = toastSlice.actions;
 
-      return state[messageKey] !== undefined
-        ? {
-            ...state,
-            [messageKey]: {
-              ...state[messageKey],
-              open: false,
-            },
-          }
-        : state;
-    }
-
-    default:
-      return state;
-  }
-};
-
-export default toastReducer;
+export default toastSlice.reducer;

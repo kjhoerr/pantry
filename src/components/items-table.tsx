@@ -33,7 +33,7 @@ export const ItemsTable = () => {
   const entries = useMemo(() => {
     // case insensitive filter
     const filterValue = searchState.trim().toUpperCase();
-    const filterList: PantryItem[] =
+    const filterList =
       filterValue !== ""
         ? data.filter(
             (item) =>
@@ -41,7 +41,7 @@ export const ItemsTable = () => {
               item.description?.toUpperCase().trim().includes(filterValue) ||
               item.quantityUnitType?.toUpperCase().trim().includes(filterValue),
           )
-        : data;
+        : [...data];
 
     // case insensitive sort
     const sorted = filterList.sort((itemA, itemB) => {
