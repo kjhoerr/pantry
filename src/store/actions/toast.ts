@@ -1,5 +1,6 @@
 import { Action } from "redux";
 import { v4 } from "uuid";
+
 import { useDispatch } from "..";
 import { ToastMessage } from "../../model/toastMessage";
 import actionIds from "./actionIds";
@@ -56,8 +57,8 @@ export const useToastAPIError = () => {
               level: "error",
               message: "API error occurred",
               detail: error.message,
-            }
-      )
+            },
+      ),
     );
   };
 };

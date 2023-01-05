@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-
 import React from "react";
-import { useQueryAllItems } from "../gql/items";
+
 import { AddItem, ItemsTable } from "../components";
+import { useQueryAllItems } from "../gql/items";
 
 const Home: NextPage = () => {
   // issue `allItems` query on mount

@@ -1,13 +1,14 @@
-import { List } from "immutable";
-import { useCallback, useMemo, useState } from "react";
-import { PantryItem } from "../model/graphql";
-import { Pagination, Table, TextInput } from "flowbite-react";
 import {
   ChevronDownIcon,
   ChevronUpIcon,
   ChevronUpDownIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
+import { Pagination, Table, TextInput } from "flowbite-react";
+import { List } from "immutable";
+import { useCallback, useMemo, useState } from "react";
+
+import { PantryItem } from "../model/graphql";
 import { useSelector } from "../store";
 
 const ENTRIES_PER_PAGE = Number(process.env.ENTRIES_PER_PAGE ?? "10");
@@ -39,7 +40,7 @@ export const ItemsTable = () => {
             (item) =>
               item.name?.toUpperCase().trim().includes(filterValue) ||
               item.description?.toUpperCase().trim().includes(filterValue) ||
-              item.quantityUnitType?.toUpperCase().trim().includes(filterValue)
+              item.quantityUnitType?.toUpperCase().trim().includes(filterValue),
           )
         : data;
 
@@ -47,7 +48,7 @@ export const ItemsTable = () => {
     const sorted = filterList.sortBy((item) =>
       typeof item[sortState.field] === "string"
         ? item[sortState.field]?.toString().trim().toUpperCase()
-        : item[sortState.field]
+        : item[sortState.field],
     );
 
     return sortState.order === "ascending" ? sorted : sorted.reverse();
@@ -61,10 +62,10 @@ export const ItemsTable = () => {
               ...state,
               order: state.order === "ascending" ? "descending" : "ascending",
             }
-          : { field: field, order: "ascending" }
+          : { field: field, order: "ascending" },
       );
     },
-    [setSortState]
+    [setSortState],
   );
 
   // Memo-ize to prevent rerender
@@ -115,7 +116,7 @@ export const ItemsTable = () => {
           .valueSeq()
           .slice(
             (activePage - 1) * ENTRIES_PER_PAGE,
-            activePage * ENTRIES_PER_PAGE
+            activePage * ENTRIES_PER_PAGE,
           )
           .map((item: PantryItem) => (
             <Table.Row key={item.id}>
@@ -144,7 +145,7 @@ export const ItemsTable = () => {
                   currentPage={activePage}
                   totalPages={Math.max(
                     1,
-                    Math.ceil(entries.size / ENTRIES_PER_PAGE)
+                    Math.ceil(entries.size / ENTRIES_PER_PAGE),
                   )}
                   onPageChange={setActivePage}
                   renderPaginationButton={(props) => (

@@ -1,8 +1,9 @@
 import type { AppProps } from "next/app";
 import React from "react";
 import { Provider } from "react-redux";
-import { wrapper } from "../store";
+
 import { GlobalToast } from "../components";
+import { wrapper } from "../store";
 import "../styles/globals.css";
 
 function MyApp({ Component, ...rest }: AppProps) {

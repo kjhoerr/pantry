@@ -1,14 +1,15 @@
-import { Toast } from "flowbite-react";
-import { useSelector } from "../store";
+import { Transition } from "@headlessui/react";
+import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import {
   CheckIcon,
   ExclamationCircleIcon,
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/24/solid";
-import { GlobeAltIcon } from "@heroicons/react/24/outline";
+import { Toast } from "flowbite-react";
+
 import { ToastMessage } from "../model/toastMessage";
-import { Transition } from "@headlessui/react";
+import { useSelector } from "../store";
 
 const getColor = (level: ToastMessage["level"]) => {
   switch (level) {

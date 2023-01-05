@@ -1,8 +1,9 @@
 import { OrderedMap } from "immutable";
 import { Action } from "redux";
+import { v4 } from "uuid";
+
 import { ToastMessage } from "../../model";
 import actionIds from "../actions/actionIds";
-import { v4 } from "uuid";
 import { CloseMessageAction, ToastMessageAction } from "../actions/toast";
 
 export type ToastState = OrderedMap<string, ToastMessage>;

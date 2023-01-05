@@ -1,9 +1,10 @@
-import { useAddItem, useSetItems, useToastAPIError } from "../store/actions";
-import { graphql } from "../model/gql";
 import request from "graphql-request";
+
+import { graphql } from "../model/gql";
 import { PantryItem, StoreItemMutationVariables } from "../model/graphql";
-import endpoint from "./endpoint";
+import { useAddItem, useSetItems, useToastAPIError } from "../store/actions";
 import nullcheck from "../util/nullcheck";
+import endpoint from "./endpoint";
 
 export const queryAllItems = graphql(`
   query allItems {
@@ -50,7 +51,7 @@ export const mutationStoreItem = graphql(`
  */
 export const useQueryAllItems = (
   onSuccess?: (items: PantryItem[]) => void,
-  onError?: (error: Error) => void
+  onError?: (error: Error) => void,
 ) => {
   const setItems = useSetItems();
   const toastApiError = useToastAPIError();
@@ -70,8 +71,8 @@ export const useQueryAllItems = (
               quantity,
               quantityUnitType: quantityUnitType ?? undefined,
             };
-          })
-      )
+          }),
+      ),
     )
     .catch(onError ?? toastApiError);
 };
@@ -83,7 +84,7 @@ export const useQueryAllItems = (
  */
 export const useMutationStoreItem = (
   onSuccess?: (item: PantryItem) => void,
-  onError?: (error: Error) => void
+  onError?: (error: Error) => void,
 ) => {
   const toastApiError = useToastAPIError();
   const addItem = useAddItem();
