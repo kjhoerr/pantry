@@ -21,7 +21,6 @@
     "inject": "rm -rf src/main/resources/META-INF/resources && yarn build && cp -R out src/main/resources/META-INF/resources"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.7",
     "@heroicons/react": "^2.0.13",
     "@reduxjs/toolkit": "^1.9.1",
     "autoprefixer": "^10.4.13",

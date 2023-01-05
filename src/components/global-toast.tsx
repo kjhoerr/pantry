@@ -1,4 +1,3 @@
-import { Transition } from "@headlessui/react";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import {
   CheckIcon,
@@ -50,17 +49,10 @@ export const GlobalToast = () => {
         const color = getColor(message.level);
         const Icon = getIcon(message.level);
         return (
-          <Transition
+          <div
             key={message.key}
-            show={message.open !== false}
-            appear={true}
-            enter="transition-opacity duration-900"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity duration-900"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
           >
+            {message.open !== false &&
             <Toast className="mb-5">
               <div
                 className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${color}`}
@@ -77,7 +69,8 @@ export const GlobalToast = () => {
               </div>
               <Toast.Toggle />
             </Toast>
-          </Transition>
+      }
+          </div>
         );
       })}
     </div>

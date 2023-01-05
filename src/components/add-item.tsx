@@ -1,4 +1,3 @@
-import { Transition } from "@headlessui/react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
 import React, { ChangeEvent, useMemo, useRef, useState } from "react";
@@ -34,15 +33,7 @@ export const AddItem = () => {
 
   return (
     <Card className="px-24">
-      <Transition
-        show={additionItem === undefined}
-        enter="transition ease-linear duration-100"
-        enterFrom="-translate-x-full"
-        enterTo="translate-x-0"
-        leave="transition ease-in-out duration-100 transform"
-        leaveFrom="translate-x-0"
-        leaveTo="-translate-x-full"
-      >
+      {additionItem === undefined ? (
         <div>
           <Button
             onClick={() => {
@@ -54,8 +45,7 @@ export const AddItem = () => {
             Add Item
           </Button>
         </div>
-      </Transition>
-      <Transition show={additionItem !== undefined}>
+      ) : (
         <form
           className="flex flex-col gap-4"
           onSubmit={(e) => {
@@ -82,14 +72,6 @@ export const AddItem = () => {
             }
           }}
         >
-          <Transition.Child
-            enter="transition ease-linear duration-75"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-100 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
             <div className="mb-2 block">
               <Label htmlFor="addition-item-name" value="Item Name" />
             </div>
@@ -102,15 +84,6 @@ export const AddItem = () => {
               value={newItem.name ?? ""}
               onChange={handleItemChange}
             />
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-linear duration-150"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-100 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
             <div className="mb-2 block">
               <Label htmlFor="addition-item-desc" value="Item Description" />
             </div>
@@ -122,15 +95,6 @@ export const AddItem = () => {
               value={newItem.description ?? ""}
               onChange={handleItemChange}
             />
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-linear duration-225"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-100 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
             <div className="flex flex-row gap-4">
               <div className="basis-1/2">
                 <div className="mb-2 block">
@@ -162,15 +126,6 @@ export const AddItem = () => {
                 />
               </div>
             </div>
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-linear duration-500"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-100 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
             <div className="flex flex-wrap items-center gap-2">
               <div>
                 <Button
@@ -193,9 +148,8 @@ export const AddItem = () => {
                 </Button>
               </div>
             </div>
-          </Transition.Child>
         </form>
-      </Transition>
+)}
     </Card>
   );
 };
