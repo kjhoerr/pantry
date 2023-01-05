@@ -1,9 +1,10 @@
+import { createWrapper } from "next-redux-wrapper";
 import {
   TypedUseSelectorHook,
   useDispatch as useReduxDispatch,
   useSelector as useReduxSelector,
 } from "react-redux";
-import { createWrapper } from "next-redux-wrapper";
+
 import { store } from "./store";
 
 // wrapper for Redux setup with NextJS

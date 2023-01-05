@@ -1,9 +1,8 @@
-import { networkInterfaces } from "os";
 import { Action } from "redux";
 import { v4 } from "uuid";
+
 import { useDispatch } from "..";
-import { ErrorType } from "../../conf/mutator";
-import { ToastMessage } from "../../model";
+import { ToastMessage } from "../../model/toastMessage";
 import actionIds from "./actionIds";
 
 export type CloseMessageAction = Action & {
@@ -44,7 +43,8 @@ export const useToastAPIError = () => {
    * Dispatch a {@link ToastMessageAction} based on an error response from the API.
    * Will dispatch different messages based on the error context.
    */
-  return (error: ErrorType<unknown>) =>
+  return (error: Error) => {
+    console.error("Error occurred while querying the GraphQL API", error);
     dispatch(
       toastMessage(
         error.message === "Network Error"
@@ -57,9 +57,10 @@ export const useToastAPIError = () => {
               level: "error",
               message: "API error occurred",
               detail: error.message,
-            }
-      )
+            },
+      ),
     );
+  };
 };
 
 /**

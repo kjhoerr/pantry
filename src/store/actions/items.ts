@@ -1,8 +1,9 @@
 import { List } from "immutable";
-import { PantryItem } from "../../model";
-import actionIds from "./actionIds";
 import { Action } from "redux";
+
 import { useDispatch } from "..";
+import { PantryItem } from "../../model/graphql";
+import actionIds from "./actionIds";
 
 export type SetItemsAction = Action & {
   payload: { items: List<PantryItem> };

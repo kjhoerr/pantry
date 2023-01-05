@@ -1,8 +1,11 @@
-import React, { ChangeEvent, useMemo, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
-import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
 import { PlusIcon } from "@heroicons/react/24/solid";
-import { PantryItem } from "../model";
+import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
+import React, { ChangeEvent, useMemo, useRef, useState } from "react";
+
+import { useMutationStoreItem } from "../gql/items";
+import { PantryItem } from "../model/graphql";
+import { useToastMessage } from "../store/actions";
 
 const defaultPantryItem = () =>
   ({
@@ -12,11 +15,9 @@ const defaultPantryItem = () =>
     quantityUnitType: "oz",
   } as PantryItem);
 
-interface AddItemProps {
-  addItem: (item: PantryItem) => Promise<void>;
-}
-
-export const AddItem = ({ addItem }: AddItemProps) => {
+export const AddItem = () => {
+  const storeItem = useMutationStoreItem();
+  const toastMessage = useToastMessage();
   const nameInput = useRef<HTMLInputElement>(null);
   const [additionItem, setAdditionItem] = useState<PantryItem | undefined>();
   const [additionItemLoading, setAdditionItemLoading] = useState(false);
@@ -29,7 +30,7 @@ export const AddItem = ({ addItem }: AddItemProps) => {
 
   const newItem = useMemo(
     () => additionItem ?? defaultPantryItem(),
-    [additionItem]
+    [additionItem],
   );
 
   return (
@@ -68,7 +69,14 @@ export const AddItem = ({ addItem }: AddItemProps) => {
             };
             if (scrubbed.name !== "") {
               setAdditionItemLoading(true);
-              addItem(scrubbed).then(() => {
+              storeItem(scrubbed).then(() => {
+                toastMessage({
+                  level: "success",
+                  message: "Item added successfully",
+                  detail: `Loaded "${scrubbed.name}" into database!`,
+                  duration: 10,
+                });
+
                 setAdditionItem(undefined);
                 setAdditionItemLoading(false);
               });
@@ -92,7 +100,7 @@ export const AddItem = ({ addItem }: AddItemProps) => {
               name="name"
               type="text"
               placeholder="Item name"
-              value={newItem.name}
+              value={newItem.name ?? ""}
               onChange={handleItemChange}
             />
           </Transition.Child>
@@ -112,7 +120,7 @@ export const AddItem = ({ addItem }: AddItemProps) => {
               name="description"
               type="text"
               placeholder="Item description"
-              value={newItem.description}
+              value={newItem.description ?? ""}
               onChange={handleItemChange}
             />
           </Transition.Child>
@@ -150,7 +158,7 @@ export const AddItem = ({ addItem }: AddItemProps) => {
                   name="quantityUnitType"
                   type="text"
                   placeholder="Quantity type"
-                  value={newItem.quantityUnitType}
+                  value={newItem.quantityUnitType ?? ""}
                   onChange={handleItemChange}
                 />
               </div>

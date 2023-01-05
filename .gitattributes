@@ -1,2 +1,2 @@
-.yarn/** linguist-vendored
+.yarn/**/* linguist-vendored
 next.config.js linguist-vendored

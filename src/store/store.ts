@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { List, OrderedMap } from "immutable";
+
 import rootReducer from "./reducers";
 
 // initial states here
