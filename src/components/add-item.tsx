@@ -32,7 +32,7 @@ export const AddItem = () => {
   );
 
   return (
-    <Card className="px-24">
+    <Card className="px-8">
       {additionItem === undefined ? (
         <div>
           <Button

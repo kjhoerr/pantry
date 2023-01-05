@@ -44,16 +44,15 @@ const getIcon = (level: ToastMessage["level"]) => {
 export const GlobalToast = () => {
   const messages = useSelector((state) => Object.values(state.toast));
   return (
-    <div id="toast-holder" className="fixed right-5 bottom-0">
-      {messages.map((message) => {
+    <div id="toast-holder" className="fixed right-10 bottom-0">
+      {messages.filter(m => m.open !== false).map((message) => {
         const color = getColor(message.level);
         const Icon = getIcon(message.level);
         return (
           <div
             key={message.key}
           >
-            {message.open !== false &&
-            <Toast className="mb-5">
+            <Toast className="mb-7 w-80">
               <div
                 className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${color}`}
               >
@@ -69,7 +68,6 @@ export const GlobalToast = () => {
               </div>
               <Toast.Toggle />
             </Toast>
-      }
           </div>
         );
       })}

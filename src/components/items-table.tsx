@@ -45,13 +45,15 @@ export const ItemsTable = () => {
 
     // case insensitive sort
     const sorted = filterList.sort((itemA, itemB) => {
-      const fieldA = itemA[sortState.field] ?? "";
-      const fieldB = itemB[sortState.field] ?? "";
-      if (fieldA < fieldB) {
+      const fieldType = typeof itemA[sortState.field];
+      const getSortValue = (item: PantryItem) => fieldType !== "number" ? item[sortState.field]?.toString().toUpperCase() ?? "" : Number(item[sortState.field]);
+      const fieldA = getSortValue(itemA);
+      const fieldB = getSortValue(itemB);
+      if (fieldA > fieldB) {
         return 1;
       }
 
-      if (fieldA > fieldB) {
+      if (fieldA < fieldB) {
         return -1;
       }
 
