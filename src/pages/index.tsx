@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import React from "react";
 
-import { useQueryAllItems } from "../hooks";
+import { useAllItemsController } from "../hooks";
 
 const AddItem = dynamic(() => import("../components").then((i) => i.AddItem));
 const ItemsTable = dynamic(() =>
@@ -11,8 +11,8 @@ const ItemsTable = dynamic(() =>
 );
 
 const Home: NextPage = () => {
-  // issue `allItems` query on mount
-  useQueryAllItems();
+  // issue `allItems` query on mount and dispatch any appropriate actions
+  useAllItemsController();
 
   return (
     <>

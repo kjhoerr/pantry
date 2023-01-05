@@ -2,7 +2,7 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
 import React, { ChangeEvent, useMemo, useRef, useState } from "react";
 
-import { useMutationStoreItem, useToastMessage } from "../hooks";
+import { useStoreItemController, useToastMessage } from "../hooks";
 import { PantryItem } from "../model";
 
 const defaultPantryItem = () =>
@@ -14,7 +14,7 @@ const defaultPantryItem = () =>
   } as PantryItem);
 
 export const AddItem = () => {
-  const storeItem = useMutationStoreItem();
+  const storeItem = useStoreItemController();
   const toastMessage = useToastMessage();
   const nameInput = useRef<HTMLInputElement>(null);
   const [additionItem, setAdditionItem] = useState<PantryItem | undefined>();
