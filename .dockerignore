@@ -1,5 +1,9 @@
-*
-!target/*-runner
-!target/*-runner.jar
-!target/lib/*
-!target/quarkus-app/*
+.devcontainer
+.git
+.gitattributes
+.github
+.vscode
+out
+node_modules
+.env*
+src/main/docker

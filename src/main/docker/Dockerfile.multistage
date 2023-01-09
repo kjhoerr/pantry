@@ -1,0 +1,48 @@
+## Stage 1: install yarn dependencies from cache
+FROM node:current AS base-yarn
+WORKDIR /app
+COPY package*.json ./
+COPY yarn.lock     ./
+COPY .yarnrc.yml   ./
+COPY .yarn         ./.yarn
+RUN yarn install --immutable --immutable-cache
+
+## Stage 2 : build with yarn
+FROM base-yarn AS build-yarn
+WORKDIR /app
+COPY --from=base-yarn /app/package.json   ./
+COPY --from=base-yarn /app/yarn.lock      ./
+COPY --from=base-yarn /app/.yarnrc.yml    ./
+COPY --from=base-yarn /app/.yarn/cache    ./.yarn/cache
+COPY --from=base-yarn /app/.yarn/plugins  ./.yarn/plugins
+COPY --from=base-yarn /app/.yarn/releases ./.yarn/releases
+RUN yarn install
+COPY next-env.d.ts      /app
+COPY next.config.js     /app
+COPY postcss.config.js  /app
+COPY tailwind.config.js /app
+COPY tsconfig.json      /app
+COPY src                /app/src
+## outputs to /app/out
+RUN yarn build
+
+## Stage 3 : build with maven builder image with native capabilities
+FROM quay.io/quarkus/ubi-quarkus-graalvmce-builder-image:22.3-java17 AS build-quarkus
+USER root
+RUN microdnf -y install --nodocs maven
+COPY --chown=quarkus:quarkus pom.xml /code/
+USER quarkus
+WORKDIR /code
+RUN mvn -B org.apache.maven.plugins:maven-dependency-plugin:3.1.2:go-offline
+COPY --from=build-yarn /app/out /code/src/main/resources/META-INF/resources
+COPY src /code/src
+RUN mvn -Pnative clean package
+
+## Stage 4 : create the docker final image
+FROM quay.io/quarkus/quarkus-distroless-image:2.0 AS release
+COPY --from=build-quarkus /code/target/*-runner /application
+
+EXPOSE 8080
+USER nonroot
+
+CMD ["./application", "-XX:+PrintGC", "-XX:+PrintGCTimeStamps", "-XX:+VerboseGC", "+XX:+PrintHeapShape", "-Xmx128m", "-Dquarkus.http.host=0.0.0.0"]
