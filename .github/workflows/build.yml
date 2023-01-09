@@ -12,26 +12,35 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        image-type: [ native, multistage ]
+
     steps:
     - uses: actions/checkout@v3
 
     - name: Use Node.js 18.x
+      if: matrix.image-type == 'native'
       uses: actions/setup-node@v3
       with:
         node-version: 18.x
         cache: 'yarn'
     - name: Install Node.js packages
+      if: matrix.image-type == 'native'
       run: yarn install
     - name: Run build injection
+      if: matrix.image-type == 'native'
       run: yarn inject
 
     - name: Use Java 17
+      if: matrix.image-type == 'native'
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
         java-version: '17'
         cache: 'maven'
     - name: Maven package
+      if: matrix.image-type == 'native'
       run: mvn package -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true
 
     - name: Setup Docker buildx
@@ -52,9 +61,8 @@ jobs:
       with:
         context: .
         push: true
-        file: src/main/docker/Dockerfile.native
-        tags: ${{ steps.meta.outputs.tags }}
+        file: src/main/docker/Dockerfile.${{ matrix.image-type }}
+        tags: ${{ env.IMAGE_NAME }}:${{ matrix.image-type }}
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
-
