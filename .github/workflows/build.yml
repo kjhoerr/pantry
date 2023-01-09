@@ -32,7 +32,7 @@ jobs:
         java-version: '17'
         cache: 'maven'
     - name: Maven package
-      run: mvn package -Pnative
+      run: mvn package -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true
 
     - name: Setup Docker buildx
       uses: docker/setup-buildx-action@v2
