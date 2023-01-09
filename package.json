@@ -25,7 +25,7 @@
     "@reduxjs/toolkit": "^1.9.1",
     "@rtk-query/graphql-request-base-query": "^2.2.0",
     "autoprefixer": "^10.4.13",
-    "flowbite": "^1.5.5",
+    "flowbite": "^1.6.0",
     "flowbite-react": "^0.3.7",
     "graphql": "^16.6.0",
     "graphql-request": "4.3.0",
