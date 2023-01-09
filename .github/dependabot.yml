@@ -8,8 +8,10 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
+      day: "saturday"
       interval: "weekly"
   - package-ecosystem: "maven" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
+      day: "saturday"
       interval: "weekly"
