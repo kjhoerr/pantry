@@ -39,13 +39,13 @@ export function graphql(source: string): unknown;
  */
 export function graphql(
   source: "\n  query allItems {\n    allItems {\n      id\n      name\n      description\n      quantity\n      quantityUnitType\n    }\n  }\n",
-): typeof documents["\n  query allItems {\n    allItems {\n      id\n      name\n      description\n      quantity\n      quantityUnitType\n    }\n  }\n"];
+): (typeof documents)["\n  query allItems {\n    allItems {\n      id\n      name\n      description\n      quantity\n      quantityUnitType\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
   source: "\n  mutation storeItem(\n    $id: String\n    $name: String\n    $description: String\n    $quantity: Float!\n    $quantityUnitType: String\n  ) {\n    storeItem(\n      item: {\n        id: $id\n        name: $name\n        description: $description\n        quantity: $quantity\n        quantityUnitType: $quantityUnitType\n      }\n    ) {\n      id\n      name\n      description\n      quantity\n      quantityUnitType\n    }\n  }\n",
-): typeof documents["\n  mutation storeItem(\n    $id: String\n    $name: String\n    $description: String\n    $quantity: Float!\n    $quantityUnitType: String\n  ) {\n    storeItem(\n      item: {\n        id: $id\n        name: $name\n        description: $description\n        quantity: $quantity\n        quantityUnitType: $quantityUnitType\n      }\n    ) {\n      id\n      name\n      description\n      quantity\n      quantityUnitType\n    }\n  }\n"];
+): (typeof documents)["\n  mutation storeItem(\n    $id: String\n    $name: String\n    $description: String\n    $quantity: Float!\n    $quantityUnitType: String\n  ) {\n    storeItem(\n      item: {\n        id: $id\n        name: $name\n        description: $description\n        quantity: $quantity\n        quantityUnitType: $quantityUnitType\n      }\n    ) {\n      id\n      name\n      description\n      quantity\n      quantityUnitType\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
