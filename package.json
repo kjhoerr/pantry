@@ -10,7 +10,7 @@
   "license": "BlueOak-1.0.0",
   "scripts": {
     "dev:backend": "mvn quarkus:dev",
-    "dev:frontend": "nodemon --watch src/gql --watch src/components --watch src/hooks --watch src/model --watch src/pages --watch src/store --watch src/styles --watch src/util -e ts,tsx,css -x 'APP_ENV=development yarn inject'",
+    "dev:frontend": "nodemon --watch src/gql --watch src/components --watch src/hooks --watch src/model --watch src/pages --watch src/store --watch src/styles --watch src/util -e ts,tsx,css -x 'NEXT_PUBLIC_APP_ENV=development yarn inject'",
     "dev:schema": "nodemon --watch src/main/java -e java -x 'yarn codegen'",
     "dev": "concurrently --prefix '[{name} - {time}]' -c auto 'npm:dev:*'",
     "build": "next build && next export",
