@@ -1,4 +1,5 @@
-import { api } from "../../hooks/api";
+/* eslint-disable */
+import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/core";
 
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -110,42 +111,157 @@ export type StoreItemMutation = {
   } | null;
 };
 
-export const AllItemsDocument = `
-    query allItems {
-  allItems {
-    id
-    name
-    description
-    quantity
-    quantityUnitType
-  }
-}
-    `;
-export const StoreItemDocument = `
-    mutation storeItem($id: String, $name: String, $description: String, $quantity: Float!, $quantityUnitType: String) {
-  storeItem(
-    item: {id: $id, name: $name, description: $description, quantity: $quantity, quantityUnitType: $quantityUnitType}
-  ) {
-    id
-    name
-    description
-    quantity
-    quantityUnitType
-  }
-}
-    `;
-
-const injectedRtkApi = api.injectEndpoints({
-  endpoints: (build) => ({
-    allItems: build.query<AllItemsQuery, AllItemsQueryVariables | void>({
-      query: (variables) => ({ document: AllItemsDocument, variables }),
-    }),
-    storeItem: build.mutation<StoreItemMutation, StoreItemMutationVariables>({
-      query: (variables) => ({ document: StoreItemDocument, variables }),
-    }),
-  }),
-});
-
-export { injectedRtkApi as api };
-export const { useAllItemsQuery, useLazyAllItemsQuery, useStoreItemMutation } =
-  injectedRtkApi;
+export const AllItemsDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "allItems" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "allItems" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                { kind: "Field", name: { kind: "Name", value: "name" } },
+                { kind: "Field", name: { kind: "Name", value: "description" } },
+                { kind: "Field", name: { kind: "Name", value: "quantity" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "quantityUnitType" },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<AllItemsQuery, AllItemsQueryVariables>;
+export const StoreItemDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "mutation",
+      name: { kind: "Name", value: "storeItem" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: { kind: "Variable", name: { kind: "Name", value: "id" } },
+          type: { kind: "NamedType", name: { kind: "Name", value: "String" } },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: { kind: "Variable", name: { kind: "Name", value: "name" } },
+          type: { kind: "NamedType", name: { kind: "Name", value: "String" } },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "description" },
+          },
+          type: { kind: "NamedType", name: { kind: "Name", value: "String" } },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "quantity" },
+          },
+          type: {
+            kind: "NonNullType",
+            type: { kind: "NamedType", name: { kind: "Name", value: "Float" } },
+          },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "quantityUnitType" },
+          },
+          type: { kind: "NamedType", name: { kind: "Name", value: "String" } },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "storeItem" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "item" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "id" },
+                      value: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "id" },
+                      },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "name" },
+                      value: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "name" },
+                      },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "description" },
+                      value: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "description" },
+                      },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "quantity" },
+                      value: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "quantity" },
+                      },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "quantityUnitType" },
+                      value: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "quantityUnitType" },
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                { kind: "Field", name: { kind: "Name", value: "name" } },
+                { kind: "Field", name: { kind: "Name", value: "description" } },
+                { kind: "Field", name: { kind: "Name", value: "quantity" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "quantityUnitType" },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<StoreItemMutation, StoreItemMutationVariables>;

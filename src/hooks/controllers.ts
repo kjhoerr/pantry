@@ -1,18 +1,18 @@
 import { SerializedError } from "@reduxjs/toolkit";
-import { ErrorResponse } from "@rtk-query/graphql-request-base-query/dist/GraphqlBaseQueryTypes";
-import { useEffect } from "react";
 
 import {
   StoreItemMutationVariables,
   PantryItem,
-  useAllItemsQuery,
-  useStoreItemMutation,
-  StoreItemMutation,
+  AllItemsDocument,
+  StoreItemDocument,
 } from "../gql/conf/graphql";
 import { UnknownApiError } from "../model";
 import nullcheck from "../util/nullcheck";
 import { useAddItem, useSetItems } from "./items";
-import { useCloseMessage, useToastAPIError } from "./toast";
+import { useToastAPIError } from "./toast";
+import { request } from "graphql-request";
+
+const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? "http://localhost:8080/graphql";
 
 /**
  * Issue query for `allItems` to retrieve list of {@link PantryItem}s.
@@ -23,24 +23,14 @@ export const useAllItemsController = (
   onSuccess?: (items: PantryItem[]) => void,
   onError?: (error: SerializedError) => string,
 ) => {
-  const { data, error, isError, isSuccess } = useAllItemsQuery();
   const toastApiError = useToastAPIError();
-  const closeMessage = useCloseMessage();
   const setItems = useSetItems();
 
-  const errorHandler = onError ?? toastApiError;
-  useEffect(() => {
-    if (isError) {
-      const key = errorHandler(error ?? new UnknownApiError());
-      return () => {
-        closeMessage(key);
-      };
-    }
-  }, [isError, error, toastApiError, closeMessage, errorHandler]);
-
   const updateHandler = onSuccess ?? setItems;
-  useEffect(() => {
-    if (isSuccess && nullcheck(data?.allItems)) {
+  const errorHandler = onError ?? toastApiError;
+
+  return request(endpoint, AllItemsDocument).then((data) => {
+    if (nullcheck(data?.allItems)) {
       updateHandler(
         data.allItems
           .filter(nullcheck)
@@ -56,13 +46,10 @@ export const useAllItemsController = (
           }),
       );
     }
-  }, [isSuccess, data, setItems, updateHandler]);
+  }).catch((error) =>
+    errorHandler(error ?? new UnknownApiError())
+  );
 };
-
-/** Type to coerce Promise result */
-type MutationResult =
-  | { data: StoreItemMutation; error: undefined }
-  | { data: undefined; error: ErrorResponse | SerializedError };
 
 /**
  * Hook to issue a mutation for `storeItem` to add an item to the pantry.
@@ -75,21 +62,14 @@ export const useStoreItemController = (
 ) => {
   const toastApiError = useToastAPIError();
   const addItem = useAddItem();
-  const [mutate, _result] = useStoreItemMutation({});
 
   const update = onSuccess ?? addItem;
   /**
    * Issue mutation for `storeItem` to add an item to the pantry.
    */
   return (variables: StoreItemMutationVariables) =>
-    mutate(variables)
-      .then((res) => {
-        const { data, error } = res as MutationResult;
-
-        if (nullcheck(error)) {
-          return Promise.reject(error);
-        }
-
+    request(endpoint, StoreItemDocument, variables)
+      .then((data) => {
         if (nullcheck(data) && nullcheck(data?.storeItem)) {
           const { storeItem } = data;
           update({

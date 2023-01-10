@@ -12,7 +12,6 @@ const GlobalToast = dynamic(() =>
   import("../components/global-toast").then((i) => i.GlobalToast),
 );
 
-
 function MyApp({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
   const devMode = process.env.NEXT_PUBLIC_APP_ENV === "development";

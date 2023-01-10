@@ -4,12 +4,10 @@ const config: CodegenConfig = {
   schema: "http://localhost:8080/graphql/schema.graphql",
   documents: "src/gql/*.ts",
   generates: {
-    "./src/gql/conf/graphql.ts": {
+    "./src/gql/conf/": {
       overwrite: true,
-      plugins: ["typescript", "typescript-operations", {"typescript-rtk-query": {
-        importBaseApiFrom: "../../hooks/api",
-        exportHooks: true,
-      }}],
+      preset: "client",
+      plugins: [],
     },
   },
 };
