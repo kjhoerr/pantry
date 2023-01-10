@@ -21,7 +21,7 @@ function MyApp({ Component, ...rest }: AppProps) {
       <Header />
       <Component {...props.pageProps} />
       <GlobalToast />
-      <Footer devMode />
+      <Footer devMode={devMode} />
     </Provider>
   );
 }
