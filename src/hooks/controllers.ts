@@ -1,4 +1,5 @@
 import { SerializedError } from "@reduxjs/toolkit";
+import { request } from "graphql-request";
 
 import {
   StoreItemMutationVariables,
@@ -10,9 +11,9 @@ import { UnknownApiError } from "../model";
 import nullcheck from "../util/nullcheck";
 import { useAddItem, useSetItems } from "./items";
 import { useToastAPIError } from "./toast";
-import { request } from "graphql-request";
 
-const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? "http://localhost:8080/graphql";
+const endpoint =
+  process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? "http://localhost:8080/graphql";
 
 /**
  * Issue query for `allItems` to retrieve list of {@link PantryItem}s.
@@ -29,26 +30,26 @@ export const useAllItemsController = (
   const updateHandler = onSuccess ?? setItems;
   const errorHandler = onError ?? toastApiError;
 
-  return request(endpoint, AllItemsDocument).then((data) => {
-    if (nullcheck(data?.allItems)) {
-      updateHandler(
-        data.allItems
-          .filter(nullcheck)
-          .map(({ id, name, description, quantity, quantityUnitType }) => {
-            // ensure object is uncoerced to model type
-            return {
-              id: id ?? undefined,
-              name: name ?? undefined,
-              description: description ?? undefined,
-              quantity,
-              quantityUnitType: quantityUnitType ?? undefined,
-            };
-          }),
-      );
-    }
-  }).catch((error) =>
-    errorHandler(error ?? new UnknownApiError())
-  );
+  return request(endpoint, AllItemsDocument)
+    .then((data) => {
+      if (nullcheck(data?.allItems)) {
+        updateHandler(
+          data.allItems
+            .filter(nullcheck)
+            .map(({ id, name, description, quantity, quantityUnitType }) => {
+              // ensure object is uncoerced to model type
+              return {
+                id: id ?? undefined,
+                name: name ?? undefined,
+                description: description ?? undefined,
+                quantity,
+                quantityUnitType: quantityUnitType ?? undefined,
+              };
+            }),
+        );
+      }
+    })
+    .catch((error) => errorHandler(error ?? new UnknownApiError()));
 };
 
 /**
