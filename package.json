@@ -16,9 +16,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write 'src/**/*.(ts|tsx)'",
-    "codegen": "orval --clean && yarn format",
-    "api-update": "curl -LG http://localhost:8080/q/openapi -o src/conf/openapi-pantry.yaml && yarn codegen",
-    "inject": "rm -rf src/main/resources/META-INF/resources && yarn build && cp -R out src/main/resources/META-INF/resources"
+    "codegen": "graphql-codegen && yarn format"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.1.3",
