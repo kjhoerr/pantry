@@ -13,8 +13,7 @@
     "start": "next start",
     "lint": "next lint && prettier --check 'src/**/*.(ts|tsx)'",
     "format": "prettier --write 'src/**/*.(ts|tsx)'",
-    "codegen": "graphql-codegen && yarn format",
-    "inject": "mkdir -p src/main/resources/META-INF/resources && rm -rf src/main/resources/META-INF/resources && yarn build && cp -R out src/main/resources/META-INF/resources"
+    "codegen": "graphql-codegen && yarn format"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
