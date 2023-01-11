@@ -5,7 +5,7 @@ This project uses [Quarkus](https://quarkus.io/) and [NextJS](https://nextjs.org
 
 ## Running the application in dev mode
 
-Developing both front-end and back-end in tandem needs some connecting. The GraphQL schema is accessible while the back-end is running, typically at `localhost:8080/graphql/schema.graphql`. Pantry uses the `graphql-codegen` library to query for that endpoint and automatically generate hooks for the front-end to utilize schema changes. This can be run with the command:
+Developing both front-end and back-end in tandem needs some connecting. The GraphQL schema is accessible while the back-end is running, typically at `localhost:8080/graphql/schema.graphql`. Pantry uses the `graphql-codegen` library to query for that endpoint and automatically generate types for the front-end to utilize schema changes. This can be run with the command:
 
 ```shell script
 yarn codegen
@@ -18,10 +18,11 @@ mvn quarkus:dev
 
 ## Creating a native executable
 
-First, generate the front-end code and inject it into the Quarkus server using:
+You must have Yarn installed for Quinoa to build the front-end into the server resources, or set the following environment variables:
 
-```shell script
-yarn inject
+```
+QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL=true
+QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=18.13.0 #e.g.
 ```
 
 You can create a native executable using: 
@@ -44,10 +45,8 @@ There are separate Dockerfiles available for different use cases in building Pan
 
 For instance, to build a JVM Docker image of Pantry, run:
 
-```bash
-# Use yarn to build the NextJS front-end and copy it into server resources
-yarn inject
-# Build the Java jar
+```shell script
+# Build the Java jar - Quinoa runs `yarn` to build the front-end
 maven package
 # Build the Docker image based on the jar
 docker build -t kjhoerr/pantry:jvm -f src/main/docker/Dockerfile.jvm .

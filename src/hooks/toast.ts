@@ -1,7 +1,6 @@
-import { SerializedError } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
 
-import { ToastMessage } from "../model";
+import { ApiError, ToastMessage } from "../model";
 import { useDispatch } from "../store";
 import { closeMessage, toastMessage } from "../store/reducers/toast";
 
@@ -25,7 +24,7 @@ export const useToastAPIError = () => {
    * Dispatch a {@link ToastMessageAction} based on an error response from the API.
    * Will dispatch different messages based on the error context.
    */
-  return (error: SerializedError) => {
+  return (error: ApiError) => {
     console.error("Error occurred while querying the GraphQL API", error);
     const key = v4();
     dispatch(

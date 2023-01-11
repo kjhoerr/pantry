@@ -1,4 +1,3 @@
-import { SerializedError } from "@reduxjs/toolkit";
 import { request } from "graphql-request";
 
 import {
@@ -7,7 +6,11 @@ import {
   AllItemsDocument,
   StoreItemDocument,
 } from "../gql/conf/graphql";
-import { UnknownApiError } from "../model";
+import {
+  ApiError,
+  errorHandler,
+  GraphQLModelError,
+} from "../model";
 import nullcheck from "../util/nullcheck";
 import { useAddItem, useSetItems } from "./items";
 import { useToastAPIError } from "./toast";
@@ -16,40 +19,39 @@ const endpoint =
   process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? "http://localhost:8080/graphql";
 
 /**
- * Issue query for `allItems` to retrieve list of {@link PantryItem}s.
+ * Hook to issue query for `allItems` to retrieve list of {@link PantryItem}s.
  *
  * By default will issue the SET_PANTRY_ITEMS action with the list of items.
  */
 export const useAllItemsController = (
   onSuccess?: (items: PantryItem[]) => void,
-  onError?: (error: SerializedError) => string,
+  onError?: (error: ApiError) => void,
 ) => {
   const toastApiError = useToastAPIError();
   const setItems = useSetItems();
 
-  const updateHandler = onSuccess ?? setItems;
-  const errorHandler = onError ?? toastApiError;
-
-  return request(endpoint, AllItemsDocument)
+  /** Issue query for `allItems` to retrieve list of {@link PantryItem}s. */
+  return () => request(endpoint, AllItemsDocument)
     .then((data) => {
-      if (nullcheck(data?.allItems)) {
-        updateHandler(
-          data.allItems
-            .filter(nullcheck)
-            .map(({ id, name, description, quantity, quantityUnitType }) => {
-              // ensure object is uncoerced to model type
-              return {
-                id: id ?? undefined,
-                name: name ?? undefined,
-                description: description ?? undefined,
-                quantity,
-                quantityUnitType: quantityUnitType ?? undefined,
-              };
-            }),
-        );
+      if (nullcheck(data.allItems)) {
+        return data.allItems
+          .filter(nullcheck)
+          .map(({ id, name, description, quantity, quantityUnitType }) => {
+            // ensure object is uncoerced to model type
+            return {
+              id: id ?? undefined,
+              name: name ?? undefined,
+              description: description ?? undefined,
+              quantity,
+              quantityUnitType: quantityUnitType ?? undefined,
+            };
+          });
+      } else {
+        return Promise.reject(new GraphQLModelError());
       }
     })
-    .catch((error) => errorHandler(error ?? new UnknownApiError()));
+    .then(onSuccess ?? setItems)
+    .catch(errorHandler(onError ?? toastApiError));
 };
 
 /**
@@ -59,12 +61,11 @@ export const useAllItemsController = (
  */
 export const useStoreItemController = (
   onSuccess?: (item: PantryItem) => void,
-  onError?: (error: SerializedError) => string,
+  onError?: (error: ApiError) => void,
 ) => {
   const toastApiError = useToastAPIError();
   const addItem = useAddItem();
 
-  const update = onSuccess ?? addItem;
   /**
    * Issue mutation for `storeItem` to add an item to the pantry.
    */
@@ -72,15 +73,17 @@ export const useStoreItemController = (
     request(endpoint, StoreItemDocument, variables)
       .then((data) => {
         if (nullcheck(data) && nullcheck(data?.storeItem)) {
-          const { storeItem } = data;
-          update({
-            id: storeItem.id ?? undefined,
-            name: storeItem.name ?? undefined,
-            description: storeItem.description ?? undefined,
-            quantity: storeItem?.quantity,
-            quantityUnitType: storeItem.quantityUnitType ?? undefined,
-          });
+          return {
+            id: data.storeItem.id ?? undefined,
+            name: data.storeItem.name ?? undefined,
+            description: data.storeItem.description ?? undefined,
+            quantity: data.storeItem?.quantity,
+            quantityUnitType: data.storeItem.quantityUnitType ?? undefined,
+          };
+        } else {
+          return Promise.reject(new GraphQLModelError());
         }
       })
-      .catch(onError ?? toastApiError);
+      .then(onSuccess ?? addItem)
+      .catch(errorHandler(onError ?? toastApiError));
 };

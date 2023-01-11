@@ -1,10 +1,13 @@
-#Maven
+# Maven
 target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
 release.properties
 .flattened-pom.xml
+
+# Quinoa
+.quinoa
 
 # Eclipse
 .project
@@ -38,6 +41,7 @@ nb-configuration.xml
 
 # Local environment
 .env*
+!.env.sample
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -69,9 +73,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-
-# build files of NextJS passed into Quarkus
-/src/main/resources/META-INF/resources/
 
 # yarn
 .yarn/*

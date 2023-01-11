@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
 
 import { PantryItem } from "../../model";
 
@@ -16,12 +15,6 @@ const itemsSlice = createSlice({
     addItem: (state, action: PayloadAction<PantryItem>) => {
       state.push(action.payload);
     },
-  },
-  extraReducers: {
-    [HYDRATE]: (state, action) => ({
-      ...state,
-      ...action.payload.subject,
-    }),
   },
 });
 

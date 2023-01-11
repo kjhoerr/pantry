@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useAllItemsController } from "../hooks";
 
@@ -12,7 +12,12 @@ const ItemsTable = dynamic(() =>
 
 const Home: NextPage = () => {
   // issue `allItems` query on mount and dispatch any appropriate actions
-  useAllItemsController();
+  const query = useAllItemsController();
+
+  // lazy query after mount to prevent build-time error
+  //useEffect(() => {
+    query();
+  //}, [query]);
 
   return (
     <>

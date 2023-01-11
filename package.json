@@ -10,7 +10,7 @@
   "license": "BlueOak-1.0.0",
   "scripts": {
     "build": "next build && next export",
-    "start": "next start",
+    "start": "next dev",
     "lint": "next lint && prettier --check 'src/**/*.(ts|tsx)'",
     "format": "prettier --write 'src/**/*.(ts|tsx)'",
     "codegen": "graphql-codegen && yarn format"

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
 import { v4 } from "uuid";
 
 import { ToastMessage } from "../../model";
@@ -26,12 +25,6 @@ const toastSlice = createSlice({
     closeMessage: (state, { payload: key }: PayloadAction<string>) => {
       state[key].open = false;
     },
-  },
-  extraReducers: {
-    [HYDRATE]: (state, action) => ({
-      ...state,
-      ...action.payload.subject,
-    }),
   },
 });
 
