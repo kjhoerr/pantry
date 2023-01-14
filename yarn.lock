@@ -981,13 +981,13 @@ __metadata:
   linkType: hard
 
 "@graphql-codegen/client-preset@npm:latest":
-  version: 1.2.5
-  resolution: "@graphql-codegen/client-preset@npm:1.2.5"
+  version: 1.2.6
+  resolution: "@graphql-codegen/client-preset@npm:1.2.6"
   dependencies:
     "@babel/helper-plugin-utils": ^7.14.5
     "@babel/template": ^7.15.4
     "@graphql-codegen/add": ^3.2.3
-    "@graphql-codegen/gql-tag-operations": 1.6.0
+    "@graphql-codegen/gql-tag-operations": 1.6.1
     "@graphql-codegen/plugin-helpers": ^3.1.2
     "@graphql-codegen/typed-document-node": ^2.3.12
     "@graphql-codegen/typescript": ^2.8.7
@@ -998,7 +998,7 @@ __metadata:
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-  checksum: 2f45cbedc835c665aec28b388411ea82ab812054ea6a1406be40ab3f05614d079a88c6a433c4b0ae3429286fca2e616526620641bfb5601199f54fae8e4c98ff
+  checksum: 4cf414bc1c810887dce019a346edd686ffe12236503fd82e0a69579ad27cae65c4f94d0bf2121c330790ed02395ebefc7346431f38b9a86e32c0dfd04225e9fb
   languageName: node
   linkType: hard
 
@@ -1016,9 +1016,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/gql-tag-operations@npm:1.6.0":
-  version: 1.6.0
-  resolution: "@graphql-codegen/gql-tag-operations@npm:1.6.0"
+"@graphql-codegen/gql-tag-operations@npm:1.6.1":
+  version: 1.6.1
+  resolution: "@graphql-codegen/gql-tag-operations@npm:1.6.1"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^3.1.2
     "@graphql-codegen/visitor-plugin-common": 2.13.7
@@ -1027,7 +1027,7 @@ __metadata:
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-  checksum: cec1d275ffd36b5a7267801112b4b387f3651b7f51c69fecd004ff2437a07684b0a979c0a525a1e58146240fd908750ad5c047acf5c05bcd5574f871d420788d
+  checksum: 89e12eb4c64e96862bd5e6732ec3ae8ef6f70f97df504ad80cca493c3e09d9365bdadb9a509f06aaba61c9035b757f3c81f6f76c7a7e8c36590cbd74e7c66d64
   languageName: node
   linkType: hard
 
