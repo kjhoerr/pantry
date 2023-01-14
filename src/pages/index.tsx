@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 
   // lazy query after mount to prevent build-time error
   //useEffect(() => {
-    query();
+  query();
   //}, [query]);
 
   return (
