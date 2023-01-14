@@ -6,11 +6,7 @@ import {
   AllItemsDocument,
   StoreItemDocument,
 } from "../gql/conf/graphql";
-import {
-  ApiError,
-  errorHandler,
-  GraphQLModelError,
-} from "../model";
+import { ApiError, errorHandler, GraphQLModelError } from "../model";
 import nullcheck from "../util/nullcheck";
 import { useAddItem, useSetItems } from "./items";
 import { useToastAPIError } from "./toast";
@@ -31,27 +27,28 @@ export const useAllItemsController = (
   const setItems = useSetItems();
 
   /** Issue query for `allItems` to retrieve list of {@link PantryItem}s. */
-  return () => request(endpoint, AllItemsDocument)
-    .then((data) => {
-      if (nullcheck(data.allItems)) {
-        return data.allItems
-          .filter(nullcheck)
-          .map(({ id, name, description, quantity, quantityUnitType }) => {
-            // ensure object is uncoerced to model type
-            return {
-              id: id ?? undefined,
-              name: name ?? undefined,
-              description: description ?? undefined,
-              quantity,
-              quantityUnitType: quantityUnitType ?? undefined,
-            };
-          });
-      } else {
-        return Promise.reject(new GraphQLModelError());
-      }
-    })
-    .then(onSuccess ?? setItems)
-    .catch(errorHandler(onError ?? toastApiError));
+  return () =>
+    request(endpoint, AllItemsDocument)
+      .then((data) => {
+        if (nullcheck(data.allItems)) {
+          return data.allItems
+            .filter(nullcheck)
+            .map(({ id, name, description, quantity, quantityUnitType }) => {
+              // ensure object is uncoerced to model type
+              return {
+                id: id ?? undefined,
+                name: name ?? undefined,
+                description: description ?? undefined,
+                quantity,
+                quantityUnitType: quantityUnitType ?? undefined,
+              };
+            });
+        } else {
+          return Promise.reject(new GraphQLModelError());
+        }
+      })
+      .then(onSuccess ?? setItems)
+      .catch(errorHandler(onError ?? toastApiError));
 };
 
 /**
