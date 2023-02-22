@@ -60,7 +60,6 @@ export type PantryItemInput = {
 /** Query root */
 export type Query = {
   __typename?: "Query";
-  _service: _Service;
   /** Get all items stored in the pantry */
   allItems?: Maybe<Array<Maybe<PantryItem>>>;
   /** Get an item stored in the pantry */
@@ -70,11 +69,6 @@ export type Query = {
 /** Query root */
 export type QueryItemArgs = {
   itemId?: InputMaybe<Scalars["String"]>;
-};
-
-export type _Service = {
-  __typename?: "_Service";
-  sdl: Scalars["String"];
 };
 
 export type AllItemsQueryVariables = Exact<{ [key: string]: never }>;
