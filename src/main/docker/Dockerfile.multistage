@@ -6,7 +6,7 @@ COPY --chown=quarkus:quarkus pom.xml /code/
 USER quarkus
 WORKDIR /code
 RUN ./mvnw -B org.apache.maven.plugins:maven-dependency-plugin:3.1.2:go-offline
-ENV QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL=true QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=18.13.0
+ENV QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL=true QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=19.4.0
 COPY --chown=quarkus:quarkus . /code
 RUN ./mvnw -Pnative clean package
 
