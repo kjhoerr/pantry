@@ -12,7 +12,7 @@ import { useAddItem, useSetItems } from "./items";
 import { useToastAPIError } from "./toast";
 
 const endpoint =
-  process.env.GRAPHQL_ENDPOINT ?? "http://localhost:8080/graphql";
+  process.env.REACT_APP_GRAPHQL_ENDPOINT ?? "http://localhost:8080/graphql";
 
 /**
  * Hook to issue query for `allItems` to retrieve list of {@link PantryItem}s.
