@@ -5,7 +5,7 @@ This project uses [Quarkus](https://quarkus.io/) and a React application based o
 
 ## Running the application in dev mode
 
-Developing both front-end and back-end in tandem needs some connecting. The GraphQL schema is accessible while the back-end is running, typically at `localhost:8080/graphql/schema.graphql`. Pantry uses the `graphql-codegen` library to query for that endpoint and automatically generate types for the front-end to utilize schema changes. This can be run with the command:
+Developing both front-end and back-end in tandem needs some connecting. The GraphQL schema is accessible while the back-end is running, typically at `localhost:8080/graphql/schema.graphql`. Pantry uses the `graphql-codegen` library to query for that endpoint and automatically generate types for the front-end to utilize schema changes. This can be run from the `src/main/webui` directory:
 
 ```shell script
 yarn codegen
