@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This README describes the front-end portion of the application specifically. Visit the root of the project for an overview of all server components.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -13,6 +15,20 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `yarn format`
+
+Formats all typescript files under the current directory based on the [prettier configuration](./.prettierrc).
+
+### `yarn codegen`
+
+Generates typescript models and interfaces based on the server's GraphQL specification.
+
+Requires server to be actively running in order to use. Run `mvn quarkus:dev` from the root of the project and wait for the server to boot before running codegen.
+
+### `yarn lint`
+
+Checks for any formatting or type errors using eslint.
 
 ### `yarn test`
 
