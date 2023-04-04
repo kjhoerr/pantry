@@ -1,11 +1,11 @@
 # Pantry
 [![Pantry build](https://github.com/kjhoerr/pantry/actions/workflows/build.yml/badge.svg?branch=trunk)](https://github.com/kjhoerr/pantry/actions/workflows/build.yml) [![License: BlueOak 1.0.0](https://img.shields.io/badge/License-BlueOak_1.0.0-green.svg)](https://blueoakcouncil.org/license/1.0.0)
 
-This project uses [Quarkus](https://quarkus.io/) and [NextJS](https://nextjs.org/) in a monorepo. [GraphQL](https://graphql.org/) is used as the API, with [MongoDB](https://www.mongodb.com/) as the main store and styled with [Tailwind CSS](https://tailwindcss.com/) and components.
+This project uses [Quarkus](https://quarkus.io/) and a React application based on [Create React App](https://create-react-app.dev/) in a monorepo. [GraphQL](https://graphql.org/) is used as the API, with [MongoDB](https://www.mongodb.com/) as the main store and styled with [Tailwind CSS](https://tailwindcss.com/) and components.
 
 ## Running the application in dev mode
 
-Developing both front-end and back-end in tandem needs some connecting. The GraphQL schema is accessible while the back-end is running, typically at `localhost:8080/graphql/schema.graphql`. Pantry uses the `graphql-codegen` library to query for that endpoint and automatically generate types for the front-end to utilize schema changes. This can be run with the command:
+Developing both front-end and back-end in tandem needs some connecting. The GraphQL schema is accessible while the back-end is running, typically at `localhost:8080/graphql/schema.graphql`. Pantry uses the `graphql-codegen` library to query for that endpoint and automatically generate types for the front-end to utilize schema changes. This can be run from the `src/main/webui` directory:
 
 ```shell script
 yarn codegen
@@ -22,10 +22,10 @@ You must have Yarn installed for Quinoa to build the front-end into the server r
 
 ```
 QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL=true
-QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=18.13.0 #e.g.
+QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=19.4.0 #e.g.
 ```
 
-You can create a native executable using: 
+You can create a native executable using:
 ```shell script
 mvn package -Pnative
 ```

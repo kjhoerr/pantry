@@ -5,13 +5,16 @@ on:
     branches: [ "trunk" ]
 
 jobs:
-  build:
-
+  react:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: './src/main/webui'
 
     strategy:
       matrix:
-        node-version: [ 19.x ]
+        node-version: [ '16.x', '18.x' ]
 
     steps:
     - uses: actions/checkout@v3
@@ -21,12 +24,19 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
+        cache-dependency-path: './src/main/webui/yarn.lock'
     - name: Install Node.js packages
       run: yarn install --immutable --immutable-cache --check-cache
     - name: Run linter
       run: yarn lint
     - name: Run test build
-      run: yarn next build
+      run: yarn build
+
+  quarkus:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
 
     - name: Use Java 17
       uses: actions/setup-java@v3
