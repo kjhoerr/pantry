@@ -1,4 +1,0 @@
-{
-  "ignorePatterns": ["src/main/resources/META-INF/**"],
-  "extends": ["next/core-web-vitals", "prettier"]
-}

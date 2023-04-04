@@ -46,16 +46,12 @@ nb-configuration.xml
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
+src/main/webui/node_modules
+src/main/webui/.pnp
 .pnp.js
 
 # testing
 /coverage
-
-# next.js
-/.next/
-/out/
 
 # production
 /build
@@ -76,11 +72,11 @@ yarn-error.log*
 *.tsbuildinfo
 
 # yarn
-.yarn/*
-!.yarn/cache
-!.yarn/patches
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
+src/main/webui/.yarn/*
+!src/main/webui/.yarn/cache
+!src/main/webui/.yarn/patches
+!src/main/webui/.yarn/releases
+!src/main/webui/.yarn/plugins
+!src/main/webui/.yarn/sdks
+!src/main/webui/.yarn/versions
 .pnp.*

@@ -1,0 +1,76 @@
+{
+  "name": "pantry",
+  "version": "0.1.0",
+  "description": "Kitchen inventory organizer and planner",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kjhoerr/pantry.git"
+  },
+  "author": "Kevin J Hoerr <kjhoerr@submelon.tech>",
+  "license": "BlueOak-1.0.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "next lint && prettier --check 'src/**/*.(ts|tsx)'",
+    "format": "prettier --write 'src/**/*.(ts|tsx)'",
+    "codegen": "graphql-codegen && yarn format"
+  },
+  "dependencies": {
+    "@heroicons/react": "2.0.16",
+    "@reduxjs/toolkit": "^1.9.3",
+    "autoprefixer": "^10.4.14",
+    "flowbite": "^1.6.4",
+    "flowbite-react": "^0.4.2",
+    "graphql": "^16.6.0",
+    "graphql-request": "5.1.0",
+    "postcss": "^8.4.21",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.10.0",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
+    "tailwindcss": "^3.2.7",
+    "uuid": "^9.0.0",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "latest",
+    "@graphql-codegen/client-preset": "latest",
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@testing-library/user-event": "latest",
+    "@trivago/prettier-plugin-sort-imports": "latest",
+    "@types/jest": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/uuid": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "prettier": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
+  },
+  "eslintConfig": {
+    "extends": [
+      "prettier",
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "packageManager": "yarn@3.2.2"
+}
