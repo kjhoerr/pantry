@@ -10,7 +10,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: 'src/main/webui'
+        working-directory: './src/main/webui'
 
     strategy:
       matrix:
@@ -24,6 +24,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
+        cache-dependency-path: './src/main/webui/yarn.lock'
     - name: Install Node.js packages
       run: yarn install --immutable --immutable-cache --check-cache
     - name: Run linter
