@@ -9,6 +9,8 @@ import Home from "./pages";
 import { store } from "./store";
 import "./styles/globals.css";
 
+const devMode = process.env.REACT_APP_ENV === "development";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,8 +19,6 @@ const router = createBrowserRouter([
 ]);
 
 function MyApp() {
-  const devMode = process.env.NEXT_PUBLIC_APP_ENV === "development";
-
   return (
     <Provider store={store}>
       <Header />
