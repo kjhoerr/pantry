@@ -7613,9 +7613,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flowbite-react@npm:^0.4.2":
-  version: 0.4.2
-  resolution: "flowbite-react@npm:0.4.2"
+"flowbite-react@npm:^0.4.3":
+  version: 0.4.3
+  resolution: "flowbite-react@npm:0.4.3"
   dependencies:
     "@floating-ui/react": ^0.20.1
     classnames: ^2.3.2
@@ -7626,7 +7626,7 @@ __metadata:
     react: ^18
     react-dom: ^18
     tailwindcss: ^3
-  checksum: 70c7e331eea32ace1c933222ca5a44480daa63deb641877fdff0316a843f8deefabd5c4e12457501ca0780617fdb58fdc5aadc4de86d1e7c486e97f01a918d6b
+  checksum: d0213fb57feefc3e6143cb35fab96332f2b4e25935d5274acd36627628378ecdfa2f02f50b8bd5fcb1f1d158ccaff542a51471d344fdfc8933bcb6fb34cf24ef
   languageName: node
   linkType: hard
 
@@ -11214,7 +11214,7 @@ __metadata:
     eslint: latest
     eslint-config-prettier: latest
     flowbite: ^1.6.4
-    flowbite-react: ^0.4.2
+    flowbite-react: ^0.4.3
     graphql: ^16.6.0
     graphql-request: 5.2.0
     postcss: ^8.4.21
@@ -11223,7 +11223,7 @@ __metadata:
     react-dom: 18.2.0
     react-redux: ^8.0.5
     react-router-dom: ^6.10.0
-    react-scripts: 5.0.1
+    react-scripts: latest
     redux: ^4.2.1
     tailwindcss: ^3.2.7
     ts-node: latest
@@ -12705,7 +12705,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-scripts@npm:5.0.1":
+"react-scripts@npm:latest":
   version: 5.0.1
   resolution: "react-scripts@npm:5.0.1"
   dependencies:
