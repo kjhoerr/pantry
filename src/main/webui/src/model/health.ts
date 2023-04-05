@@ -1,4 +1,3 @@
-
 /** Binary health status. If all checks are healthy then status is "UP" */
 export type HealthStatus = "UP" | "DOWN";
 
@@ -8,7 +7,7 @@ export interface HealthCheck {
   name?: string;
   /** If status is "UP", then the system is healthy and any subchecks have passed */
   status: HealthStatus;
-};
+}
 
 /**
  * Describes the health of the overall system

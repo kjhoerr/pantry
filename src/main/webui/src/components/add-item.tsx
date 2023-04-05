@@ -1,8 +1,8 @@
 import { PlusIcon } from "@heroicons/react/24/solid";
 import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
-import React, { ChangeEvent, useMemo, useRef, useState } from "react";
+import { ChangeEvent, useMemo, useRef, useState } from "react";
 
-import { useStoreItemController, useToastMessage } from "../hooks";
+import { useSelector, useStoreItemController, useToastMessage } from "../hooks";
 import { PantryItem } from "../model";
 
 const defaultPantryItem = () =>
@@ -19,6 +19,8 @@ export const AddItem = () => {
   const nameInput = useRef<HTMLInputElement>(null);
   const [additionItem, setAdditionItem] = useState<PantryItem | undefined>();
   const [additionItemLoading, setAdditionItemLoading] = useState(false);
+
+  const isOnline = useSelector((state) => state.health.status === "UP");
 
   const handleItemChange = ({ target }: ChangeEvent<HTMLInputElement>) =>
     setAdditionItem((item) => ({
@@ -40,6 +42,7 @@ export const AddItem = () => {
               setAdditionItem(defaultPantryItem());
               setTimeout(() => nameInput.current!.focus(), 350);
             }}
+            disabled={!isOnline}
           >
             <PlusIcon className="mr-2 h-5 w-5" />
             Add Item
@@ -135,7 +138,11 @@ export const AddItem = () => {
             <div>
               <Button
                 type="submit"
-                disabled={newItem.name?.trim() === "" || additionItemLoading}
+                disabled={
+                  newItem.name?.trim() === "" ||
+                  additionItemLoading ||
+                  !isOnline
+                }
               >
                 {additionItemLoading ? <Spinner /> : "Submit Item"}
               </Button>
