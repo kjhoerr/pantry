@@ -5,13 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/src/main/webui" # Location of package manifests
+  - package-ecosystem: "npm"
+    directory: "/src/main/webui"
     schedule:
       day: "saturday"
       interval: "weekly"
-  - package-ecosystem: "maven" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    allow:
+      - dependency-type: "production"
+  - package-ecosystem: "maven"
+    directory: "/"
     schedule:
       day: "saturday"
       interval: "weekly"
