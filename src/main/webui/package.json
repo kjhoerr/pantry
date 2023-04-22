@@ -21,7 +21,7 @@
   "dependencies": {
     "@heroicons/react": "2.0.16",
     "@mantine/hooks": "^6.0.7",
-    "@reduxjs/toolkit": "^1.9.3",
+    "@reduxjs/toolkit": "^1.9.5",
     "autoprefixer": "^10.4.14",
     "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.3",
