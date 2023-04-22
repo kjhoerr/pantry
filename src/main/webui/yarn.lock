@@ -10695,7 +10695,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.4":
+"nanoid@npm:^3.3.4, nanoid@npm:^3.3.6":
   version: 3.3.6
   resolution: "nanoid@npm:3.3.6"
   bin:
@@ -11229,7 +11229,7 @@ __metadata:
     flowbite-react: ^0.4.3
     graphql: ^16.6.0
     graphql-request: 6.0.0
-    postcss: ^8.4.21
+    postcss: ^8.4.23
     prettier: latest
     react: 18.2.0
     react-dom: 18.2.0
@@ -12276,7 +12276,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.0.9, postcss@npm:^8.3.5, postcss@npm:^8.4.19, postcss@npm:^8.4.21, postcss@npm:^8.4.4":
+"postcss@npm:^8.0.9, postcss@npm:^8.3.5, postcss@npm:^8.4.19, postcss@npm:^8.4.4":
   version: 8.4.21
   resolution: "postcss@npm:8.4.21"
   dependencies:
@@ -12284,6 +12284,17 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: e39ac60ccd1542d4f9d93d894048aac0d686b3bb38e927d8386005718e6793dbbb46930f0a523fe382f1bbd843c6d980aaea791252bf5e176180e5a4336d9679
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.23":
+  version: 8.4.23
+  resolution: "postcss@npm:8.4.23"
+  dependencies:
+    nanoid: ^3.3.6
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: 8bb9d1b2ea6e694f8987d4f18c94617971b2b8d141602725fedcc2222fdc413b776a6e1b969a25d627d7b2681ca5aabb56f59e727ef94072e1b6ac8412105a2f
   languageName: node
   linkType: hard
 
