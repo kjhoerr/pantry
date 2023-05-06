@@ -1,14 +1,12 @@
-interface FooterProps {
-  devMode: boolean;
-}
+import { DEVMODE } from "../config";
 
-export const Footer = ({ devMode }: FooterProps) => {
+export const Footer = () => {
   return (
     <div
       id="footer"
       className="flex justify-center pb-2 flex-grow items-end text-sm"
     >
-      {devMode && (
+      {DEVMODE && (
         <a
           href="/q/dev/"
           className="text-gray-400 dark:text-gray-600 hover:text-gray-500"

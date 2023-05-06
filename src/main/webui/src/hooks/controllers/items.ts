@@ -5,14 +5,12 @@ import {
   PantryItem,
   AllItemsDocument,
   StoreItemDocument,
-} from "../gql/conf/graphql";
-import { ApiError, errorHandler, GraphQLModelError } from "../model";
-import nullcheck from "../util/nullcheck";
-import { useAddItem, useSetItems } from "./items";
-import { useToastAPIError } from "./toast";
-
-const endpoint =
-  (process.env.REACT_APP_HOST_ADDRESS ?? "http://localhost:8080") + "/graphql";
+} from "../../gql/conf/graphql";
+import { ApiError, errorHandler, GraphQLModelError } from "../../model";
+import nullcheck from "../../util/nullcheck";
+import { useAddItem, useSetItems } from "../items";
+import { useToastAPIError } from "../toast";
+import { GRAPHQL_ENDPOINT }from "../../config";
 
 /**
  * Hook to issue query for `allItems` to retrieve list of {@link PantryItem}s.
@@ -28,7 +26,7 @@ export const useAllItemsController = (
 
   /** Issue query for `allItems` to retrieve list of {@link PantryItem}s. */
   return () =>
-    request(endpoint, AllItemsDocument)
+    request(GRAPHQL_ENDPOINT, AllItemsDocument)
       .then((data) => {
         if (nullcheck(data.allItems)) {
           return data.allItems
@@ -67,7 +65,7 @@ export const useStoreItemController = (
    * Issue mutation for `storeItem` to add an item to the pantry.
    */
   return (variables: StoreItemMutationVariables) =>
-    request(endpoint, StoreItemDocument, variables)
+    request(GRAPHQL_ENDPOINT, StoreItemDocument, variables)
       .then((data) => {
         if (nullcheck(data) && nullcheck(data?.storeItem)) {
           return {
