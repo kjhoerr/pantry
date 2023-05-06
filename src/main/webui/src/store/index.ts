@@ -7,6 +7,7 @@ import {
 
 import healthReducer from "./reducers/health";
 import itemsReducer from "./reducers/items";
+import labelsReducer from "./reducers/labels";
 import toastReducer from "./reducers/toast";
 
 // creating store
@@ -14,6 +15,7 @@ export const store = configureStore({
   reducer: {
     health: healthReducer,
     items: itemsReducer,
+    labels: labelsReducer,
     toast: toastReducer,
   },
 });
