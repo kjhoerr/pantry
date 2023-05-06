@@ -9,8 +9,7 @@ import { useCallback, useMemo, useState } from "react";
 
 import { useSelector } from "../hooks";
 import { PantryItem } from "../model";
-
-const ENTRIES_PER_PAGE = Number(process.env.ENTRIES_PER_PAGE ?? "10");
+import { ENTRIES_PER_PAGE } from "../config";
 
 interface SortStateProps {
   field: keyof PantryItem;
