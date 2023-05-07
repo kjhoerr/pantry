@@ -1,5 +1,7 @@
 import { request } from "graphql-request";
 
+import { useSetLabels } from "..";
+import { GRAPHQL_ENDPOINT } from "../../config";
 import {
   PantryItemLabel,
   AllLabelsDocument,
@@ -9,8 +11,6 @@ import {
 import { ApiError, errorHandler, GraphQLModelError } from "../../model";
 import nullcheck from "../../util/nullcheck";
 import { useToastAPIError } from "../toast";
-import { GRAPHQL_ENDPOINT } from "../../config";
-import { useSetLabels } from "..";
 
 /**
  * Hook to issue query for `allLabels` to retrieve list of {@link PantryItemLabel}s.
@@ -66,7 +66,7 @@ export const useSyncLabelsController = (
     request(GRAPHQL_ENDPOINT, SyncLabelsDocument, variables)
       .then((data) => {
         if (nullcheck(data) && nullcheck(data?.syncLabels)) {
-          return data.syncLabels.map(label => ({
+          return data.syncLabels.map((label) => ({
             id: label?.id ?? undefined,
             color: label?.color ?? undefined,
             title: label?.title ?? undefined,
