@@ -1,5 +1,6 @@
 import { request } from "graphql-request";
 
+import { GRAPHQL_ENDPOINT } from "../../config";
 import {
   StoreItemMutationVariables,
   PantryItem,
@@ -10,7 +11,6 @@ import { ApiError, errorHandler, GraphQLModelError } from "../../model";
 import nullcheck from "../../util/nullcheck";
 import { useAddItem, useSetItems } from "../items";
 import { useToastAPIError } from "../toast";
-import { GRAPHQL_ENDPOINT }from "../../config";
 
 /**
  * Hook to issue query for `allItems` to retrieve list of {@link PantryItem}s.
