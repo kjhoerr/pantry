@@ -1826,45 +1826,45 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/core@npm:^1.2.4":
-  version: 1.2.5
-  resolution: "@floating-ui/core@npm:1.2.5"
-  checksum: 6cda151bb098e0dbd5ac0db141715e00879bf08b21553a8895232ccf429d774e30019295b5a6d2da19dd927a34540fb49b55d926b82820e6002eac7b97405f76
+"@floating-ui/core@npm:^1.2.6":
+  version: 1.2.6
+  resolution: "@floating-ui/core@npm:1.2.6"
+  checksum: e4aa96c435277f1720d4bc939e17a79b1e1eebd589c20b622d3c646a5273590ff889b8c6e126f7be61873cf8c4d7db7d418895986ea19b8b0d0530de32504c3a
   languageName: node
   linkType: hard
 
-"@floating-ui/dom@npm:^1.2.1":
-  version: 1.2.5
-  resolution: "@floating-ui/dom@npm:1.2.5"
+"@floating-ui/dom@npm:^1.2.7":
+  version: 1.2.8
+  resolution: "@floating-ui/dom@npm:1.2.8"
   dependencies:
-    "@floating-ui/core": ^1.2.4
-  checksum: a21c272a36c7cd7d337eaed82c1f8a81ccc5003d04cefa07591dc7fbb0a24d57a2c097b410593b5416145a68ac10a7a7a745c3cc4f8196268fa002364d28804b
+    "@floating-ui/core": ^1.2.6
+  checksum: 02894774475a17baa498c86cd25d2825598e7de0734b8c08f7b8797b19c0bec13c4c726e529feb8bf26c6dee219c153ac1f90d8530a93534f765b3c04cfa3b4a
   languageName: node
   linkType: hard
 
-"@floating-ui/react-dom@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "@floating-ui/react-dom@npm:1.3.0"
+"@floating-ui/react-dom@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@floating-ui/react-dom@npm:2.0.0"
   dependencies:
-    "@floating-ui/dom": ^1.2.1
+    "@floating-ui/dom": ^1.2.7
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: ce0ad3e3bbe43cfd15a6a0d5cccede02175c845862bfab52027995ab99c6b29630180dc7d146f76ebb34730f90a6ab9bf193c8984fe8d7f56062308e4ca98f77
+  checksum: c5dd02b7babf9c26d5e11b8ebe58411131b37844f7d6362a767cd1eedfb506ca6db3228fb192e0a5822c9289a5b500e2ef31e069dce28a0fbec4722f22bcdd95
   languageName: node
   linkType: hard
 
-"@floating-ui/react@npm:^0.20.1":
-  version: 0.20.1
-  resolution: "@floating-ui/react@npm:0.20.1"
+"@floating-ui/react@npm:^0.24.1":
+  version: 0.24.1
+  resolution: "@floating-ui/react@npm:0.24.1"
   dependencies:
-    "@floating-ui/react-dom": ^1.3.0
+    "@floating-ui/react-dom": ^2.0.0
     aria-hidden: ^1.1.3
     tabbable: ^6.0.1
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 64210e27b084bd2078efbe9c3947a4ae771d95e28e288710dc19926b9d8ff082136396f862b45a0ca4cdb96e1cecddbc0b556b8abedd49f5517f9480b20a9ee2
+  checksum: 89e525412a5f71be1437ce74a3a76f4a6c771074e1dca62dddf11062dd9eca7b967091906c369427a0c8f9c9a7c6c7ae06525917e6809d60d832443a4acfc3f3
   languageName: node
   linkType: hard
 
@@ -7620,20 +7620,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flowbite-react@npm:^0.4.4":
-  version: 0.4.4
-  resolution: "flowbite-react@npm:0.4.4"
+"flowbite-react@npm:^0.4.6":
+  version: 0.4.6
+  resolution: "flowbite-react@npm:0.4.6"
   dependencies:
-    "@floating-ui/react": ^0.20.1
+    "@floating-ui/react": ^0.24.1
     classnames: ^2.3.2
-    react-icons: ^4.7.1
+    flowbite: ^1.6.5
+    react-icons: ^4.8.0
     react-indiana-drag-scroll: ^2.2.0
   peerDependencies:
-    flowbite: ^1
     react: ^18
     react-dom: ^18
     tailwindcss: ^3
-  checksum: 5faa527f49c4cc4f2af2c4013119f7425b7a90d24920e4c9be7c34a678247d84ff2788c53e6c21c522bfd0bd3ebf9a1fc7c67fc620e0a4dfc1221e04bef1d11c
+  checksum: c1f63ad13740e5fda359fe9bb2806affacdf3caa8f3754c84997a86a91daf308c576a6300df830eb4ff825c6867c16406f3d54c1c95e32e0b42d639d2512fa41
   languageName: node
   linkType: hard
 
@@ -11242,7 +11242,7 @@ __metadata:
     eslint: latest
     eslint-config-prettier: latest
     flowbite: ^1.6.5
-    flowbite-react: ^0.4.4
+    flowbite-react: ^0.4.6
     graphql: ^16.6.0
     graphql-request: 6.0.0
     postcss: ^8.4.23
@@ -12679,7 +12679,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-icons@npm:^4.7.1":
+"react-icons@npm:^4.8.0":
   version: 4.8.0
   resolution: "react-icons@npm:4.8.0"
   peerDependencies:
