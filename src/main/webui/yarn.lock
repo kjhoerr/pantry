@@ -8065,15 +8065,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-request@npm:6.0.0":
-  version: 6.0.0
-  resolution: "graphql-request@npm:6.0.0"
+"graphql-request@npm:6.1.0":
+  version: 6.1.0
+  resolution: "graphql-request@npm:6.1.0"
   dependencies:
     "@graphql-typed-document-node/core": ^3.2.0
     cross-fetch: ^3.1.5
   peerDependencies:
     graphql: 14 - 16
-  checksum: e3acc6267c3d25d6dea7144823b3552c3533489269272e651e2a16c45575ccb357bb1dd3c78c1b6c379d4080377bc5694f589bd681d822c9647f6b1736239428
+  checksum: 6d62630a0169574442320651c1f7626c0c602025c3c46b19e09417c9579bb209306ee63de9793a03be2e1701bb7f13971f8545d99bc6573e340f823af0ad35b2
   languageName: node
   linkType: hard
 
@@ -11244,7 +11244,7 @@ __metadata:
     flowbite: ^1.6.5
     flowbite-react: ^0.4.6
     graphql: ^16.6.0
-    graphql-request: 6.0.0
+    graphql-request: 6.1.0
     postcss: ^8.4.23
     prettier: latest
     react: 18.2.0
