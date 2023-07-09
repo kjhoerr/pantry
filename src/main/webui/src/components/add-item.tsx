@@ -1,6 +1,6 @@
 import { PlusIcon } from "@heroicons/react/24/solid";
 import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
-import { ChangeEvent, useMemo, useRef, useState } from "react";
+import React, { ChangeEvent, useMemo, useRef, useState } from "react";
 
 import { useSelector, useStoreItemController, useToastMessage } from "../hooks";
 import { PantryItem } from "../model";
@@ -151,7 +151,7 @@ export const AddItem = () => {
               <Button
                 color="light"
                 disabled={additionItemLoading}
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent) => {
                   e.preventDefault();
                   setAdditionItem(undefined);
                 }}
