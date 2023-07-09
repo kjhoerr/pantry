@@ -38,8 +38,11 @@
     "web-vitals": "^3.3.2"
   },
   "devDependencies": {
+    "@babel/core": "latest",
+    "@babel/plugin-proposal-private-property-in-object": "latest",
     "@graphql-codegen/cli": "latest",
     "@graphql-codegen/client-preset": "latest",
+    "@testing-library/dom": "latest",
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
