@@ -7,10 +7,9 @@ import {
 import { Pagination, Table, TextInput } from "flowbite-react";
 import { useCallback, useMemo, useState } from "react";
 
+import { ENTRIES_PER_PAGE } from "../config";
 import { useSelector } from "../hooks";
 import { PantryItem } from "../model";
-
-const ENTRIES_PER_PAGE = Number(process.env.ENTRIES_PER_PAGE ?? "10");
 
 interface SortStateProps {
   field: keyof PantryItem;
