@@ -7967,9 +7967,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flowbite-react@npm:^0.6.3":
-  version: 0.6.3
-  resolution: "flowbite-react@npm:0.6.3"
+"flowbite-react@npm:^0.6.4":
+  version: 0.6.4
+  resolution: "flowbite-react@npm:0.6.4"
   dependencies:
     "@floating-ui/react": ^0.24.3
     flowbite: ^1.6.6
@@ -7980,7 +7980,7 @@ __metadata:
     react: ^18
     react-dom: ^18
     tailwindcss: ^3
-  checksum: 835dea7633003ac8d49101224104df0384e7f0732b43e2b687d7aa09a2432201e7f0b58d39f72868eafd469293d306f73f08f0fa87f7711c87f50dabbd807016
+  checksum: 3830d2e6f85d4617d50bf5f91c6548661fc5fd6fa1a75a533179cfc57fcc25b65697eaa3809f85f6f2753e9b780714605e73b649b0ebb19ba756b7c44cbfb173
   languageName: node
   linkType: hard
 
@@ -11616,7 +11616,7 @@ __metadata:
     eslint: latest
     eslint-config-prettier: latest
     flowbite: ^1.8.1
-    flowbite-react: ^0.6.3
+    flowbite-react: ^0.6.4
     graphql: ^16.8.1
     graphql-request: 6.1.0
     postcss: ^8.4.31
