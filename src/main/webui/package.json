@@ -24,7 +24,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "autoprefixer": "^10.4.16",
     "flowbite": "^1.8.1",
-    "flowbite-react": "^0.6.3",
+    "flowbite-react": "^0.6.4",
     "graphql": "^16.8.1",
     "graphql-request": "6.1.0",
     "postcss": "^8.4.31",
