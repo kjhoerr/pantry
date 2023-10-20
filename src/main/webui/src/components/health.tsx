@@ -17,8 +17,7 @@ export const Health = () => {
         className="m-8 mb-0 bg-red-100 text-red-500 dark:bg-red-800 dark:text-red-200"
       >
         <b>Error: Pantry API is unreachable!</b>
-        &nbsp;
-        Check your network settings or contact your administrator.
+        &nbsp; Check your network settings or contact your administrator.
       </Alert>
     );
   } else {
