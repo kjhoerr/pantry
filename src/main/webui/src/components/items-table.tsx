@@ -108,7 +108,7 @@ export const ItemsTable = () => {
   }, [handleSortChange, sortState]);
 
   return (
-    <Table>
+    <Table id="tbl-pantry">
       <Table.Head>
         <HeadCell field="name">Name</HeadCell>
         <HeadCell field="description">Description</HeadCell>
@@ -118,7 +118,7 @@ export const ItemsTable = () => {
         {data.length === 0 && (
           <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
             <Table.Cell colSpan={3}>
-              <div className="text-center whitespace-nowrap font-medium text-gray-900 dark:text-white">
+              <div id="tbl-msg-empty" className="text-center whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 Nothing&apos;s in the pantry at the moment!
               </div>
             </Table.Cell>
@@ -178,6 +178,7 @@ export const ItemsTable = () => {
             </div>
             <div className="basis-1/4">
               <TextInput
+                id="tbl-pantry-search"
                 value={searchState}
                 onChange={({ target }) => setSearchState(target.value)}
                 placeholder="Search..."

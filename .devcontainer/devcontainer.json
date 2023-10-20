@@ -14,7 +14,8 @@
 
 	"mounts": [
 		// Pass through Maven settings and repository cache
-		"source=${localEnv:HOME}/.m2,target=/home/vscode/.m2,type=bind,consistency=cached"
+		"source=${localEnv:HOME}/.m2,target=/home/vscode/.m2,type=bind,consistency=cached",
+		"source=${localEnv:HOME}/.cache/ms-playwright,target=/home/vscode/.cache/ms-playwright,type=bind,consistency=cached"
 	],
 
 	"customizations": {

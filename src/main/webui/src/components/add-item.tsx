@@ -38,6 +38,7 @@ export const AddItem = () => {
       {additionItem === undefined ? (
         <div>
           <Button
+            id="pantry-add-item"
             onClick={() => {
               setAdditionItem(defaultPantryItem());
               setTimeout(() => nameInput.current!.focus(), 350);
