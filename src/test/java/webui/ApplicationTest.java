@@ -44,7 +44,7 @@ public class ApplicationTest {
         Assertions.assertEquals("Nothing's in the pantry at the moment!", tableMessage);
 
         // Check button is visible and enabled
-        Locator addButton = page.getByLabel("Add Item");
+        Locator addButton = page.locator("button#pantry-add-item");
         Assertions.assertTrue(addButton.isVisible());
         Assertions.assertTrue(addButton.isEnabled());
     }
