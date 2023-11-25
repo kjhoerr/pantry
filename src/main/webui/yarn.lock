@@ -8007,13 +8007,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flowbite@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "flowbite@npm:2.1.1"
+"flowbite@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "flowbite@npm:2.2.0"
   dependencies:
     "@popperjs/core": ^2.9.3
     mini-svg-data-uri: ^1.4.3
-  checksum: a55d33996dc4ee50a08c67e9d47de506ffa1c4ad63ec1f43fee3369b5f8a5d9179c6060042cabfc03d4f246ac657e1acfaf49b222f84bd9abf403056cdbdb734
+  checksum: 30db46e51101fa2f56a72b979d90787b17a418fb5e8c21c40a6da2d94028c551b7f95a246f2c31bf9c15e61a511f6323f35f8cf2448aa676ae6163cda3cbe4ff
   languageName: node
   linkType: hard
 
@@ -11637,7 +11637,7 @@ __metadata:
     autoprefixer: ^10.4.16
     eslint: latest
     eslint-config-prettier: latest
-    flowbite: ^2.1.1
+    flowbite: ^2.2.0
     flowbite-react: ^0.6.4
     graphql: ^16.8.1
     graphql-request: 6.1.0
