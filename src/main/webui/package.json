@@ -23,7 +23,7 @@
     "@mantine/hooks": "^7.2.2",
     "@reduxjs/toolkit": "^1.9.7",
     "autoprefixer": "^10.4.16",
-    "flowbite": "^2.1.1",
+    "flowbite": "^2.2.0",
     "flowbite-react": "^0.6.4",
     "graphql": "^16.8.1",
     "graphql-request": "6.1.0",
