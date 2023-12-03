@@ -7,20 +7,18 @@ COPY --chown=quarkus:quarkus pom.xml /code/
 USER quarkus
 WORKDIR /code
 
-#RUN yum install node yarn
-
-ENV QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL=true \
-    QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=20.10.0 \
-    QUARKUS_QUINOA_FROZEN_LOCK_FILE=true
 RUN ./mvnw -B -e -C org.apache.maven.plugins:maven-dependency-plugin:3.6.1:go-offline quarkus:go-offline
-RUN mkdir -p /code/.quinoa && curl https://nodejs.org/dist/latest-v20.x/node-v20.10.0.tar.gz -o /code/.quinoa/node-v20.10.0.tar.gz
-RUN curl https://github.com/yarnpkg/berry/archive/refs/tags/@yarnpkg/cli/3.6.4.tar.gz -o /code/.quinoa/yarn.tar.gz
+
+USER root
+## Install nodejs and yarn (via corepack)
+RUN curl -L https://nodejs.org/dist/v20.10.0/node-v20.10.0-linux-x64.tar.xz -o /tmp/node-v20.10.0.tar.xz \
+ && cd /tmp \
+ && tar xvf /tmp/node-v20.10.0.tar.xz \
+ && cp -R /tmp/node-v20.10.0-linux-x64/* /usr/ \
+ && corepack enable
 
 ## Stage 2 : copy in code and compile native binary from builder image
 FROM deps AS build
-COPY --from=deps /home/quarkus/.m2 /home/quarkus/.m2
-COPY --from=deps /code/.quinoa/ /code/.quinoa
-
 USER quarkus
 WORKDIR /code
 COPY --chown=quarkus:quarkus . /code
