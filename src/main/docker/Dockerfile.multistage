@@ -1,16 +1,34 @@
-## Stage 1 : build with maven builder image with native capabilities - Quinoa will bake in the front-end
-FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:23.1-jdk-21 AS build
+## Stage 1 : prepare builder image with java dependencies
+FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:23.1-jdk-21 AS deps
 COPY --chown=quarkus:quarkus mvnw /code/mvnw
 COPY --chown=quarkus:quarkus .mvn /code/.mvn
 COPY --chown=quarkus:quarkus pom.xml /code/
+
 USER quarkus
 WORKDIR /code
-RUN ./mvnw -B org.apache.maven.plugins:maven-dependency-plugin:3.1.2:go-offline
-ENV QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL=true QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=19.4.0
-COPY --chown=quarkus:quarkus . /code
-RUN ./mvnw -Pnative clean package
 
-## Stage 2 : create the docker final image
+#RUN yum install node yarn
+
+ENV QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL=true \
+    QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=20.10.0 \
+    QUARKUS_QUINOA_FROZEN_LOCK_FILE=true
+RUN ./mvnw -B -e -C org.apache.maven.plugins:maven-dependency-plugin:3.6.1:go-offline quarkus:go-offline
+RUN mkdir -p /code/.quinoa && curl https://nodejs.org/dist/latest-v20.x/node-v20.10.0.tar.gz -o /code/.quinoa/node-v20.10.0.tar.gz
+RUN curl https://github.com/yarnpkg/berry/archive/refs/tags/@yarnpkg/cli/3.6.4.tar.gz -o /code/.quinoa/yarn.tar.gz
+
+## Stage 2 : copy in code and compile native binary from builder image
+FROM deps AS build
+COPY --from=deps /home/quarkus/.m2 /home/quarkus/.m2
+COPY --from=deps /code/.quinoa/ /code/.quinoa
+
+USER quarkus
+WORKDIR /code
+COPY --chown=quarkus:quarkus . /code
+
+ENV QUARKUS_QUINOA_FROZEN_LOCK_FILE=true
+RUN ./mvnw -o clean -Dnative package
+
+## Stage 3 : create the docker final image
 FROM quay.io/quarkus/quarkus-distroless-image:2.0 AS release
 COPY --from=build /code/target/*-runner /application
 
