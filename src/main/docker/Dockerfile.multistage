@@ -1,16 +1,32 @@
-## Stage 1 : build with maven builder image with native capabilities - Quinoa will bake in the front-end
-FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:23.1-jdk-21 AS build
+## Stage 1 : prepare builder image with java dependencies
+FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:23.1-jdk-21 AS deps
 COPY --chown=quarkus:quarkus mvnw /code/mvnw
 COPY --chown=quarkus:quarkus .mvn /code/.mvn
 COPY --chown=quarkus:quarkus pom.xml /code/
+
 USER quarkus
 WORKDIR /code
-RUN ./mvnw -B org.apache.maven.plugins:maven-dependency-plugin:3.1.2:go-offline
-ENV QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL=true QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=18.13.0
-COPY --chown=quarkus:quarkus . /code
-RUN ./mvnw -Pnative clean package
 
-## Stage 2 : create the docker final image
+RUN ./mvnw -B -e -C org.apache.maven.plugins:maven-dependency-plugin:3.6.1:go-offline quarkus:go-offline
+
+USER root
+## Install nodejs and yarn (via corepack)
+RUN curl -L https://nodejs.org/dist/v20.10.0/node-v20.10.0-linux-x64.tar.xz -o /tmp/node-v20.10.0.tar.xz \
+ && cd /tmp \
+ && tar xvf /tmp/node-v20.10.0.tar.xz \
+ && cp -R /tmp/node-v20.10.0-linux-x64/* /usr/ \
+ && corepack enable
+
+## Stage 2 : copy in code and compile native binary from builder image
+FROM deps AS build
+USER quarkus
+WORKDIR /code
+COPY --chown=quarkus:quarkus . /code
+
+ENV QUARKUS_QUINOA_FROZEN_LOCK_FILE=true
+RUN ./mvnw -o clean -Dnative package
+
+## Stage 3 : create the docker final image
 FROM quay.io/quarkus/quarkus-distroless-image:2.0 AS release
 COPY --from=build /code/target/*-runner /application
 
