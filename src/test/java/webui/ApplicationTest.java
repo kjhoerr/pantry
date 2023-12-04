@@ -138,9 +138,12 @@ public class ApplicationTest {
     /**
      * Assert that a notification is displayed with the specified header and text
      */
-    private void validateNotification(final Page page, final String header, final String text) {
-        Locator specifiedNotification = page.locator("div#toast-holder").getByRole(AriaRole.ALERT).filter(new Locator.FilterOptions().setHasText(text));
+    private Locator findAndValidateNotification(final Page page, final String header, final String text) {
+        Locator specifiedNotification = page.locator("div#toast-holder")
+                .getByRole(AriaRole.ALERT)
+                .filter(new Locator.FilterOptions().setHasText(text));
         assertThat(specifiedNotification).isVisible();
         assertThat(specifiedNotification).containsText(header);
+        return specifiedNotification;
     }
 }
