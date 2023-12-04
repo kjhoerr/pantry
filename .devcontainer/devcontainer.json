@@ -30,7 +30,8 @@
 				"visualstudioexptteam.vscodeintellicode",
 				"redhat.fabric8-analytics",
 				"redhat.vscode-quarkus",
-				"bradlc.vscode-tailwindcss"
+				"bradlc.vscode-tailwindcss",
+				"ms-playwright.playwright"
 			]
 		}
 	},
