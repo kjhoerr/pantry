@@ -35,7 +35,7 @@
 		}
 	},
 
-	"initializeCommand": "mkdir ${HOME}/.m2 || true",
+	"initializeCommand": "mkdir ${HOME}/.m2; mkdir ${HOME}/.cache/ms-playwright; true",
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "mvn org.apache.maven.plugins:maven-dependency-plugin:3.6.1:go-offline quarkus:go-offline",
