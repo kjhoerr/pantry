@@ -9,6 +9,8 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
+import dev.submelon.model.PantryItem;
+
 /**
  * Provide locators and methodical tests for the index page of the Pantry application
  */
@@ -28,6 +30,8 @@ public class IndexPage extends ApplicationPage {
     public static final String PANTRY_TABLE_ROW_SELECTOR = "css=table#tbl-pantry > tbody > tr";
     public static final String EMPTY_TABLE_MESSAGE_SELECTOR = "div#tbl-msg-empty";
     public static final String EMPTY_TABLE_MESSAGE_TEXT = "Nothing's in the pantry at the moment!";
+    public static final String ADD_ITEM_NOTIFICATION_HEADER = "Item added successfully";
+    public static final String ADD_ITEM_NOTIFICATION_TEMPLATE = "Stored \"%s\" in the pantry!";
 
     public IndexPage(Page page) {
         super(page);
@@ -111,6 +115,14 @@ public class IndexPage extends ApplicationPage {
      */
     public Locator getCancelButton() {
         return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(CANCEL_LABEL));
+    }
+
+    /**
+     * assert notification is displayed that item has been added
+     */
+    public Locator validateAddItemNotification(final PantryItem item) {
+        return findAndValidateNotification(ADD_ITEM_NOTIFICATION_HEADER,
+                String.format(ADD_ITEM_NOTIFICATION_TEMPLATE, item.getName()));
     }
 
 }

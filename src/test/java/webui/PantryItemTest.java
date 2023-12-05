@@ -3,21 +3,46 @@ package webui;
 import org.junit.jupiter.api.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.*;
+
 import com.microsoft.playwright.Locator;
+
+import dev.submelon.model.PantryItem;
+import io.quarkiverse.quinoa.testing.QuinoaTestProfiles;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.TestProfile;
 import webui.pages.IndexPage;
+import webui.pages.components.AddItemComponent;
 
 @QuarkusTest
+@TestProfile(QuinoaTestProfiles.Enable.class)
 public class PantryItemTest extends ApplicationTest {
+
+    private static PantryItem[] testItems = new PantryItem[] {
+        PantryItem.builder()
+                .name("Flour")
+                .description("White unbleached")
+                .quantity(12.4d)
+                .quantityUnitType("cups")
+                .build(),
+        PantryItem.builder()
+                .name("Ponzu Sauce")
+                .quantity(4d)
+                .quantityUnitType("oz")
+                .build()
+    };
 
     @Test
     public void testLanding() {
+        // Arrange
         final IndexPage page = new IndexPage(context.newPage());
+
+        // Act
         page.loadAndVerifyPage(indexLocation);
 
+        // Assert
         page.checkItemTableIsEmpty();
 
-        // Check button is visible and enabled
+        // Check add item button is visible and enabled
         Locator addButton = page.getAddItemButton();
         assertThat(addButton).isVisible();
         assertThat(addButton).isEnabled();
@@ -25,117 +50,38 @@ public class PantryItemTest extends ApplicationTest {
 
     @Test
     public void testAddItemCancel() {
+        // Arrange
+        final PantryItem testItem = testItems[0];
         final IndexPage page = new IndexPage(context.newPage());
-        page.loadAndVerifyPage(indexLocation);
 
+        // Act
+        page.loadAndVerifyPage(indexLocation);
         page.checkItemTableIsEmpty();
 
-        // Check button is visible and enabled
-        Locator addButton = page.getAddItemButton();
-        assertThat(addButton).isVisible();
-        assertThat(addButton).isEnabled();
+        AddItemComponent addItem = AddItemComponent.open(page);
+        addItem.enterPantryItem(testItem);
+        addItem.cancel();
 
-        // make available add item component
-        addButton.click();
-
-        // verify initial state of inputs and buttons
-        assertThat(addButton).isHidden();
-        Locator nameInput = page.getItemNameInput();
-        Locator descriptionInput = page.getItemDescriptionInput();
-        Locator quantityInput = page.getItemQuantityInput();
-        Locator quantityTypeInput = page.getQuantityTypeInput();
-        assertThat(nameInput).isVisible();
-        assertThat(nameInput).isEditable();
-        assertThat(descriptionInput).isVisible();
-        assertThat(descriptionInput).isEditable();
-        assertThat(quantityInput).isVisible();
-        assertThat(quantityInput).isEditable();
-        assertThat(quantityTypeInput).isVisible();
-        assertThat(quantityTypeInput).isEditable();
-
-        Locator submitButton = page.getSubmitItemButton();
-        Locator cancelButton = page.getCancelButton();
-        assertThat(submitButton).isVisible();
-        assertThat(submitButton).isDisabled();
-        assertThat(cancelButton).isVisible();
-        assertThat(cancelButton).isEnabled();
-
-        // test initial input and closing component
-        nameInput.type("Flour");
-        descriptionInput.type("White unbleached");
-
-        assertThat(submitButton).isEnabled();
-
-        cancelButton.click();
-
-        // verify add item component is closed
-        assertThat(nameInput).isHidden();
-        assertThat(descriptionInput).isHidden();
-        assertThat(quantityInput).isHidden();
-        assertThat(quantityTypeInput).isHidden();
-        assertThat(submitButton).isHidden();
-        assertThat(cancelButton).isHidden();
-
+        // Assert
         page.checkItemTableIsEmpty();
     }
 
     @Test
     public void testAddItemSubmit() {
+        // Arrange
+        final PantryItem testItem = testItems[0];
         final IndexPage page = new IndexPage(context.newPage());
-        page.loadAndVerifyPage(indexLocation);
 
+        // Act
+        page.loadAndVerifyPage(indexLocation);
         page.checkItemTableIsEmpty();
 
-        // Check button is visible and enabled
-        Locator addButton = page.getAddItemButton();
-        assertThat(addButton).isVisible();
-        assertThat(addButton).isEnabled();
+        AddItemComponent addItem = AddItemComponent.open(page);
+        addItem.enterPantryItem(testItem);
+        addItem.submit();
 
-        // make available add item component
-        addButton.click();
-
-        // verify initial state of inputs and buttons
-        assertThat(addButton).isHidden();
-        Locator nameInput = page.getItemNameInput();
-        Locator descriptionInput = page.getItemDescriptionInput();
-        Locator quantityInput = page.getItemQuantityInput();
-        Locator quantityTypeInput = page.getQuantityTypeInput();
-        assertThat(nameInput).isVisible();
-        assertThat(nameInput).isEditable();
-        assertThat(descriptionInput).isVisible();
-        assertThat(descriptionInput).isEditable();
-        assertThat(quantityInput).isVisible();
-        assertThat(quantityInput).isEditable();
-        assertThat(quantityTypeInput).isVisible();
-        assertThat(quantityTypeInput).isEditable();
-
-        Locator submitButton = page.getSubmitItemButton();
-        Locator cancelButton = page.getCancelButton();
-        assertThat(submitButton).isVisible();
-        assertThat(submitButton).isDisabled();
-        assertThat(cancelButton).isVisible();
-        assertThat(cancelButton).isEnabled();
-
-        // test initial input and closing component
-        nameInput.fill("Flour");
-        descriptionInput.fill("White unbleached");
-        quantityInput.fill("12.4");
-        quantityTypeInput.fill("cups");
-
-        assertThat(submitButton).isEnabled();
-
-        submitButton.click();
-
-        // verify add item component is closed
-        assertThat(nameInput).isHidden();
-        assertThat(descriptionInput).isHidden();
-        assertThat(quantityInput).isHidden();
-        assertThat(quantityTypeInput).isHidden();
-        assertThat(submitButton).isHidden();
-        assertThat(cancelButton).isHidden();
-
-        // verify notification appears
-        page.findAndValidateNotification("Item added successfully", "Stored \"Flour\" in the pantry!");
+        // Assert
+        page.validateAddItemNotification(testItem);
     }
 
 }
