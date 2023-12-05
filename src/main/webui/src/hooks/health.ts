@@ -1,19 +1,16 @@
 import { useInterval } from "@mantine/hooks";
 import { useEffect } from "react";
 
+import { HEALTH_ENDPOINT, HEALTH_POLL } from "../config";
 import { SystemHealth } from "../model";
 import { useDispatch } from "../store";
 import { healthUpdate } from "../store/reducers/health";
-
-const health =
-  (process.env.REACT_APP_HOST_ADDRESS ?? "http://localhost:8080") + "/q/health";
-const pollingRate = Number(process.env.REACT_APP_HEALTH_POLL ?? 10000);
 
 /**
  * Query server's health API endpoint
  */
 const performHealthcheck = (): Promise<SystemHealth | undefined> => {
-  return fetch(health)
+  return fetch(HEALTH_ENDPOINT)
     .then((res) => (res.ok ? res.json() : undefined))
     .then((body) =>
       body?.status !== undefined ? (body as SystemHealth) : undefined,
@@ -34,7 +31,7 @@ export const useHealth = () => {
       performHealthcheck().then((result) => {
         dispatch(healthUpdate(result));
       }),
-    pollingRate,
+    HEALTH_POLL,
   );
 
   useEffect(() => {

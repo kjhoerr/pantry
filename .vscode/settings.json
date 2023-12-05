@@ -1,3 +1,7 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "microprofile.tools.validation.unknown.excluded": [
+        "quarkus.quinoa.dev-server.port",
+        "quarkus.quinoa.package-manager-command.dev-env.*"
+    ]
 }

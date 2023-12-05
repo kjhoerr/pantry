@@ -9,8 +9,6 @@ import Home from "./pages";
 import { store } from "./store";
 import "./styles/globals.css";
 
-const devMode = process.env.REACT_APP_ENV === "development";
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +23,7 @@ function MyApp() {
       <Health />
       <RouterProvider router={router} />
       <GlobalToast />
-      <Footer devMode={devMode} />
+      <Footer />
     </Provider>
   );
 }

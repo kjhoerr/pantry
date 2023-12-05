@@ -6,6 +6,7 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/solid";
 import { Toast } from "flowbite-react";
+import { useMemo } from "react";
 
 import { useSelector } from "../hooks";
 import { ToastMessage } from "../model";
@@ -42,7 +43,11 @@ const getIcon = (level: ToastMessage["level"]) => {
 };
 
 export const GlobalToast = () => {
-  const messages = useSelector((state) => Object.values(state.toast));
+  const messageRecords = useSelector((state) => state.toast);
+  const messages = useMemo(
+    () => Object.values(messageRecords),
+    [messageRecords],
+  );
   return (
     <div id="toast-holder" className="fixed right-10 bottom-0">
       {messages
