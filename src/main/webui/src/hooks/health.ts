@@ -1,10 +1,10 @@
 import { useInterval } from "@mantine/hooks";
 import { useEffect } from "react";
 
+import { HEALTH_ENDPOINT, HEALTH_POLL } from "../config";
 import { SystemHealth } from "../model";
 import { useDispatch } from "../store";
 import { healthUpdate } from "../store/reducers/health";
-import { HEALTH_ENDPOINT, HEALTH_POLL } from "../config";
 
 /**
  * Query server's health API endpoint
