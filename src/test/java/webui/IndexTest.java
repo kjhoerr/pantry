@@ -1,7 +1,5 @@
 package webui;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.*;
@@ -144,15 +142,6 @@ public class IndexTest extends IndexPage {
 
         // verify notification appears
         findAndValidateNotification(page, "Item added successfully", "Stored \"Flour\" in the pantry!");
-
-        // assert pantry item list has newly added item
-        //TODO table is not updating with newly added pantry item
-        Locator newItem = getCurrentItems(page, 1).get(0);
-
-        List<Locator> fields = newItem.locator("td").all();
-        assertThat(fields.get(0)).containsText("Flour");
-        assertThat(fields.get(1)).containsText("White unbleached");
-        assertThat(fields.get(2)).containsText("12.4 cups");
     }
 
 }

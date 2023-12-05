@@ -21,6 +21,8 @@ import io.quarkus.test.common.http.TestHTTPResource;
  */
 @WithPlaywright
 public class IndexPage extends Application {
+    
+    public static final String INDEX_PAGE_TITLE = "Pantry";
 
     public static final String ADD_ITEM_LABEL = "Add Item";
     public static final String ITEM_NAME_LABEL = "Item Name";
@@ -32,7 +34,8 @@ public class IndexPage extends Application {
 
     public static final String PANTRY_TABLE_ID = "#tbl-pantry";
     public static final String PANTRY_TABLE_ROW_SELECTOR = "css=table#tbl-pantry > tbody > tr";
-    public static final String EMPTY_TABLE_MESSAGE = "Nothing's in the pantry at the moment!";
+    public static final String EMPTY_TABLE_MESSAGE_SELECTOR = "div#tbl-msg-empty";
+    public static final String EMPTY_TABLE_MESSAGE_TEXT = "Nothing's in the pantry at the moment!";
 
     @InjectPlaywright
     BrowserContext context;
@@ -50,7 +53,7 @@ public class IndexPage extends Application {
 
         page.waitForLoadState();
 
-        assertThat(page).hasTitle("Pantry");
+        assertThat(page).hasTitle(INDEX_PAGE_TITLE);
 
         return page;
     }
@@ -59,9 +62,24 @@ public class IndexPage extends Application {
      * Check table is empty with appropriate message
      */
     public void checkItemTableIsEmpty(final Page page) {
-        Locator td = page.locator("#tbl-msg-empty");
+        Locator td = page.locator(EMPTY_TABLE_MESSAGE_SELECTOR);
         assertThat(td).isVisible();
-        assertThat(td).containsText(EMPTY_TABLE_MESSAGE);
+        assertThat(td).containsText(EMPTY_TABLE_MESSAGE_TEXT);
+    }
+
+    /**
+     * Obtain a list of items or rows (`tr`s) in the Pantry Item table
+     */
+    public List<Locator> getCurrentItems(final Page page, int numExpectedItems) {
+        if (numExpectedItems == 0) {
+            checkItemTableIsEmpty(page);
+        }
+
+        Locator table = page.locator(PANTRY_TABLE_ROW_SELECTOR)
+                .filter(new Locator.FilterOptions().setHasNotText(EMPTY_TABLE_MESSAGE_TEXT));
+        assertThat(table).hasCount(numExpectedItems);
+
+        return table.all();
     }
 
     /**
@@ -111,21 +129,6 @@ public class IndexPage extends Application {
      */
     public Locator getCancelButton(final Page page) {
         return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(CANCEL_LABEL));
-    }
-
-    /**
-     * Obtain a list of items or rows (`tr`s) in the Pantry Item table
-     */
-    public List<Locator> getCurrentItems(final Page page, int numExpectedItems) {
-        if (numExpectedItems == 0) {
-            checkItemTableIsEmpty(page);
-        }
-
-        Locator table = page.locator(PANTRY_TABLE_ROW_SELECTOR)
-                .filter(new Locator.FilterOptions().setHasNotText(EMPTY_TABLE_MESSAGE));
-        assertThat(table).hasCount(numExpectedItems);
-
-        return table.all();
     }
 
 }
