@@ -1,6 +1,6 @@
 export const GRAPHQL_ENDPOINT =
   (process.env.REACT_APP_HOST_ADDRESS ?? "http://localhost:8080") + "/graphql";
-export const DEVMODE = process.env.REACT_APP_ENV === "development";
+export const DEVMODE = process.env.REACT_APP_ENV === "development" || process.env.NODE_ENV === "development";
 export const HEALTH_ENDPOINT =
   (process.env.REACT_APP_HOST_ADDRESS ?? "http://localhost:8080") + "/q/health";
 export const HEALTH_POLL = Number(process.env.REACT_APP_HEALTH_POLL ?? 10000);

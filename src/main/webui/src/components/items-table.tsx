@@ -88,7 +88,7 @@ export const ItemsTable = () => {
       field: keyof PantryItem;
       children: React.ReactNode;
     }) => (
-      <Table.HeadCell onClick={() => handleSortChange(field)}>
+      <Table.HeadCell onClick={() => handleSortChange(field)} className="group-first/head:first:rounded-none group-first/head:last:rounded-none">
         <div className="flex space-x-2">
           {children}
           {sortState.field === field ? (

@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="p-8">
+      <div className="flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 flex-col m-8 sm:rounded-lg">
         <AddItem />
         <ItemsTable />
       </div>

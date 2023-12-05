@@ -1,5 +1,5 @@
 import { PlusIcon } from "@heroicons/react/24/solid";
-import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
+import { Button, Label, Spinner, TextInput } from "flowbite-react";
 import React, { ChangeEvent, useMemo, useRef, useState } from "react";
 
 import { useSelector, useStoreItemController, useToastMessage } from "../hooks";
@@ -34,7 +34,7 @@ export const AddItem = () => {
   );
 
   return (
-    <Card className="px-8">
+    <section className="px-8 mt-8 mb-8">
       {additionItem === undefined ? (
         <div>
           <Button
@@ -163,6 +163,6 @@ export const AddItem = () => {
           </div>
         </form>
       )}
-    </Card>
+    </section>
   );
 };
