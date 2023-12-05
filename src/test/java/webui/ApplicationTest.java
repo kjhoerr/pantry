@@ -34,6 +34,8 @@ public class ApplicationTest {
     public static final String submitItemLabel = "Submit Item";
     public static final String cancelLabel = "Cancel";
 
+    public static final String emptyTableMessage = "Nothing's in the pantry at the moment!";
+
     @InjectPlaywright
     BrowserContext context;
 
@@ -111,6 +113,80 @@ public class ApplicationTest {
         checkItemTableIsEmpty(page);
     }
 
+    @Test
+    public void testAddItemSubmit() {
+        final Page page = loadAndVerifyLandingPage();
+
+        checkItemTableIsEmpty(page);
+
+        // Check button is visible and enabled
+        Locator addButton = page.getByRole(AriaRole.BUTTON,
+               new Page.GetByRoleOptions().setName(addItemLabel));
+        assertThat(addButton).isVisible();
+        assertThat(addButton).isEnabled();
+
+        // make available add item component
+        addButton.click();
+
+        // verify initial state of inputs and buttons
+        assertThat(addButton).isHidden();
+        Locator nameInput = page.getByLabel(itemNameLabel);
+        Locator descriptionInput = page.getByLabel(itemDescriptionLabel);
+        Locator quantityInput = page.getByLabel(itemQuantityLabel);
+        Locator quantityTypeInput = page.getByLabel(itemQuantityTypeLabel);
+        assertThat(nameInput).isVisible();
+        assertThat(nameInput).isEditable();
+        assertThat(descriptionInput).isVisible();
+        assertThat(descriptionInput).isEditable();
+        assertThat(quantityInput).isVisible();
+        assertThat(quantityInput).isEditable();
+        assertThat(quantityTypeInput).isVisible();
+        assertThat(quantityTypeInput).isEditable();
+
+        Locator submitButton = page.getByRole(AriaRole.BUTTON,
+                new Page.GetByRoleOptions().setName(submitItemLabel));
+        Locator cancelButton = page.getByRole(AriaRole.BUTTON,
+                new Page.GetByRoleOptions().setName(cancelLabel));
+        assertThat(submitButton).isVisible();
+        assertThat(submitButton).isDisabled();
+        assertThat(cancelButton).isVisible();
+        assertThat(cancelButton).isEnabled();
+
+        // test initial input and closing component
+        nameInput.type("Flour");
+        descriptionInput.type("White unbleached");
+        quantityInput.clear();
+        quantityInput.type("12.4");
+        quantityTypeInput.clear();
+        quantityTypeInput.type("cups");
+
+        assertThat(submitButton).isEnabled();
+
+        submitButton.click();
+        
+        // verify add item component is closed
+        assertThat(nameInput).isHidden();
+        assertThat(descriptionInput).isHidden();
+        assertThat(quantityInput).isHidden();
+        assertThat(quantityTypeInput).isHidden();
+        assertThat(submitButton).isHidden();
+        assertThat(cancelButton).isHidden();
+
+        // verify notification appears
+        findAndValidateNotification(page, "Item added successfully", "Stored \"Flour\" in the pantry!");
+        
+        // assert pantry item list has newly added item
+        //TODO table is not updating with newly added pantry item
+        Locator table = page.locator("table#tbl-pantry > tbody > tr");
+        assertThat(table).hasCount(1);
+        
+        Locator newItem = table.all().get(0);
+        List<Locator> fields = newItem.locator("td").all();
+        assertThat(fields.get(0)).containsText("Flour");
+        assertThat(fields.get(1)).containsText("White unbleached");
+        assertThat(fields.get(2)).containsText("12.4 cups");
+    }
+
 
     /**
      * Navigate to page with table of Pantry Items
@@ -132,7 +208,7 @@ public class ApplicationTest {
      */
     private void checkItemTableIsEmpty(final Page page) {
         assertThat(page.locator("#tbl-msg-empty"))
-                .containsText("Nothing's in the pantry at the moment!");
+                .containsText(emptyTableMessage);
     }
 
     /**
