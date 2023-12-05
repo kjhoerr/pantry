@@ -10,11 +10,12 @@ WORKDIR /code
 RUN ./mvnw -B -e -C org.apache.maven.plugins:maven-dependency-plugin:3.6.1:go-offline quarkus:go-offline
 
 USER root
+ARG NODEVER=v20.12.2
 ## Install nodejs and yarn (via corepack)
-RUN curl -L https://nodejs.org/dist/v20.10.0/node-v20.10.0-linux-x64.tar.xz -o /tmp/node-v20.10.0.tar.xz \
+RUN curl -L https://nodejs.org/dist/${NODEVER}/node-${NODEVER}-linux-x64.tar.xz -o /tmp/node-${NODEVER}.tar.xz \
  && cd /tmp \
- && tar xvf /tmp/node-v20.10.0.tar.xz \
- && cp -R /tmp/node-v20.10.0-linux-x64/* /usr/ \
+ && tar xvf /tmp/node-${NODEVER}.tar.xz \
+ && cp -R /tmp/node-${NODEVER}-linux-x64/* /usr/ \
  && corepack enable
 
 ## Stage 2 : copy in code and compile native binary from builder image

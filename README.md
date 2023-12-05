@@ -1,39 +1,31 @@
-# Pantry Project
+# Pantry
+[![Pantry build](https://github.com/kjhoerr/pantry/actions/workflows/build.yml/badge.svg?branch=trunk)](https://github.com/kjhoerr/pantry/actions/workflows/build.yml) [![License: BlueOak 1.0.0](https://img.shields.io/badge/License-BlueOak_1.0.0-green.svg)](https://blueoakcouncil.org/license/1.0.0)
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework, and NextJS in a monorepo.
-
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+This project uses [Quarkus](https://quarkus.io/) and a React application based on [Create React App](https://create-react-app.dev/) in a monorepo. [GraphQL](https://graphql.org/) is used as the API, with [MongoDB](https://www.mongodb.com/) as the main store and styled with [Tailwind CSS](https://tailwindcss.com/) and components.
 
 ## Running the application in dev mode
 
-Developing both front-end and back-end in tandem still needs some connecting at the moment. Whenever you make an API change, be sure to grab the OpenAPI spec while the server is running (`http://localhost:8080/q/openapi`) and replace the `src/conf/openapi-pantry.yaml` file. This can be done in one command:
+Developing both front-end and back-end in tandem needs some connecting. The GraphQL schema is accessible while the back-end is running, typically at `localhost:8080/graphql/schema.graphql`. Pantry uses the `graphql-codegen` library to query for that endpoint and automatically generate types for the front-end to utilize schema changes. This can be run from the `src/main/webui` directory:
 
 ```shell script
-yarn api-update
+yarn codegen
 ```
 
-You can run your application in dev mode that enables live coding using:
+You can run the application in dev mode that enables live coding using:
 ```shell script
-yarn dev
-```
-
-This will run both the front-end and back-end watchers to update the running code when it is saved. This can be separately in two commands if preferred:
-```shell script
-yarn dev:fe
 mvn quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
-
 ## Creating a native executable
 
-First, generate the front-end code and inject it into the Quarkus server using:
+You must have Yarn installed for Quinoa to build the front-end into the server resources, or set the following environment variables:
 
-```shell script
-yarn inject
+```
+QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL=true
+QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=19.4.0 #e.g.
 ```
 
-You can create a native executable using: 
+You can create a native executable using:
 ```shell script
 mvn package -Pnative
 ```
@@ -47,13 +39,18 @@ You can then execute your native executable with: `./target/pantry-1.0.0-SNAPSHO
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
 
-## Related Guides
+## Creating a Docker image
 
-- SmallRye OpenAPI ([guide](https://quarkus.io/guides/openapi-swaggerui)): Document your REST APIs with OpenAPI - comes with Swagger UI
-- Liquibase ([guide](https://quarkus.io/guides/liquibase)): Handle your database schema migrations with Liquibase
-- SmallRye JWT ([guide](https://quarkus.io/guides/security-jwt)): Secure your applications with JSON Web Token
-- Reactive PostgreSQL client ([guide](https://quarkus.io/guides/reactive-sql-clients)): Connect to the PostgreSQL database using the reactive pattern
-- SmallRye Health ([guide](https://quarkus.io/guides/microprofile-health)): Monitor service health
+There are separate Dockerfiles available for different use cases in building Pantry. [`Dockerfile.multistage`](src/main/docker/Dockerfile.multistage) was created in order to build the entire application from source with Docker as the only dependency. It uses a distroless image so the image size is small. Other options are available as well (JVM, native, etc.) but require Yarn and Maven to prep the source for the image.
+
+For instance, to build a JVM Docker image of Pantry, run:
+
+```shell script
+# Build the Java jar - Quinoa runs `yarn` to build the front-end
+maven package
+# Build the Docker image based on the jar
+docker build -t kjhoerr/pantry:jvm -f src/main/docker/Dockerfile.jvm .
+```
 
 ## License
 

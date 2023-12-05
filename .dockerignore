@@ -3,7 +3,12 @@
 .gitattributes
 .github
 .vscode
+build
+dist
 out
 node_modules
 .env*
 src/main/docker
+src/test
+*.md
+.quinoa
