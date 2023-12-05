@@ -1,27 +1,19 @@
 package webui.pages;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.net.URL;
 import java.util.List;
 
-import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Response;
 import com.microsoft.playwright.options.AriaRole;
-
-import io.quarkiverse.playwright.InjectPlaywright;
-import io.quarkiverse.playwright.WithPlaywright;
-import io.quarkus.test.common.http.TestHTTPResource;
 
 /**
  * Provide locators and methodical tests for the index page of the Pantry application
  */
-@WithPlaywright
-public class IndexPage extends Application {
-    
+public class IndexPage extends ApplicationPage {
+
     public static final String INDEX_PAGE_TITLE = "Pantry";
 
     public static final String ADD_ITEM_LABEL = "Add Item";
@@ -37,31 +29,21 @@ public class IndexPage extends Application {
     public static final String EMPTY_TABLE_MESSAGE_SELECTOR = "div#tbl-msg-empty";
     public static final String EMPTY_TABLE_MESSAGE_TEXT = "Nothing's in the pantry at the moment!";
 
-    @InjectPlaywright
-    BrowserContext context;
-
-    @TestHTTPResource("/")
-    URL index;
+    public IndexPage(Page page) {
+        super(page);
+    }
 
     /**
      * Navigate to page with table of Pantry Items
      */
-    public Page loadAndVerifyPage() {
-        final Page page = context.newPage();
-        Response response = page.navigate(index.toString());
-        assertEquals("OK", response.statusText());
-
-        page.waitForLoadState();
-
-        assertThat(page).hasTitle(INDEX_PAGE_TITLE);
-
-        return page;
+    public void loadAndVerifyPage(URL location) {
+        loadAndVerifyPage(location, INDEX_PAGE_TITLE);
     }
 
     /**
      * Check table is empty with appropriate message
      */
-    public void checkItemTableIsEmpty(final Page page) {
+    public void checkItemTableIsEmpty() {
         Locator td = page.locator(EMPTY_TABLE_MESSAGE_SELECTOR);
         assertThat(td).isVisible();
         assertThat(td).containsText(EMPTY_TABLE_MESSAGE_TEXT);
@@ -70,9 +52,9 @@ public class IndexPage extends Application {
     /**
      * Obtain a list of items or rows (`tr`s) in the Pantry Item table
      */
-    public List<Locator> getCurrentItems(final Page page, int numExpectedItems) {
+    public List<Locator> getCurrentItems(int numExpectedItems) {
         if (numExpectedItems == 0) {
-            checkItemTableIsEmpty(page);
+            checkItemTableIsEmpty();
         }
 
         Locator table = page.locator(PANTRY_TABLE_ROW_SELECTOR)
@@ -85,49 +67,49 @@ public class IndexPage extends Application {
     /**
      * Obtain the add item button on the index page
      */
-    public Locator getAddItemButton(final Page page) {
+    public Locator getAddItemButton() {
         return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(ADD_ITEM_LABEL));
     }
 
     /**
      * Obtain the item name input in the add item component
      */
-    public Locator getItemNameInput(final Page page) {
+    public Locator getItemNameInput() {
         return page.getByLabel(ITEM_NAME_LABEL);
     }
 
     /**
      * Obtain the item description input in the add item component
      */
-    public Locator getItemDescriptionInput(final Page page) {
+    public Locator getItemDescriptionInput() {
         return page.getByLabel(ITEM_DESCRIPTION_LABEL);
     }
 
     /**
      * Obtain the item quantity input in the add item component
      */
-    public Locator getItemQuantityInput(final Page page) {
+    public Locator getItemQuantityInput() {
         return page.getByLabel(ITEM_QUANTITY_LABEL);
     }
 
     /**
      * Obtain the item quantity type input in the add item component
      */
-    public Locator getQuantityTypeInput(final Page page) {
+    public Locator getQuantityTypeInput() {
         return page.getByLabel(ITEM_QUANTITY_TYPE_LABEL);
     }
 
     /**
      * Obtain the submit item button in the add item component
      */
-    public Locator getSubmitItemButton(final Page page) {
+    public Locator getSubmitItemButton() {
         return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(SUBMIT_ITEM_LABEL));
     }
 
     /**
      * Obtain the cancel button in the add item component
      */
-    public Locator getCancelButton(final Page page) {
+    public Locator getCancelButton() {
         return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(CANCEL_LABEL));
     }
 

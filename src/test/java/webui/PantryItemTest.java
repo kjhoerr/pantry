@@ -4,39 +4,34 @@ import org.junit.jupiter.api.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.*;
 import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
-
-import io.quarkiverse.playwright.WithPlaywright;
-import io.quarkiverse.quinoa.testing.QuinoaTestProfiles;
 import io.quarkus.test.junit.QuarkusTest;
-import io.quarkus.test.junit.TestProfile;
 import webui.pages.IndexPage;
 
 @QuarkusTest
-@WithPlaywright
-@TestProfile(QuinoaTestProfiles.Enable.class)
-public class IndexTest extends IndexPage {
+public class PantryItemTest extends ApplicationTest {
 
     @Test
     public void testLanding() {
-        final Page page = loadAndVerifyPage();
+        final IndexPage page = new IndexPage(context.newPage());
+        page.loadAndVerifyPage(indexLocation);
 
-        checkItemTableIsEmpty(page);
+        page.checkItemTableIsEmpty();
 
         // Check button is visible and enabled
-        Locator addButton = getAddItemButton(page);
+        Locator addButton = page.getAddItemButton();
         assertThat(addButton).isVisible();
         assertThat(addButton).isEnabled();
     }
 
     @Test
     public void testAddItemCancel() {
-        final Page page = loadAndVerifyPage();
+        final IndexPage page = new IndexPage(context.newPage());
+        page.loadAndVerifyPage(indexLocation);
 
-        checkItemTableIsEmpty(page);
+        page.checkItemTableIsEmpty();
 
         // Check button is visible and enabled
-        Locator addButton = getAddItemButton(page);
+        Locator addButton = page.getAddItemButton();
         assertThat(addButton).isVisible();
         assertThat(addButton).isEnabled();
 
@@ -45,10 +40,10 @@ public class IndexTest extends IndexPage {
 
         // verify initial state of inputs and buttons
         assertThat(addButton).isHidden();
-        Locator nameInput = getItemNameInput(page);
-        Locator descriptionInput = getItemDescriptionInput(page);
-        Locator quantityInput = getItemQuantityInput(page);
-        Locator quantityTypeInput = getQuantityTypeInput(page);
+        Locator nameInput = page.getItemNameInput();
+        Locator descriptionInput = page.getItemDescriptionInput();
+        Locator quantityInput = page.getItemQuantityInput();
+        Locator quantityTypeInput = page.getQuantityTypeInput();
         assertThat(nameInput).isVisible();
         assertThat(nameInput).isEditable();
         assertThat(descriptionInput).isVisible();
@@ -58,8 +53,8 @@ public class IndexTest extends IndexPage {
         assertThat(quantityTypeInput).isVisible();
         assertThat(quantityTypeInput).isEditable();
 
-        Locator submitButton = getSubmitItemButton(page);
-        Locator cancelButton = getCancelButton(page);
+        Locator submitButton = page.getSubmitItemButton();
+        Locator cancelButton = page.getCancelButton();
         assertThat(submitButton).isVisible();
         assertThat(submitButton).isDisabled();
         assertThat(cancelButton).isVisible();
@@ -81,17 +76,18 @@ public class IndexTest extends IndexPage {
         assertThat(submitButton).isHidden();
         assertThat(cancelButton).isHidden();
 
-        checkItemTableIsEmpty(page);
+        page.checkItemTableIsEmpty();
     }
 
     @Test
     public void testAddItemSubmit() {
-        final Page page = loadAndVerifyPage();
+        final IndexPage page = new IndexPage(context.newPage());
+        page.loadAndVerifyPage(indexLocation);
 
-        checkItemTableIsEmpty(page);
+        page.checkItemTableIsEmpty();
 
         // Check button is visible and enabled
-        Locator addButton = getAddItemButton(page);
+        Locator addButton = page.getAddItemButton();
         assertThat(addButton).isVisible();
         assertThat(addButton).isEnabled();
 
@@ -100,10 +96,10 @@ public class IndexTest extends IndexPage {
 
         // verify initial state of inputs and buttons
         assertThat(addButton).isHidden();
-        Locator nameInput = getItemNameInput(page);
-        Locator descriptionInput = getItemDescriptionInput(page);
-        Locator quantityInput = getItemQuantityInput(page);
-        Locator quantityTypeInput = getQuantityTypeInput(page);
+        Locator nameInput = page.getItemNameInput();
+        Locator descriptionInput = page.getItemDescriptionInput();
+        Locator quantityInput = page.getItemQuantityInput();
+        Locator quantityTypeInput = page.getQuantityTypeInput();
         assertThat(nameInput).isVisible();
         assertThat(nameInput).isEditable();
         assertThat(descriptionInput).isVisible();
@@ -113,20 +109,18 @@ public class IndexTest extends IndexPage {
         assertThat(quantityTypeInput).isVisible();
         assertThat(quantityTypeInput).isEditable();
 
-        Locator submitButton = getSubmitItemButton(page);
-        Locator cancelButton = getCancelButton(page);
+        Locator submitButton = page.getSubmitItemButton();
+        Locator cancelButton = page.getCancelButton();
         assertThat(submitButton).isVisible();
         assertThat(submitButton).isDisabled();
         assertThat(cancelButton).isVisible();
         assertThat(cancelButton).isEnabled();
 
         // test initial input and closing component
-        nameInput.type("Flour");
-        descriptionInput.type("White unbleached");
-        quantityInput.clear();
-        quantityInput.type("12.4");
-        quantityTypeInput.clear();
-        quantityTypeInput.type("cups");
+        nameInput.fill("Flour");
+        descriptionInput.fill("White unbleached");
+        quantityInput.fill("12.4");
+        quantityTypeInput.fill("cups");
 
         assertThat(submitButton).isEnabled();
 
@@ -141,7 +135,7 @@ public class IndexTest extends IndexPage {
         assertThat(cancelButton).isHidden();
 
         // verify notification appears
-        findAndValidateNotification(page, "Item added successfully", "Stored \"Flour\" in the pantry!");
+        page.findAndValidateNotification("Item added successfully", "Stored \"Flour\" in the pantry!");
     }
 
 }
