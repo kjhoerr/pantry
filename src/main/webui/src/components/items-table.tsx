@@ -5,7 +5,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
 import { Pagination, Table, TextInput } from "flowbite-react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ENTRIES_PER_PAGE } from "../config";
 import { useSelector } from "../hooks";
@@ -38,7 +38,13 @@ export const ItemsTable = () => {
             (item) =>
               item.name?.toUpperCase().trim().includes(filterValue) ||
               item.description?.toUpperCase().trim().includes(filterValue) ||
-              item.quantityUnitType?.toUpperCase().trim().includes(filterValue),
+              ( // group quantity with unit type for search target
+                item.quantity.toString() +
+                " " +
+                item.quantityUnitType?.toUpperCase()
+              )
+                .trim()
+                .includes(filterValue),
           )
         : [...data];
 
@@ -65,6 +71,17 @@ export const ItemsTable = () => {
     return sortState.order === "ascending" ? sorted : sorted.reverse();
   }, [data, sortState, searchState]);
 
+  const totalPages = useMemo(() => {
+    return Math.max(1, Math.ceil(entries.length / ENTRIES_PER_PAGE));
+  }, [entries]);
+
+  // Enforce fallback to max pagenum if filter is updated
+  useEffect(() => {
+    if (activePage > totalPages) {
+      setActivePage(totalPages);
+    }
+  }, [activePage, totalPages]);
+
   const handleSortChange = useCallback(
     (field: keyof PantryItem) => {
       setSortState((state) =>
@@ -88,7 +105,10 @@ export const ItemsTable = () => {
       field: keyof PantryItem;
       children: React.ReactNode;
     }) => (
-      <Table.HeadCell onClick={() => handleSortChange(field)} className="group-first/head:first:rounded-none group-first/head:last:rounded-none">
+      <Table.HeadCell
+        onClick={() => handleSortChange(field)}
+        className="group-first/head:first:rounded-none group-first/head:last:rounded-none"
+      >
         <div className="flex space-x-2">
           {children}
           {sortState.field === field ? (
@@ -122,6 +142,18 @@ export const ItemsTable = () => {
                 className="text-center whitespace-nowrap font-medium text-gray-900 dark:text-white"
               >
                 Nothing&apos;s in the pantry at the moment!
+              </div>
+            </Table.Cell>
+          </Table.Row>
+        )}
+        {data.length > 0 && entries.length === 0 && (
+          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            <Table.Cell colSpan={3}>
+              <div
+                id="tbl-msg-empty"
+                className="text-center whitespace-nowrap font-medium text-gray-900 dark:text-white"
+              >
+                No items found in pantry that match '{searchState.trim()}'...
               </div>
             </Table.Cell>
           </Table.Row>
@@ -164,10 +196,7 @@ export const ItemsTable = () => {
                   previousLabel=""
                   nextLabel=""
                   currentPage={activePage}
-                  totalPages={Math.max(
-                    1,
-                    Math.ceil(entries.length / ENTRIES_PER_PAGE),
-                  )}
+                  totalPages={totalPages}
                   onPageChange={setActivePage}
                   renderPaginationButton={(props) => (
                     <Pagination.Button
