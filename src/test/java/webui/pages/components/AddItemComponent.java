@@ -7,6 +7,9 @@ import com.microsoft.playwright.Locator;
 import dev.submelon.model.PantryItem;
 import webui.pages.IndexPage;
 
+/**
+ * A component to add an item to the pantry on the index page
+ */
 public class AddItemComponent {
 
     private Locator nameInput;
@@ -53,10 +56,18 @@ public class AddItemComponent {
      * Enter values into the inputs based on a {@link PantryItem}
      */
     public void enterPantryItem(final PantryItem item) {
-        nameInput.fill(item.getName());
-        descriptionInput.fill(item.getDescription());
-        quantityInput.fill(String.valueOf(item.getQuantity()));
-        quantityTypeInput.fill(item.getQuantityUnitType());
+        if (item.getName() != null) {
+            nameInput.fill(item.getName());
+        }
+        if (item.getDescription() != null) {
+            descriptionInput.fill(item.getDescription());
+        }
+        if (item.getQuantity() != null) {
+            quantityInput.fill(String.valueOf(item.getQuantity()));
+        }
+        if (item.getQuantityUnitType() != null) {
+            quantityTypeInput.fill(item.getQuantityUnitType());
+        }
     }
 
     /**

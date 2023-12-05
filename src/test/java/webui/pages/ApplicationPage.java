@@ -15,7 +15,7 @@ import com.microsoft.playwright.options.AriaRole;
  */
 public abstract class ApplicationPage {
 
-    public static final String TOAST_DIV_SELECTOR = "div#toast-holder";
+    private static final String TOAST_DIV_SELECTOR = "div#toast-holder";
 
     protected final Page page;
 

@@ -16,22 +16,22 @@ import dev.submelon.model.PantryItem;
  */
 public class IndexPage extends ApplicationPage {
 
-    public static final String INDEX_PAGE_TITLE = "Pantry";
+    private static final String INDEX_PAGE_TITLE = "Pantry";
 
-    public static final String ADD_ITEM_LABEL = "Add Item";
-    public static final String ITEM_NAME_LABEL = "Item Name";
-    public static final String ITEM_DESCRIPTION_LABEL = "Item Description";
-    public static final String ITEM_QUANTITY_LABEL = "Item Quantity";
-    public static final String ITEM_QUANTITY_TYPE_LABEL = "Quantity Type";
-    public static final String SUBMIT_ITEM_LABEL = "Submit Item";
-    public static final String CANCEL_LABEL = "Cancel";
+    private static final String ADD_ITEM_LABEL = "Add Item";
+    private static final String ITEM_NAME_LABEL = "Item Name";
+    private static final String ITEM_DESCRIPTION_LABEL = "Item Description";
+    private static final String ITEM_QUANTITY_LABEL = "Item Quantity";
+    private static final String ITEM_QUANTITY_TYPE_LABEL = "Quantity Type";
+    private static final String SUBMIT_ITEM_LABEL = "Submit Item";
+    private static final String CANCEL_LABEL = "Cancel";
 
-    public static final String PANTRY_TABLE_ID = "#tbl-pantry";
-    public static final String PANTRY_TABLE_ROW_SELECTOR = "css=table#tbl-pantry > tbody > tr";
-    public static final String EMPTY_TABLE_MESSAGE_SELECTOR = "div#tbl-msg-empty";
-    public static final String EMPTY_TABLE_MESSAGE_TEXT = "Nothing's in the pantry at the moment!";
-    public static final String ADD_ITEM_NOTIFICATION_HEADER = "Item added successfully";
-    public static final String ADD_ITEM_NOTIFICATION_TEMPLATE = "Stored \"%s\" in the pantry!";
+    private static final String PANTRY_TABLE_ROW_SELECTOR = "css=table#tbl-pantry > tbody > tr";
+    private static final String EMPTY_TABLE_MESSAGE_SELECTOR = "div#tbl-msg-empty";
+
+    private static final String EMPTY_TABLE_MESSAGE_TEXT = "Nothing's in the pantry at the moment!";
+    private static final String ADD_ITEM_NOTIFICATION_HEADER = "Item added successfully";
+    private static final String ADD_ITEM_NOTIFICATION_TEMPLATE = "Stored \"%s\" in the pantry!";
 
     public IndexPage(Page page) {
         super(page);
