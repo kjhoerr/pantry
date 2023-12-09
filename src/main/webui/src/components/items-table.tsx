@@ -38,7 +38,8 @@ export const ItemsTable = () => {
             (item) =>
               item.name?.toUpperCase().trim().includes(filterValue) ||
               item.description?.toUpperCase().trim().includes(filterValue) ||
-              ( // group quantity with unit type for search target
+              // group quantity with unit type for search target
+              (
                 item.quantity.toString() +
                 " " +
                 item.quantityUnitType?.toUpperCase()
@@ -139,6 +140,7 @@ export const ItemsTable = () => {
             <Table.Cell colSpan={3}>
               <div
                 id="tbl-msg-empty"
+                role="alert"
                 className="text-center whitespace-nowrap font-medium text-gray-900 dark:text-white"
               >
                 Nothing&apos;s in the pantry at the moment!
@@ -151,6 +153,7 @@ export const ItemsTable = () => {
             <Table.Cell colSpan={3}>
               <div
                 id="tbl-msg-empty"
+                role="alert"
                 className="text-center whitespace-nowrap font-medium text-gray-900 dark:text-white"
               >
                 No items found in pantry that match '{searchState.trim()}'...
