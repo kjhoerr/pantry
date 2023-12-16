@@ -9346,13 +9346,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flowbite@npm:^2.0.0, flowbite@npm:^2.2.0":
+"flowbite@npm:^2.0.0":
   version: 2.2.0
   resolution: "flowbite@npm:2.2.0"
   dependencies:
     "@popperjs/core": ^2.9.3
     mini-svg-data-uri: ^1.4.3
   checksum: 30db46e51101fa2f56a72b979d90787b17a418fb5e8c21c40a6da2d94028c551b7f95a246f2c31bf9c15e61a511f6323f35f8cf2448aa676ae6163cda3cbe4ff
+  languageName: node
+  linkType: hard
+
+"flowbite@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "flowbite@npm:2.2.1"
+  dependencies:
+    "@popperjs/core": ^2.9.3
+    mini-svg-data-uri: ^1.4.3
+  checksum: 2d707eafa52ab04f26272b9536d0ec4e557cb730ba42f183758257f00f5e6a9613d95b405a863148bdf77b97f266b45d6c8069ce18fdbf1c2f8fc524222cb368
   languageName: node
   linkType: hard
 
@@ -14447,7 +14457,7 @@ __metadata:
     autoprefixer: ^10.4.16
     eslint: latest
     eslint-config-prettier: latest
-    flowbite: ^2.2.0
+    flowbite: ^2.2.1
     flowbite-react: ^0.7.0
     graphql: ^16.8.1
     graphql-request: 6.1.0
@@ -16287,15 +16297,6 @@ __metadata:
   peerDependencies:
     redux: ^5.0.0
   checksum: bea96f8233975aad4c9f24ca1ffd08ac7ec91eaefc26e7ba9935544dc55d7f09ba2aa726676dab53dc79d0c91e8071f9729cddfea927f4c41839757d2ade0f50
-  languageName: node
-  linkType: hard
-
-"redux@npm:^4.2.1":
-  version: 4.2.1
-  resolution: "redux@npm:4.2.1"
-  dependencies:
-    "@babel/runtime": ^7.9.2
-  checksum: f63b9060c3a1d930ae775252bb6e579b42415aee7a23c4114e21a0b4ba7ec12f0ec76936c00f546893f06e139819f0e2855e0d55ebfce34ca9c026241a6950dd
   languageName: node
   linkType: hard
 
