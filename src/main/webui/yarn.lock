@@ -11644,7 +11644,7 @@ __metadata:
     prettier: latest
     react: 18.2.0
     react-dom: 18.2.0
-    react-redux: ^9.1.0
+    react-redux: ^9.1.1
     react-router-dom: ^6.22.3
     react-scripts: latest
     redux: ^5.0.1
@@ -13115,9 +13115,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-redux@npm:^9.1.0":
-  version: 9.1.0
-  resolution: "react-redux@npm:9.1.0"
+"react-redux@npm:^9.1.1":
+  version: 9.1.1
+  resolution: "react-redux@npm:9.1.1"
   dependencies:
     "@types/use-sync-external-store": ^0.0.3
     use-sync-external-store: ^1.0.0
@@ -13133,7 +13133,7 @@ __metadata:
       optional: true
     redux:
       optional: true
-  checksum: 1b07714379ff0087b4fb43ffd138cc84efb7608c874d632a4e2162e1874f3e0f6b69a0a9b0f24f93cbf122c694ac9cfd315770676d4cabb167d159f1ef419560
+  checksum: 51a61215d7195f381c045dc263b6f5e4e297ec9219c3d34132cae594f4070ac5db9b3762f3b8a73bb8d10bbf251310c364ec61b36829103b1cc7ef9244ee7c8a
   languageName: node
   linkType: hard
 
