@@ -3326,9 +3326,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reduxjs/toolkit@npm:^2.2.4":
-  version: 2.2.4
-  resolution: "@reduxjs/toolkit@npm:2.2.4"
+"@reduxjs/toolkit@npm:^2.2.5":
+  version: 2.2.5
+  resolution: "@reduxjs/toolkit@npm:2.2.5"
   dependencies:
     immer: ^10.0.3
     redux: ^5.0.1
@@ -3342,7 +3342,7 @@ __metadata:
       optional: true
     react-redux:
       optional: true
-  checksum: 18396e4d0a6f341e5686acb8b7aa40b48ef4ba34cf3e9cbd38f313f3e8dec9721d8984de33dc34a5862041600ba5adc84c5079b07df5a0fdda71b47c4619d899
+  checksum: 41d7eb5025aa09fde7c3eb7da41d479fa71c5ae281f3456c4b7548242b148f94c70cdea0ba10f6182ca997cd5592406bb89ab2e53a33b3265fdbeb36652801b6
   languageName: node
   linkType: hard
 
@@ -11623,7 +11623,7 @@ __metadata:
     "@graphql-codegen/client-preset": latest
     "@heroicons/react": 2.0.16
     "@mantine/hooks": ^7.9.1
-    "@reduxjs/toolkit": ^2.2.4
+    "@reduxjs/toolkit": ^2.2.5
     "@testing-library/dom": latest
     "@testing-library/jest-dom": latest
     "@testing-library/react": latest
