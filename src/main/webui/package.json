@@ -58,6 +58,11 @@
     "ts-node": "latest",
     "typescript": "latest"
   },
+  "resolutions": {
+    "@babel/traverse": "^7.23.2",
+    "postcss": "^8.4.38",
+    "ws": "^7.5.10"
+  },
   "eslintConfig": {
     "extends": [
       "prettier",
