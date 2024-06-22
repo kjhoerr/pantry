@@ -2095,69 +2095,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dprint/darwin-arm64@npm:0.45.1":
-  version: 0.45.1
-  resolution: "@dprint/darwin-arm64@npm:0.45.1"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@dprint/darwin-x64@npm:0.45.1":
-  version: 0.45.1
-  resolution: "@dprint/darwin-x64@npm:0.45.1"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@dprint/formatter@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "@dprint/formatter@npm:0.3.0"
-  checksum: 3ff486cb2395941680a84b11a5bf2c69ee10246904b1b394daa4a3ab5ced5676d0707797c3951f5d74aa0ebaf7e93219cfd2bdad448e95d9ca6d62a5a67e5c1c
-  languageName: node
-  linkType: hard
-
-"@dprint/linux-arm64-glibc@npm:0.45.1":
-  version: 0.45.1
-  resolution: "@dprint/linux-arm64-glibc@npm:0.45.1"
-  conditions: os=linux & cpu=arm64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@dprint/linux-arm64-musl@npm:0.45.1":
-  version: 0.45.1
-  resolution: "@dprint/linux-arm64-musl@npm:0.45.1"
-  conditions: os=linux & cpu=arm64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@dprint/linux-x64-glibc@npm:0.45.1":
-  version: 0.45.1
-  resolution: "@dprint/linux-x64-glibc@npm:0.45.1"
-  conditions: os=linux & cpu=x64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@dprint/linux-x64-musl@npm:0.45.1":
-  version: 0.45.1
-  resolution: "@dprint/linux-x64-musl@npm:0.45.1"
-  conditions: os=linux & cpu=x64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@dprint/typescript@npm:^0.90.4":
-  version: 0.90.5
-  resolution: "@dprint/typescript@npm:0.90.5"
-  checksum: df8cc94b4afb1727be6b474344df068f4a77e2f3fa73933ae55343838085108e3582194ef01368c95e0ee817682c320e316c9941c69bd2891a51beb6383989a5
-  languageName: node
-  linkType: hard
-
-"@dprint/win32-x64@npm:0.45.1":
-  version: 0.45.1
-  resolution: "@dprint/win32-x64@npm:0.45.1"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
 "@eslint-community/eslint-utils@npm:^4.2.0":
   version: 4.4.0
   resolution: "@eslint-community/eslint-utils@npm:4.4.0"
@@ -7150,38 +7087,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dprint@npm:^0.45.1":
-  version: 0.45.1
-  resolution: "dprint@npm:0.45.1"
-  dependencies:
-    "@dprint/darwin-arm64": 0.45.1
-    "@dprint/darwin-x64": 0.45.1
-    "@dprint/linux-arm64-glibc": 0.45.1
-    "@dprint/linux-arm64-musl": 0.45.1
-    "@dprint/linux-x64-glibc": 0.45.1
-    "@dprint/linux-x64-musl": 0.45.1
-    "@dprint/win32-x64": 0.45.1
-  dependenciesMeta:
-    "@dprint/darwin-arm64":
-      optional: true
-    "@dprint/darwin-x64":
-      optional: true
-    "@dprint/linux-arm64-glibc":
-      optional: true
-    "@dprint/linux-arm64-musl":
-      optional: true
-    "@dprint/linux-x64-glibc":
-      optional: true
-    "@dprint/linux-x64-musl":
-      optional: true
-    "@dprint/win32-x64":
-      optional: true
-  bin:
-    dprint: bin.js
-  checksum: 038b693c52482e0536a854e81c1757deaecdedb979a90c68b875d544b87a3c1f763dc63b34850fcfae9e770194f3d74ec76cd2167ed82ff598ea3addcecd5067
-  languageName: node
-  linkType: hard
-
 "dset@npm:^3.1.2":
   version: 3.1.2
   resolution: "dset@npm:3.1.2"
@@ -8681,21 +8586,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-request@npm:7.0.1":
-  version: 7.0.1
-  resolution: "graphql-request@npm:7.0.1"
+"graphql-request@npm:7.1.0":
+  version: 7.1.0
+  resolution: "graphql-request@npm:7.1.0"
   dependencies:
-    "@dprint/formatter": ^0.3.0
-    "@dprint/typescript": ^0.90.4
     "@graphql-typed-document-node/core": ^3.2.0
     "@molt/command": ^0.9.0
-    dprint: ^0.45.1
-    zod: ^3.23.5
+    zod: ^3.23.8
   peerDependencies:
+    "@dprint/formatter": ^0.3.0
+    "@dprint/typescript": ^0.91.1
+    dprint: ^0.46.2
     graphql: 14 - 16
+  peerDependenciesMeta:
+    "@dprint/formatter":
+      optional: true
+    "@dprint/typescript":
+      optional: true
+    dprint:
+      optional: true
   bin:
     graffle: build/cli/generate.js
-  checksum: 55d3cbf74f67cb9365b6e2f1bf9c90b51dd9c9fc5994288a70538ef604946a9ecd74a940a24ada3d56277317f1a396f7840f415d132b0a19637c492d35b96af7
+  checksum: 78808485160c4aad3a04ba037131176fe908e79a42f76bf49a3f1fab4c42184829bf7cc8d7214dcb09ef5a86d0c9a6044d7c1122253bf8453f208c2aaf30a7c9
   languageName: node
   linkType: hard
 
@@ -11911,7 +11823,7 @@ __metadata:
     flowbite: ^2.3.0
     flowbite-react: ^0.10.1
     graphql: ^16.9.0
-    graphql-request: 7.0.1
+    graphql-request: 7.1.0
     postcss: ^8.4.38
     prettier: latest
     react: 18.3.1
@@ -16592,7 +16504,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.17.3, zod@npm:^3.22.2, zod@npm:^3.23.5":
+"zod@npm:^3.17.3, zod@npm:^3.22.2, zod@npm:^3.23.8":
   version: 3.23.8
   resolution: "zod@npm:3.23.8"
   checksum: 15949ff82118f59c893dacd9d3c766d02b6fa2e71cf474d5aa888570c469dbf5446ac5ad562bb035bf7ac9650da94f290655c194f4a6de3e766f43febd432c5c
