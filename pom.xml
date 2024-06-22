@@ -38,7 +38,7 @@
     <quarkus.quinoa.version>2.3.8</quarkus.quinoa.version>
     <quarkus.playwright.version>1.0.0</quarkus.playwright.version>
     <skipITs>true</skipITs>
-    <surefire-plugin.version>3.3.0</surefire-plugin.version>
+    <surefire-plugin.version>3.2.5</surefire-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -105,11 +105,6 @@
       <groupId>io.quarkiverse.playwright</groupId>
       <artifactId>quarkus-playwright</artifactId>
       <version>${quarkus.playwright.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.plexus</groupId>
-      <artifactId>plexus-utils</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
