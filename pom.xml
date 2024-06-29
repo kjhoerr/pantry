@@ -38,7 +38,7 @@
     <quarkus.quinoa.version>2.4.0</quarkus.quinoa.version>
     <quarkus.playwright.version>1.0.0</quarkus.playwright.version>
     <skipITs>true</skipITs>
-    <surefire-plugin.version>3.2.5</surefire-plugin.version>
+    <surefire-plugin.version>3.3.0</surefire-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
