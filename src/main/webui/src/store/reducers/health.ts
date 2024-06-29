@@ -4,7 +4,7 @@ import { SystemHealth } from "../../model";
 
 type HealthState = SystemHealth;
 
-const initialState: HealthState = { status: "UP", checks: [] };
+const initialState: HealthState = { status: "STARTING", checks: [] };
 
 const errorState: HealthState = { status: "DOWN", checks: [] };
 

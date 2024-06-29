@@ -10,7 +10,7 @@ import { healthUpdate } from "../store/reducers/health";
  * Query server's health API endpoint
  */
 const performHealthcheck = (): Promise<SystemHealth | undefined> => {
-  return fetch(HEALTH_ENDPOINT)
+  return fetch(HEALTH_ENDPOINT, { signal: AbortSignal.timeout(HEALTH_POLL) })
     .then((res) => (res.ok ? res.json() : undefined))
     .then((body) =>
       body?.status !== undefined ? (body as SystemHealth) : undefined,

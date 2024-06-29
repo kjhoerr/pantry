@@ -1,5 +1,5 @@
 /** Binary health status. If all checks are healthy then status is "UP" */
-export type HealthStatus = "UP" | "DOWN";
+export type HealthStatus = "UP" | "STARTING" | "DOWN";
 
 /** Describes the health of a system and any subsystems */
 export interface HealthCheck {

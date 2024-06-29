@@ -7,10 +7,9 @@ export const Health = () => {
   // Kick off health checks
   useHealth();
 
-  const health = useSelector((state) => state.health);
-  const isOnline = health.status === "UP";
+  const status = useSelector((state) => state.health.status);
 
-  if (!isOnline) {
+  if (status === "DOWN") {
     return (
       <Alert
         icon={GlobeAltIcon}
