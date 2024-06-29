@@ -1,5 +1,8 @@
-import { useInterval } from "@mantine/hooks";
-import { useEffect } from "react";
+import {
+  useDocumentVisibility,
+  useInterval,
+  useShallowEffect,
+} from "@mantine/hooks";
 
 import { HEALTH_ENDPOINT, HEALTH_POLL } from "../config";
 import { SystemHealth } from "../model";
@@ -9,13 +12,22 @@ import { healthUpdate } from "../store/reducers/health";
 /**
  * Query server's health API endpoint
  */
-const performHealthcheck = (): Promise<SystemHealth | undefined> => {
-  return fetch(HEALTH_ENDPOINT, { signal: AbortSignal.timeout(HEALTH_POLL) })
-    .then((res) => (res.ok ? res.json() : undefined))
-    .then((body) =>
-      body?.status !== undefined ? (body as SystemHealth) : undefined,
-    )
-    .catch(() => undefined);
+const performHealthcheck = async (): Promise<SystemHealth | undefined> => {
+  try {
+    const response = await fetch(HEALTH_ENDPOINT, {
+      signal: AbortSignal.timeout(HEALTH_POLL),
+    });
+
+    if (response.ok) {
+      const body = await response.json();
+
+      if (body["status"] !== undefined) {
+        return body;
+      }
+    }
+  } catch {}
+
+  return undefined;
 };
 
 /**
@@ -25,18 +37,26 @@ const performHealthcheck = (): Promise<SystemHealth | undefined> => {
  */
 export const useHealth = () => {
   const dispatch = useDispatch();
+  const check = () =>
+    performHealthcheck().then((result) => dispatch(healthUpdate(result)));
+  const visibility = useDocumentVisibility();
 
-  const interval = useInterval(
-    () =>
-      performHealthcheck().then((result) => {
-        dispatch(healthUpdate(result));
-      }),
-    HEALTH_POLL,
-  );
-
-  useEffect(() => {
+  const interval = useInterval(check, HEALTH_POLL);
+  useShallowEffect(() => {
     interval.start();
 
     return interval.stop;
-  }, [interval]);
+  }, []);
+
+  useShallowEffect(() => {
+    check();
+  }, []);
+
+  useShallowEffect(() => {
+    if (visibility === "visible") {
+      interval.start();
+    } else {
+      interval.stop();
+    }
+  }, [visibility]);
 };
