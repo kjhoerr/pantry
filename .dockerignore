@@ -3,6 +3,7 @@
 .gitattributes
 .github
 .vscode
+build
 out
 node_modules
 .env*
