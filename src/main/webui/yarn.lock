@@ -3282,12 +3282,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:^7.12.2":
-  version: 7.12.2
-  resolution: "@mantine/hooks@npm:7.12.2"
+"@mantine/hooks@npm:^7.13.0":
+  version: 7.13.0
+  resolution: "@mantine/hooks@npm:7.13.0"
   peerDependencies:
     react: ^18.2.0
-  checksum: 1321225c09989241bef3f3a6ff95e147ca0f5bf959a14a16e6272df3fc571834ca19d9f2d0ed05c357e78016e84d2ff660559b48ce73e6f667002ef58cc8be22
+  checksum: eb27e86b3cac25e66dce5ac3edee9c04b1efaa04de3b3a5372c7cad828053af3481de4fd6f706bb1adfdcfa5e3f14e6d6371d8d68c355ae821c2824a73206b0a
   languageName: node
   linkType: hard
 
@@ -11997,7 +11997,7 @@ __metadata:
     "@graphql-codegen/cli": latest
     "@graphql-codegen/client-preset": latest
     "@heroicons/react": 2.0.16
-    "@mantine/hooks": ^7.12.2
+    "@mantine/hooks": ^7.13.0
     "@reduxjs/toolkit": ^2.2.7
     "@testing-library/dom": latest
     "@testing-library/jest-dom": latest
