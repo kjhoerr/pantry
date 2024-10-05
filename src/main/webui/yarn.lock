@@ -1803,15 +1803,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.24.1":
-  version: 7.24.7
-  resolution: "@babel/runtime@npm:7.24.7"
-  dependencies:
-    regenerator-runtime: ^0.14.0
-  checksum: d17f29eed6f848ac15cdf4202a910b741facfb0419a9d79e5c7fa37df6362fc3227f1cc2e248cc6db5e53ddffb4caa6686c488e6e80ce3d29c36a4e74c8734ea
-  languageName: node
-  linkType: hard
-
 "@babel/template@npm:^7.18.10, @babel/template@npm:^7.20.7, @babel/template@npm:^7.3.3":
   version: 7.20.7
   resolution: "@babel/template@npm:7.20.7"
@@ -2137,12 +2128,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/core@npm:1.6.2":
-  version: 1.6.2
-  resolution: "@floating-ui/core@npm:1.6.2"
+"@floating-ui/core@npm:1.6.6":
+  version: 1.6.6
+  resolution: "@floating-ui/core@npm:1.6.6"
   dependencies:
-    "@floating-ui/utils": ^0.2.0
-  checksum: a161b2c8e14b6e185960ec19398f4b893ef3cd6620d535c348c1dc877fb4ffc9f701eb7156f6a30a89b7826093ba28ea223fc2fd1996c0b2464741208725ac8f
+    "@floating-ui/utils": ^0.2.6
+  checksum: 3992e93f40655798bff7a721258cd9f2ad4d98eca9e29ecbf3dc79154a191f47fbab3d86777fecc08e83fdc64a9f390a5256f3cf10543db87f177863770ddeeb
   languageName: node
   linkType: hard
 
@@ -2165,29 +2156,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/react-dom@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@floating-ui/react-dom@npm:2.1.0"
+"@floating-ui/react-dom@npm:^2.1.1":
+  version: 2.1.2
+  resolution: "@floating-ui/react-dom@npm:2.1.2"
   dependencies:
     "@floating-ui/dom": ^1.0.0
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 371ab3b14627026c637f4a2b8ca3dbfb7f67f1d51e74af5448b8e5bc76b8ccf30fed5e66d855f1ac1a6de28d79acc6dffcbcca4744a327a5e8d47f3515b0b52a
+  checksum: 25bb031686e23062ed4222a8946e76b3f9021d40a48437bd747233c4964a766204b8a55f34fa8b259839af96e60db7c6e3714d81f1de06914294f90e86ffbc48
   languageName: node
   linkType: hard
 
-"@floating-ui/react@npm:0.26.17":
-  version: 0.26.17
-  resolution: "@floating-ui/react@npm:0.26.17"
+"@floating-ui/react@npm:0.26.21":
+  version: 0.26.21
+  resolution: "@floating-ui/react@npm:0.26.21"
   dependencies:
-    "@floating-ui/react-dom": ^2.1.0
-    "@floating-ui/utils": ^0.2.0
+    "@floating-ui/react-dom": ^2.1.1
+    "@floating-ui/utils": ^0.2.6
     tabbable: ^6.0.0
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 55944906193df68557ee13cbdcc959db28c6659ca88f9d8c0dd58fa24544fa4472950a633d997ece1faa3bdc12d7fa22dedf5f1fd92c7393c3e39f7255d934e6
+  checksum: ea3dd5c309524b5e5f36d92406c998bf9649e0ea11777c8f9a46949dee37024aa1895dab3434441fbf9dfcad52e87ba9a6b404354de06faeda2b11c7e21a668c
   languageName: node
   linkType: hard
 
@@ -2195,6 +2186,13 @@ __metadata:
   version: 0.2.1
   resolution: "@floating-ui/utils@npm:0.2.1"
   checksum: 9ed4380653c7c217cd6f66ae51f20fdce433730dbc77f95b5abfb5a808f5fdb029c6ae249b4e0490a816f2453aa6e586d9a873cd157fdba4690f65628efc6e06
+  languageName: node
+  linkType: hard
+
+"@floating-ui/utils@npm:^0.2.6":
+  version: 0.2.8
+  resolution: "@floating-ui/utils@npm:0.2.8"
+  checksum: deb98bba017c4e073c7ad5740d4dec33a4d3e0942d412e677ac0504f3dade15a68fc6fd164d43c93c0bb0bcc5dc5015c1f4080dfb1a6161140fe660624f7c875
   languageName: node
   linkType: hard
 
@@ -8247,32 +8245,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flowbite-react@npm:^0.10.1":
-  version: 0.10.1
-  resolution: "flowbite-react@npm:0.10.1"
+"flowbite-react@npm:^0.10.2":
+  version: 0.10.2
+  resolution: "flowbite-react@npm:0.10.2"
   dependencies:
-    "@floating-ui/core": 1.6.2
-    "@floating-ui/react": 0.26.17
+    "@floating-ui/core": 1.6.6
+    "@floating-ui/react": 0.26.21
     classnames: 2.5.1
     debounce: 2.1.0
-    flowbite: 2.3.0
+    flowbite: 2.5.1
     react-icons: 5.2.1
-    tailwind-merge: 2.3.0
+    tailwind-merge: 2.4.0
   peerDependencies:
     react: ">=18"
     react-dom: ">=18"
     tailwindcss: ^3
-  checksum: bd21bcc4fe4c15a5614caec11afc87b0b3edb4434e5a146a50402e6f89fced88bbe8678ce059da96d77dab6fd13f03a73db867835d0acf78a8913ec5d7999827
+  checksum: 1004970ec026f5a09bb5cf98fb506429a50c0328473efcfc6697662f78b1ca7adcbb962d0bbde3a227dd73693fa0e10178858018fd02a467187b24d6859a0f8a
   languageName: node
   linkType: hard
 
-"flowbite@npm:2.3.0":
-  version: 2.3.0
-  resolution: "flowbite@npm:2.3.0"
+"flowbite@npm:2.5.1":
+  version: 2.5.1
+  resolution: "flowbite@npm:2.5.1"
   dependencies:
     "@popperjs/core": ^2.9.3
+    flowbite-datepicker: ^1.3.0
     mini-svg-data-uri: ^1.4.3
-  checksum: 771a59940d07c83669a4b04af2df8097181ba88af67487c1bafb124e33258636037944ffe3b92ef5d2766d687774bb86680e066c4d0ed22915ec624d57a8019b
+  checksum: f475e5bf869cbece13f8f0ce48de9b3d34028348e89f76ca5149d698ecd7d8a2b06f1f9e41b6f9c42aade9461e26ed87de40b0cbb1b8d36c4c2f89afbaa35e29
   languageName: node
   linkType: hard
 
@@ -12012,7 +12011,7 @@ __metadata:
     eslint: latest
     eslint-config-prettier: latest
     flowbite: ^2.5.2
-    flowbite-react: ^0.10.1
+    flowbite-react: ^0.10.2
     graphql: ^16.9.0
     graphql-request: 7.1.0
     postcss: ^8.4.47
@@ -13700,13 +13699,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regenerator-runtime@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "regenerator-runtime@npm:0.14.0"
-  checksum: 1c977ad82a82a4412e4f639d65d22be376d3ebdd30da2c003eeafdaaacd03fc00c2320f18120007ee700900979284fc78a9f00da7fb593f6e6eeebc673fba9a3
-  languageName: node
-  linkType: hard
-
 "regenerator-transform@npm:^0.15.1":
   version: 0.15.1
   resolution: "regenerator-transform@npm:0.15.1"
@@ -15102,12 +15094,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-merge@npm:2.3.0":
-  version: 2.3.0
-  resolution: "tailwind-merge@npm:2.3.0"
-  dependencies:
-    "@babel/runtime": ^7.24.1
-  checksum: 1254eea9b6ec480911f01e2909e3ba35ca3c534d9db1405dfe9bdf51d100663a3935cb20662c023ab44ee9679bce10d86bd27beba23d0174beff32a6acb06978
+"tailwind-merge@npm:2.4.0":
+  version: 2.4.0
+  resolution: "tailwind-merge@npm:2.4.0"
+  checksum: 442ab18af754eb90a1c730289b10a5df89ec8f197b4783bd31651fffc06ac06dbe7a8f491c2e133c906d6ab466170a5fc1f45aa2d22874e47706acf9d8b0cfe5
   languageName: node
   linkType: hard
 
