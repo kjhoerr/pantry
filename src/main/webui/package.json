@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@heroicons/react": "2.0.16",
-    "@mantine/hooks": "^7.13.2",
+    "@mantine/hooks": "^7.13.3",
     "@reduxjs/toolkit": "^2.2.8",
     "autoprefixer": "^10.4.20",
     "flowbite": "^2.5.2",
