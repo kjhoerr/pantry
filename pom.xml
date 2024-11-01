@@ -37,6 +37,7 @@
     <quarkus.platform.version>3.15.1</quarkus.platform.version>
     <quarkus.quinoa.version>2.5.0</quarkus.quinoa.version>
     <quarkus.playwright.version>1.1.0</quarkus.playwright.version>
+    <playwright.version>1.47.0</playwright.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.2.5</surefire-plugin.version>
   </properties>
@@ -106,6 +107,22 @@
       <artifactId>quarkus-playwright</artifactId>
       <version>${quarkus.playwright.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.playwright</groupId>
+        <artifactId>playwright</artifactId>
+        <version>${playwright.version}</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.opentest4j</groupId>
+                <artifactId>opentest4j</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.playwright</groupId>
+        <artifactId>driver-bundle</artifactId>
+        <version>${playwright.version}</version>
     </dependency>
   </dependencies>
   <build>
