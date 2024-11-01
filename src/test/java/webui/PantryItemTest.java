@@ -3,6 +3,9 @@ package webui;
 import org.junit.jupiter.api.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 
 import com.microsoft.playwright.Locator;
 
@@ -82,6 +85,15 @@ public class PantryItemTest extends ApplicationTest {
 
         // Assert
         page.validateAddItemNotification(testItem);
+
+        List<Locator> items = page.getCurrentItems(1);
+        assertEquals(1, items.size());
+
+        Locator newItem = items.get(0);
+        assertThat(newItem).containsText(testItem.getName());
+        assertThat(newItem).containsText(testItem.getDescription());
+        assertThat(newItem).containsText(testItem.getQuantity().toString());
+        assertThat(newItem).containsText(testItem.getQuantityUnitType());
     }
 
 }
