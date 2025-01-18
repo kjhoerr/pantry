@@ -12076,7 +12076,7 @@ __metadata:
     flowbite-react: ^0.10.2
     graphql: ^16.10.0
     graphql-request: 7.1.2
-    postcss: ^8.4.49
+    postcss: ^8.5.1
     prettier: latest
     react: 19.0.0
     react-dom: 19.0.0
