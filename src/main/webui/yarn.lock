@@ -4032,15 +4032,6 @@ eslint-plugin-prettier@latest:
   languageName: node
   linkType: hard
 
-eslint-plugin-react-hooks@latest:
-  version: 5.1.0
-  resolution: "eslint-plugin-react-hooks@npm:5.1.0"
-  peerDependencies:
-    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
-  checksum: 14d2692214ea15b19ef330a9abf51cb8c1586339d9e758ebd61b182be68dd772af56462b04e4b9d2be923d72f46db61e8d32fcf37c248b04949c0b02f5bfb3c0
-  languageName: node
-  linkType: hard
-
 eslint-plugin-react@latest:
   version: 7.37.4
   resolution: "eslint-plugin-react@npm:7.37.4"
@@ -6366,7 +6357,6 @@ eslint@latest:
     eslint-config-prettier: latest
     eslint-plugin-prettier: latest
     eslint-plugin-react: latest
-    eslint-plugin-react-hooks: latest
     flowbite: ^2.5.2
     flowbite-react: ^0.10.2
     graphql: ^16.10.0
