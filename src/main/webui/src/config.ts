@@ -1,11 +1,9 @@
 export const GRAPHQL_ENDPOINT =
-  (process.env.REACT_APP_HOST_ADDRESS ?? "http://localhost:8080") + "/graphql";
+  import.meta.env.PUBLIC_HOST_ADDRESS + "/graphql";
 export const DEVMODE =
-  process.env.REACT_APP_ENV === "development" ||
+  import.meta.env.PUBLIC_ENV === "development" ||
   process.env.NODE_ENV === "development";
 export const HEALTH_ENDPOINT =
-  (process.env.REACT_APP_HOST_ADDRESS ?? "http://localhost:8080") + "/q/health";
-export const HEALTH_POLL = Number(process.env.REACT_APP_HEALTH_POLL ?? 10000);
-export const ENTRIES_PER_PAGE = Number(
-  process.env.REACT_APP_ENTRIES_PER_PAGE ?? 10,
-);
+  import.meta.env.PUBLIC_HOST_ADDRESS + "/q/health";
+export const HEALTH_POLL = Number(import.meta.env.PUBLIC_HEALTH_POLL);
+export const ENTRIES_PER_PAGE = Number(import.meta.env.PUBLIC_ENTRIES_PER_PAGE);

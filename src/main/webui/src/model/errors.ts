@@ -1,14 +1,18 @@
+interface CodedError extends Error {
+  code?: string;
+}
+
 /**
  * Produces an {@link ApiError} from an any-typed error object.
  */
-export const inferError = (error: any): ApiError => {
+export const inferError = (error: Error): ApiError => {
   if (
     error instanceof GraphQLModelError ||
     error instanceof ItemNotFoundError ||
     error instanceof UnknownApiError
   ) {
     return error;
-  } else if (error.code === "item-not-found") {
+  } else if ((error as CodedError).code === "item-not-found") {
     return new ItemNotFoundError();
   } else {
     return new UnknownApiError(error);
@@ -24,7 +28,7 @@ export const inferError = (error: any): ApiError => {
  *   .catch(errorHandler(toastApiError))
  */
 export const errorHandler =
-  (onError: (error: ApiError) => void) => (error: any) =>
+  (onError: (error: ApiError) => void) => (error: Error) =>
     onError(inferError(error));
 
 export interface ApiError {
@@ -51,7 +55,7 @@ export class UnknownApiError implements ApiError {
   message = "An unknown error occurred while querying the GraphQL API";
   detail?: string;
 
-  constructor(error: any) {
+  constructor(error: Error) {
     this.detail = error?.message;
   }
 }

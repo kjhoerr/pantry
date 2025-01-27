@@ -1,29 +1,26 @@
 {
 	"name": "Pantry",
-	"image": "mcr.microsoft.com/playwright:v1.36.0-jammy",
+	"image": "mcr.microsoft.com/playwright:v1.48.0-jammy",
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
-		   "version": "17",
-		   "installMaven": "true"
-	   	},
+			"version": "17",
+			"installMaven": "true"
+		},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
 		"ghcr.io/devcontainers/features/node:1": {
 			"version": "latest"
 		}
 	},
-
 	"mounts": [
 		// Pass through Maven settings and repository cache
 		"source=${localEnv:HOME}/.m2,target=/home/pwuser/.m2,type=bind,consistency=cached",
 		"source=${localEnv:HOME}/.cache/ms-playwright,target=/home/pwuser/.cache/ms-playwright,type=bind,consistency=cached"
 	],
-
 	"customizations": {
 		"vscode": {
 			"settings": {
 				"java.jdt.ls.java.home": "/usr/local/sdkman/candidates/java/current"
 			},
-
 			"extensions": [
 				"vscjava.vscode-java-pack",
 				"redhat.vscode-yaml",
@@ -35,12 +32,13 @@
 			]
 		}
 	},
-
 	"initializeCommand": "mkdir ${HOME}/.m2; mkdir ${HOME}/.cache/ms-playwright; true",
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "mvn org.apache.maven.plugins:maven-dependency-plugin:3.6.1:go-offline quarkus:go-offline",
-
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"runArgs": [
+		"--userns=keep-id:uid=1000,gid=1000"
+	],
+	"containerUser": "pwuser",
 	"remoteUser": "pwuser"
 }

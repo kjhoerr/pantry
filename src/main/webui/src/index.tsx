@@ -6,6 +6,7 @@ import { DEVMODE } from "./config";
 
 // If in devmode, report webvitals to help diagnose perf issues
 if (DEVMODE) {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   require("./reportWebVitals");
 }
 

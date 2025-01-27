@@ -6,7 +6,7 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/solid";
 import { Toast } from "flowbite-react";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 
 import { useSelector } from "../hooks";
 import { ToastMessage } from "../model";

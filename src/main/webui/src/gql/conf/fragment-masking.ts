@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
   ResultOf,
   TypedDocumentNode as DocumentNode,
