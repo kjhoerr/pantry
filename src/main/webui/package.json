@@ -21,12 +21,16 @@
     "@heroicons/react": "2.0.16",
     "@mantine/hooks": "^7.16.1",
     "@reduxjs/toolkit": "^2.5.0",
+    "@rsbuild/core": "^1.2.3",
+    "@rsbuild/plugin-react": "^1.1.0",
+    "@rsbuild/plugin-svgr": "^1.0.6",
     "autoprefixer": "^10.4.20",
     "flowbite": "^2.5.2",
     "flowbite-react": "^0.10.2",
     "graphql": "^16.10.0",
     "graphql-request": "7.1.2",
     "postcss": "^8.5.1",
+    "postcss-loader": "^8.1.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-redux": "^9.2.0",
@@ -37,13 +41,10 @@
     "web-vitals": "^4.2.4"
   },
   "devDependencies": {
-    "@babel/core": "latest",
-    "@babel/plugin-proposal-private-property-in-object": "latest",
+    "@eslint/js": "latest",
     "@graphql-codegen/cli": "latest",
     "@graphql-codegen/client-preset": "latest",
-    "@rsbuild/core": "^1.2.3",
-    "@rsbuild/plugin-react": "^1.1.0",
-    "@rsbuild/plugin-svgr": "^1.0.6",
+    "@rsbuild/plugin-eslint": "latest",
     "@testing-library/dom": "latest",
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
@@ -55,22 +56,11 @@
     "@types/uuid": "latest",
     "eslint": "latest",
     "eslint-config-prettier": "latest",
-    "postcss-loader": "^8.1.1",
+    "eslint-plugin-prettier": "latest",
+    "eslint-plugin-react-hooks": "latest",
     "prettier": "latest",
-    "ts-node": "latest",
-    "typescript": "latest"
-  },
-  "resolutions": {
-    "@babel/traverse": "^7.23.2",
-    "postcss": "^8.4.38",
-    "ws": "^7.5.10"
-  },
-  "eslintConfig": {
-    "extends": [
-      "prettier",
-      "react-app",
-      "react-app/jest"
-    ]
+    "typescript": "latest",
+    "typescript-eslint": "latest"
   },
   "browserslist": {
     "production": [
@@ -84,5 +74,6 @@
       "last 1 safari version"
     ]
   },
+  "type": "module",
   "packageManager": "yarn@3.2.2"
 }

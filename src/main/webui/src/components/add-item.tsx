@@ -11,7 +11,7 @@ const defaultPantryItem = () =>
     description: "",
     quantity: 1,
     quantityUnitType: "oz",
-  } as PantryItem);
+  }) as PantryItem;
 
 export const AddItem = () => {
   const storeItem = useStoreItemController();

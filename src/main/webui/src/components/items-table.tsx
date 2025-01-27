@@ -54,7 +54,7 @@ export const ItemsTable = () => {
       const fieldType = typeof itemA[sortState.field];
       const getSortValue = (item: PantryItem) =>
         fieldType !== "number"
-          ? item[sortState.field]?.toString().toUpperCase() ?? ""
+          ? (item[sortState.field]?.toString().toUpperCase() ?? "")
           : Number(item[sortState.field]);
       const fieldA = getSortValue(itemA);
       const fieldB = getSortValue(itemB);
