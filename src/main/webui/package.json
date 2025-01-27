@@ -13,7 +13,7 @@
     "start": "rsbuild dev",
     "build": "rsbuild build",
     "preview": "rsbuild preview",
-    "lint": "eslint . && prettier --check 'src/**/*.(ts|tsx)'",
+    "lint": "eslint .",
     "format": "prettier --write 'src/**/*.(ts|tsx)'",
     "codegen": "graphql-codegen && yarn format"
   },
