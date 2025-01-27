@@ -1,6 +1,6 @@
 {
 	"name": "Pantry",
-	"image": "mcr.microsoft.com/playwright:v1.36.0-jammy",
+	"image": "mcr.microsoft.com/playwright:v1.47.0-jammy",
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
 		   "version": "17",
@@ -42,5 +42,9 @@
 	"postCreateCommand": "mvn org.apache.maven.plugins:maven-dependency-plugin:3.6.1:go-offline quarkus:go-offline",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"runArgs": [
+		"--userns=keep-id:uid=1000,gid=1000"
+	],
+	"containerUser": "pwuser",
 	"remoteUser": "pwuser"
 }
