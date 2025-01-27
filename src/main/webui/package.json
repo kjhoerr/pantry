@@ -10,10 +10,9 @@
   "author": "Kevin J Hoerr <kjhoerr@submelon.tech>",
   "license": "BlueOak-1.0.0",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "rsbuild dev",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview",
     "lint": "eslint . && prettier --check 'src/**/*.(ts|tsx)'",
     "format": "prettier --write 'src/**/*.(ts|tsx)'",
     "codegen": "graphql-codegen && yarn format"
@@ -42,6 +41,9 @@
     "@babel/plugin-proposal-private-property-in-object": "latest",
     "@graphql-codegen/cli": "latest",
     "@graphql-codegen/client-preset": "latest",
+    "@rsbuild/core": "^1.2.3",
+    "@rsbuild/plugin-react": "^1.1.0",
+    "@rsbuild/plugin-svgr": "^1.0.6",
     "@testing-library/dom": "latest",
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
@@ -53,8 +55,8 @@
     "@types/uuid": "latest",
     "eslint": "latest",
     "eslint-config-prettier": "latest",
+    "postcss-loader": "^8.1.1",
     "prettier": "latest",
-    "react-scripts": "latest",
     "ts-node": "latest",
     "typescript": "latest"
   },
