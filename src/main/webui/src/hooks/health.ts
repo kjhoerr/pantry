@@ -25,7 +25,9 @@ const performHealthcheck = async (): Promise<SystemHealth | undefined> => {
         return body;
       }
     }
-  } catch {}
+  } catch {
+    /* do nothing */
+  }
 
   return undefined;
 };

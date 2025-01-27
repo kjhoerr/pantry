@@ -5,7 +5,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
 import { Pagination, Table, TextInput } from "flowbite-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ENTRIES_PER_PAGE } from "../config";
 import { useSelector } from "../hooks";
@@ -156,7 +156,8 @@ export const ItemsTable = () => {
                 role="alert"
                 className="text-center whitespace-nowrap font-medium text-gray-900 dark:text-white"
               >
-                No items found in pantry that match '{searchState.trim()}'...
+                No items found in pantry that match &apos;{searchState.trim()}
+                &apos;...
               </div>
             </Table.Cell>
           </Table.Row>
@@ -204,7 +205,8 @@ export const ItemsTable = () => {
                   renderPaginationButton={(props) => (
                     <Pagination.Button
                       {...props}
-                      className={props.className + " py-2.5 h-10"}
+                      // eslint-disable-next-line react/prop-types
+                      className={(props.className ?? "") + " py-2.5 h-10"}
                     />
                   )}
                 />
