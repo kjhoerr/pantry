@@ -1766,7 +1766,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/plugin-react@npm:1.1.0, @rsbuild/plugin-react@npm:^1.1.0":
+"@rsbuild/plugin-react@npm:1.1.0":
   version: 1.1.0
   resolution: "@rsbuild/plugin-react@npm:1.1.0"
   dependencies:
@@ -1775,6 +1775,18 @@ __metadata:
   peerDependencies:
     "@rsbuild/core": 1.x
   checksum: e244584f1cae661afe019ed5801488cf386beced540d95c3173f780c28fe9a6aca27b01dca967697fb142eb763f9a7304c981bd71bf72b4aafcbf0db0a2ca4e5
+  languageName: node
+  linkType: hard
+
+"@rsbuild/plugin-react@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@rsbuild/plugin-react@npm:1.1.1"
+  dependencies:
+    "@rspack/plugin-react-refresh": ~1.0.1
+    react-refresh: ^0.16.0
+  peerDependencies:
+    "@rsbuild/core": 1.x
+  checksum: 163eb75ea86a548f2a29a25753f58fba4df796816cbeff342e42262fa4ca4145ba92916dc0aa0a7e0a784b56c4df849efdad436fb32d796852dea2b79a4e598c
   languageName: node
   linkType: hard
 
@@ -1920,7 +1932,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/plugin-react-refresh@npm:~1.0.0":
+"@rspack/plugin-react-refresh@npm:~1.0.0, @rspack/plugin-react-refresh@npm:~1.0.1":
   version: 1.0.3
   resolution: "@rspack/plugin-react-refresh@npm:1.0.3"
   dependencies:
@@ -6291,7 +6303,7 @@ __metadata:
     "@reduxjs/toolkit": ^2.5.0
     "@rsbuild/core": ^1.2.8
     "@rsbuild/plugin-eslint": latest
-    "@rsbuild/plugin-react": ^1.1.0
+    "@rsbuild/plugin-react": ^1.1.1
     "@rsbuild/plugin-svgr": ^1.0.6
     "@testing-library/dom": latest
     "@testing-library/jest-dom": latest
