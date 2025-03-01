@@ -1767,19 +1767,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/plugin-react@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@rsbuild/plugin-react@npm:1.1.0"
-  dependencies:
-    "@rspack/plugin-react-refresh": "npm:~1.0.0"
-    react-refresh: "npm:^0.16.0"
-  peerDependencies:
-    "@rsbuild/core": 1.x
-  checksum: e244584f1cae661afe019ed5801488cf386beced540d95c3173f780c28fe9a6aca27b01dca967697fb142eb763f9a7304c981bd71bf72b4aafcbf0db0a2ca4e5
-  languageName: node
-  linkType: hard
-
-"@rsbuild/plugin-react@npm:^1.1.1":
+"@rsbuild/plugin-react@npm:1.1.1, @rsbuild/plugin-react@npm:^1.1.1":
   version: 1.1.1
   resolution: "@rsbuild/plugin-react@npm:1.1.1"
   dependencies:
@@ -1791,19 +1779,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/plugin-svgr@npm:^1.0.6":
-  version: 1.0.6
-  resolution: "@rsbuild/plugin-svgr@npm:1.0.6"
+"@rsbuild/plugin-svgr@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "@rsbuild/plugin-svgr@npm:1.0.7"
   dependencies:
-    "@rsbuild/plugin-react": "npm:1.1.0"
-    "@svgr/core": "npm:8.1.0"
-    "@svgr/plugin-jsx": "npm:8.1.0"
-    "@svgr/plugin-svgo": "npm:8.1.0"
-    deepmerge: "npm:^4.3.1"
-    loader-utils: "npm:^2.0.4"
+    "@rsbuild/plugin-react": 1.1.1
+    "@svgr/core": 8.1.0
+    "@svgr/plugin-jsx": 8.1.0
+    "@svgr/plugin-svgo": 8.1.0
+    deepmerge: ^4.3.1
+    loader-utils: ^2.0.4
   peerDependencies:
     "@rsbuild/core": 1.x
-  checksum: f4caaec81e520fbda405ab735e2d6ee1f128bc182c9b6d9cba6e3b29d419e95af8d3794382a2da304895c76cd8788d35650d4ad9aeb73eb7644754367e9f83f2
+  checksum: c2b15d626f06ac8bfabc8a8e3b78a9e4d446e264ab8e8ea8c3453f6f3ad68750e724b687bec66e1cf3ff285892e51672e32a0003432e69ccd829034152110da9
   languageName: node
   linkType: hard
 
@@ -1933,7 +1921,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/plugin-react-refresh@npm:~1.0.0, @rspack/plugin-react-refresh@npm:~1.0.1":
+"@rspack/plugin-react-refresh@npm:~1.0.1":
   version: 1.0.3
   resolution: "@rspack/plugin-react-refresh@npm:1.0.3"
   dependencies:
@@ -6305,7 +6293,7 @@ __metadata:
     "@rsbuild/core": ^1.2.14
     "@rsbuild/plugin-eslint": latest
     "@rsbuild/plugin-react": ^1.1.1
-    "@rsbuild/plugin-svgr": ^1.0.6
+    "@rsbuild/plugin-svgr": ^1.0.7
     "@testing-library/dom": latest
     "@testing-library/jest-dom": latest
     "@testing-library/react": latest
