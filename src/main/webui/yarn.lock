@@ -4377,7 +4377,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flowbite-datepicker@npm:^1.3.0":
+"flowbite-datepicker@npm:^1.3.0, flowbite-datepicker@npm:^1.3.1":
   version: 1.3.2
   resolution: "flowbite-datepicker@npm:1.3.2"
   dependencies:
@@ -4417,7 +4417,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flowbite@npm:^2.0.0, flowbite@npm:^2.5.2":
+"flowbite@npm:^2.0.0":
   version: 2.5.2
   resolution: "flowbite@npm:2.5.2"
   dependencies:
@@ -4425,6 +4425,18 @@ __metadata:
     flowbite-datepicker: "npm:^1.3.0"
     mini-svg-data-uri: "npm:^1.4.3"
   checksum: 5ff9d8bbc45cac313f4c6e53370810aa8a554f15e59de9ae691b09fd33e4c193ef9464070faf8aef2d2acda21c591a0239bb1b8957091c5bef685c5bea72d45c
+  languageName: node
+  linkType: hard
+
+"flowbite@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "flowbite@npm:3.1.2"
+  dependencies:
+    "@popperjs/core": ^2.9.3
+    flowbite-datepicker: ^1.3.1
+    mini-svg-data-uri: ^1.4.3
+    postcss: ^8.5.1
+  checksum: ed0d87d77a2fad4f7324b381a8608c26ff6e25c68f1b50871548b68ea60bfe7570f43c052f479b3b3fb1ca6a28ed3094a1e9883e1448760f43a1be0b658ee4ee
   languageName: node
   linkType: hard
 
@@ -6315,7 +6327,7 @@ __metadata:
     eslint-config-prettier: latest
     eslint-plugin-prettier: latest
     eslint-plugin-react: latest
-    flowbite: ^2.5.2
+    flowbite: ^3.1.2
     flowbite-react: ^0.10.2
     graphql: ^16.10.0
     graphql-request: 7.1.2
@@ -6570,6 +6582,17 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: cfdcfcd019fca78160341080ba8986cf80cd6e9ca327ba61b86c03e95043e9bce56ad2e018851858039fd7264781797360bfba718dd216b17b3cd803a5134f2f
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.5.1":
+  version: 8.5.3
+  resolution: "postcss@npm:8.5.3"
+  dependencies:
+    nanoid: ^3.3.8
+    picocolors: ^1.1.1
+    source-map-js: ^1.2.1
+  checksum: da574620eb84ff60e65e1d8fc6bd5ad87a19101a23d0aba113c653434161543918229a0f673d89efb3b6d4906287eb04b957310dbcf4cbebacad9d1312711461
   languageName: node
   linkType: hard
 
