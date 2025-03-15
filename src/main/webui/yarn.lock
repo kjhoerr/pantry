@@ -1737,18 +1737,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/core@npm:^1.2.15":
-  version: 1.2.15
-  resolution: "@rsbuild/core@npm:1.2.15"
+"@rsbuild/core@npm:^1.2.19":
+  version: 1.2.19
+  resolution: "@rsbuild/core@npm:1.2.19"
   dependencies:
-    "@rspack/core": 1.2.7
+    "@rspack/core": 1.2.8
     "@rspack/lite-tapable": ~1.0.1
     "@swc/helpers": ^0.5.15
     core-js: ~3.41.0
     jiti: ^2.4.2
   bin:
     rsbuild: bin/rsbuild.js
-  checksum: 7a8c7872499bd330c741547972a1a39a55a7a13beb735b976215a37362926f8fc3cd03751d4230c0fa0347315ccaf2503b54f184f201d4f2116b40d74aca7097
+  checksum: 91f4b948e5de227b097cb6d5b9f5dd563bc1b3a9437c075bf99c45a9f833ab3a1652979bd666efb47952184bf2888572036c1c9eefba0da4125f4ee40e227cb1
   languageName: node
   linkType: hard
 
@@ -1795,82 +1795,82 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-darwin-arm64@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/binding-darwin-arm64@npm:1.2.7"
+"@rspack/binding-darwin-arm64@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/binding-darwin-arm64@npm:1.2.8"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rspack/binding-darwin-x64@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/binding-darwin-x64@npm:1.2.7"
+"@rspack/binding-darwin-x64@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/binding-darwin-x64@npm:1.2.8"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@rspack/binding-linux-arm64-gnu@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/binding-linux-arm64-gnu@npm:1.2.7"
+"@rspack/binding-linux-arm64-gnu@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/binding-linux-arm64-gnu@npm:1.2.8"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rspack/binding-linux-arm64-musl@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/binding-linux-arm64-musl@npm:1.2.7"
+"@rspack/binding-linux-arm64-musl@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/binding-linux-arm64-musl@npm:1.2.8"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@rspack/binding-linux-x64-gnu@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/binding-linux-x64-gnu@npm:1.2.7"
+"@rspack/binding-linux-x64-gnu@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/binding-linux-x64-gnu@npm:1.2.8"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rspack/binding-linux-x64-musl@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/binding-linux-x64-musl@npm:1.2.7"
+"@rspack/binding-linux-x64-musl@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/binding-linux-x64-musl@npm:1.2.8"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@rspack/binding-win32-arm64-msvc@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/binding-win32-arm64-msvc@npm:1.2.7"
+"@rspack/binding-win32-arm64-msvc@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/binding-win32-arm64-msvc@npm:1.2.8"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rspack/binding-win32-ia32-msvc@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/binding-win32-ia32-msvc@npm:1.2.7"
+"@rspack/binding-win32-ia32-msvc@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/binding-win32-ia32-msvc@npm:1.2.8"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@rspack/binding-win32-x64-msvc@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/binding-win32-x64-msvc@npm:1.2.7"
+"@rspack/binding-win32-x64-msvc@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/binding-win32-x64-msvc@npm:1.2.8"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@rspack/binding@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/binding@npm:1.2.7"
+"@rspack/binding@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/binding@npm:1.2.8"
   dependencies:
-    "@rspack/binding-darwin-arm64": 1.2.7
-    "@rspack/binding-darwin-x64": 1.2.7
-    "@rspack/binding-linux-arm64-gnu": 1.2.7
-    "@rspack/binding-linux-arm64-musl": 1.2.7
-    "@rspack/binding-linux-x64-gnu": 1.2.7
-    "@rspack/binding-linux-x64-musl": 1.2.7
-    "@rspack/binding-win32-arm64-msvc": 1.2.7
-    "@rspack/binding-win32-ia32-msvc": 1.2.7
-    "@rspack/binding-win32-x64-msvc": 1.2.7
+    "@rspack/binding-darwin-arm64": 1.2.8
+    "@rspack/binding-darwin-x64": 1.2.8
+    "@rspack/binding-linux-arm64-gnu": 1.2.8
+    "@rspack/binding-linux-arm64-musl": 1.2.8
+    "@rspack/binding-linux-x64-gnu": 1.2.8
+    "@rspack/binding-linux-x64-musl": 1.2.8
+    "@rspack/binding-win32-arm64-msvc": 1.2.8
+    "@rspack/binding-win32-ia32-msvc": 1.2.8
+    "@rspack/binding-win32-x64-msvc": 1.2.8
   dependenciesMeta:
     "@rspack/binding-darwin-arm64":
       optional: true
@@ -1890,18 +1890,18 @@ __metadata:
       optional: true
     "@rspack/binding-win32-x64-msvc":
       optional: true
-  checksum: 7da265531bb582101effebb37501314947920823ae70d19c663d5070be0651656d18f70638308b2624e2e2cb64cee9b79cd89483e7d226128bd92cfc3437db55
+  checksum: ed5e232292b67de7dbf3c64dedd807fe9f68eb62a86ba022e6f003f174e0737e2f024552ff0a57688e6d5207bbfd2b78a1df7ec8bb32e9a1f74cdb407dabde91
   languageName: node
   linkType: hard
 
-"@rspack/core@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@rspack/core@npm:1.2.7"
+"@rspack/core@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@rspack/core@npm:1.2.8"
   dependencies:
     "@module-federation/runtime-tools": 0.8.4
-    "@rspack/binding": 1.2.7
+    "@rspack/binding": 1.2.8
     "@rspack/lite-tapable": 1.0.1
-    caniuse-lite: ^1.0.30001700
+    caniuse-lite: ^1.0.30001702
   peerDependencies:
     "@rspack/tracing": ^1.x
     "@swc/helpers": ">=0.5.1"
@@ -1910,7 +1910,7 @@ __metadata:
       optional: true
     "@swc/helpers":
       optional: true
-  checksum: 3e1386c2ecab66cda369ad67e0fff56e1991c1833b08c26a179c98a1b7d0670b9f74514e4dc44e2530c1ff9ce3958c85e343e7b60fe54f2473a1c37ffdcf73f4
+  checksum: c665d129afe24d2915abeec772beb69c24a1f071c983d5e70a9e7cd3a4792d756c43c9997d7d04ae2ccbad7e2749a79d1f999cb006b0373a621219c70fb9bc0b
   languageName: node
   linkType: hard
 
@@ -3078,10 +3078,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001700":
-  version: 1.0.30001702
-  resolution: "caniuse-lite@npm:1.0.30001702"
-  checksum: ba8e88f0ef09a16f36de805c9491c3047986ab6bb1e0dc66f03067dce5e197be1c98cfaed21867bad851985f775b8d4fa50e7e37537c116a5fe1ae623dfd400c
+"caniuse-lite@npm:^1.0.30001702":
+  version: 1.0.30001704
+  resolution: "caniuse-lite@npm:1.0.30001704"
+  checksum: ac8c1b625198c9fdf03f55ef631a0917d29d368ded8e8b2e6a3111cb7433c30b2ef16a6dc44077fb6176e76881a51818d55f24efd04478f5e98b6724b64a8f5c
   languageName: node
   linkType: hard
 
@@ -6297,7 +6297,7 @@ __metadata:
     "@heroicons/react": 2.0.16
     "@mantine/hooks": ^7.17.1
     "@reduxjs/toolkit": ^2.6.1
-    "@rsbuild/core": ^1.2.15
+    "@rsbuild/core": ^1.2.19
     "@rsbuild/plugin-eslint": latest
     "@rsbuild/plugin-react": ^1.1.1
     "@rsbuild/plugin-svgr": ^1.0.7
