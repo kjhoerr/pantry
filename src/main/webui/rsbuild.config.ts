@@ -2,7 +2,7 @@ import { defineConfig } from "@rsbuild/core";
 import { pluginEslint } from "@rsbuild/plugin-eslint";
 import { pluginReact } from "@rsbuild/plugin-react";
 import { pluginSvgr } from "@rsbuild/plugin-svgr";
-import { pluginTailwindCSS } from "rsbuild-plugin-tailwindcss";
+import flowbiteReact from "flowbite-react/plugin/rsbuild";
 
 export default defineConfig({
   plugins: [
@@ -14,7 +14,7 @@ export default defineConfig({
     }),
     pluginReact(),
     pluginSvgr(),
-    pluginTailwindCSS(),
+    flowbiteReact(),
   ],
   html: {
     template: "./public/index.html",

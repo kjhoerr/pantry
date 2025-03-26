@@ -1,11 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
 
 body {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity)); 
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
+
 @media (prefers-color-scheme: dark) {
   body {
     --tw-bg-opacity: 1;

@@ -20,6 +20,9 @@
 !.yarn/sdks
 !.yarn/versions
 
+# flowbite
+.flowbite-react/class-list.json
+
 # misc
 .DS_Store
 .env.local

@@ -79,7 +79,7 @@ export const AddItem = () => {
           <div className="flex flex-row gap-4">
             <div className="basis-full">
               <div className="mb-2 block">
-                <Label htmlFor="addition-item-name" value="Item Name" />
+                <Label htmlFor="addition-item-name">Item Name</Label>
               </div>
               <TextInput
                 id="addition-item-name"
@@ -95,7 +95,7 @@ export const AddItem = () => {
           <div className="flex flex-row gap-4">
             <div className="basis-full">
               <div className="mb-2 block">
-                <Label htmlFor="addition-item-desc" value="Item Description" />
+                <Label htmlFor="addition-item-desc">Item Description</Label>
               </div>
               <TextInput
                 id="addition-item-desc"
@@ -110,7 +110,7 @@ export const AddItem = () => {
           <div className="flex flex-row gap-4">
             <div className="basis-1/2">
               <div className="mb-2 block">
-                <Label htmlFor="addition-item-quantity" value="Item Quantity" />
+                <Label htmlFor="addition-item-quantity">Item Quantity</Label>
               </div>
               <TextInput
                 id="addition-item-quantity"
@@ -123,7 +123,7 @@ export const AddItem = () => {
             </div>
             <div className="basis-1/2">
               <div className="mb-2 block">
-                <Label htmlFor="addition-item-qut" value="Quantity Type" />
+                <Label htmlFor="addition-item-qut">Quantity Type</Label>
               </div>
               <TextInput
                 id="addition-item-qut"
