@@ -4,7 +4,17 @@ import {
   ChevronUpDownIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
-import { Pagination, Table, TextInput } from "flowbite-react";
+import {
+  Pagination,
+  PaginationButton,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableHeadCell,
+  TextInput,
+} from "flowbite-react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ENTRIES_PER_PAGE } from "../config";
@@ -106,7 +116,7 @@ export const ItemsTable = () => {
       field: keyof PantryItem;
       children: React.ReactNode;
     }) => (
-      <Table.HeadCell
+      <TableHeadCell
         onClick={() => handleSortChange(field)}
         className="group-first/head:first:rounded-none group-first/head:last:rounded-none"
       >
@@ -122,22 +132,22 @@ export const ItemsTable = () => {
             <ChevronUpDownIcon className="ml-2 h-4 w-4" />
           )}
         </div>
-      </Table.HeadCell>
+      </TableHeadCell>
     );
     return HeadCell;
   }, [handleSortChange, sortState]);
 
   return (
     <Table id="tbl-pantry">
-      <Table.Head>
+      <TableHead>
         <HeadCell field="name">Name</HeadCell>
         <HeadCell field="description">Description</HeadCell>
         <HeadCell field="quantity">Quantity</HeadCell>
-      </Table.Head>
-      <Table.Body className="divide-y">
+      </TableHead>
+      <TableBody className="divide-y">
         {data.length === 0 && (
-          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-            <Table.Cell colSpan={3}>
+          <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            <TableCell colSpan={3}>
               <div
                 id="tbl-msg-empty"
                 role="alert"
@@ -145,12 +155,12 @@ export const ItemsTable = () => {
               >
                 Nothing&apos;s in the pantry at the moment!
               </div>
-            </Table.Cell>
-          </Table.Row>
+            </TableCell>
+          </TableRow>
         )}
         {data.length > 0 && entries.length === 0 && (
-          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-            <Table.Cell colSpan={3}>
+          <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            <TableCell colSpan={3}>
               <div
                 id="tbl-msg-empty"
                 role="alert"
@@ -159,8 +169,8 @@ export const ItemsTable = () => {
                 No items found in pantry that match &apos;{searchState.trim()}
                 &apos;...
               </div>
-            </Table.Cell>
-          </Table.Row>
+            </TableCell>
+          </TableRow>
         )}
         {entries
           .slice(
@@ -168,24 +178,24 @@ export const ItemsTable = () => {
             activePage * ENTRIES_PER_PAGE,
           )
           .map((item: PantryItem) => (
-            <Table.Row
+            <TableRow
               key={item.id}
               className="bg-white dark:border-gray-700 dark:bg-gray-800"
             >
-              <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+              <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 {item.name}
-              </Table.Cell>
-              <Table.Cell>
+              </TableCell>
+              <TableCell>
                 {item.description === "" ? "—" : item.description}
-              </Table.Cell>
-              <Table.Cell>
+              </TableCell>
+              <TableCell>
                 {item.quantity} {item.quantityUnitType}
-              </Table.Cell>
-            </Table.Row>
+              </TableCell>
+            </TableRow>
           ))}
-      </Table.Body>
-      <Table.Head>
-        <Table.HeadCell
+      </TableBody>
+      <TableHead>
+        <TableHeadCell
           colSpan={3}
           className="dark:bg-gray-800 border-t-2 border-gray-200 dark:border-gray-700"
         >
@@ -203,7 +213,7 @@ export const ItemsTable = () => {
                   totalPages={totalPages}
                   onPageChange={setActivePage}
                   renderPaginationButton={(props) => (
-                    <Pagination.Button
+                    <PaginationButton
                       {...props}
                       // eslint-disable-next-line react/prop-types
                       className={(props.className ?? "") + " py-2.5 h-10"}
@@ -222,8 +232,8 @@ export const ItemsTable = () => {
               />
             </div>
           </div>
-        </Table.HeadCell>
-      </Table.Head>
+        </TableHeadCell>
+      </TableHead>
     </Table>
   );
 };

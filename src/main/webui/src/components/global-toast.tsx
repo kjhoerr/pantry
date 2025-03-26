@@ -5,7 +5,7 @@ import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/24/solid";
-import { Toast } from "flowbite-react";
+import { Toast, ToastToggle } from "flowbite-react";
 import React, { useMemo } from "react";
 
 import { useSelector } from "../hooks";
@@ -71,7 +71,7 @@ export const GlobalToast = () => {
                     {message.detail}
                   </div>
                 </div>
-                <Toast.Toggle />
+                <ToastToggle />
               </Toast>
             </div>
           );
