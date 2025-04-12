@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@heroicons/react": "2.0.16",
-    "@mantine/hooks": "^7.17.2",
+    "@mantine/hooks": "^7.17.4",
     "@reduxjs/toolkit": "^2.6.1",
     "@rsbuild/core": "^1.3.3",
     "@rsbuild/plugin-react": "^1.1.1",
