@@ -1354,7 +1354,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/plugin-react@npm:1.1.1, @rsbuild/plugin-react@npm:^1.1.1":
+"@rsbuild/plugin-react@npm:1.1.1":
   version: 1.1.1
   resolution: "@rsbuild/plugin-react@npm:1.1.1"
   dependencies:
@@ -1363,6 +1363,18 @@ __metadata:
   peerDependencies:
     "@rsbuild/core": 1.x
   checksum: 163eb75ea86a548f2a29a25753f58fba4df796816cbeff342e42262fa4ca4145ba92916dc0aa0a7e0a784b56c4df849efdad436fb32d796852dea2b79a4e598c
+  languageName: node
+  linkType: hard
+
+"@rsbuild/plugin-react@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@rsbuild/plugin-react@npm:1.2.0"
+  dependencies:
+    "@rspack/plugin-react-refresh": ~1.2.0
+    react-refresh: ^0.17.0
+  peerDependencies:
+    "@rsbuild/core": 1.x
+  checksum: 588b3d80a9f505b06ff5a171c4c5182d3bdf609e4689d1b99fc059fe8aa7b073005b8ffbc1efdb415a03dd07b7a85b396679e6a3356042ef97e64eae5747b101
   languageName: node
   linkType: hard
 
@@ -1522,6 +1534,22 @@ __metadata:
     webpack-hot-middleware:
       optional: true
   checksum: 4104b21f5f1ff322c2f8eb8dc7fa746132780b052d952974239216d03e25cd0b9e41f754780cc40f25bac720628d63ef1b96dce5e1f636d87e78240faa02e524
+  languageName: node
+  linkType: hard
+
+"@rspack/plugin-react-refresh@npm:~1.2.0":
+  version: 1.2.0
+  resolution: "@rspack/plugin-react-refresh@npm:1.2.0"
+  dependencies:
+    error-stack-parser: ^2.1.4
+    html-entities: ^2.6.0
+  peerDependencies:
+    react-refresh: ">=0.10.0 <1.0.0"
+    webpack-hot-middleware: 2.x
+  peerDependenciesMeta:
+    webpack-hot-middleware:
+      optional: true
+  checksum: 993489e7c21a0fafab93e81dfb239c3ea2e9690516451cdd218793f18c6ea5199ad5ea5f29fdd270ec10a9109a696e04d5e4c47e0c5d5a1b94fa5a3d56e690ed
   languageName: node
   linkType: hard
 
@@ -4370,6 +4398,13 @@ eslint@latest:
   languageName: node
   linkType: hard
 
+"html-entities@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "html-entities@npm:2.6.0"
+  checksum: 720643f7954019c80911430a7df2728524c07080edfe812610bfc5d8191cd772b470bee0ee151bf7426679314ae53cf28a1c845d702123714e625a8565b26567
+  languageName: node
+  linkType: hard
+
 "http-proxy-agent@npm:^7.0.0":
   version: 7.0.2
   resolution: "http-proxy-agent@npm:7.0.2"
@@ -5729,7 +5764,7 @@ eslint@latest:
     "@reduxjs/toolkit": ^2.6.1
     "@rsbuild/core": ^1.3.3
     "@rsbuild/plugin-eslint": latest
-    "@rsbuild/plugin-react": ^1.1.1
+    "@rsbuild/plugin-react": ^1.2.0
     "@rsbuild/plugin-svgr": ^1.1.0
     "@tailwindcss/postcss": ^4.0.17
     "@testing-library/dom": latest
@@ -6045,6 +6080,13 @@ prettier@latest:
   version: 0.16.0
   resolution: "react-refresh@npm:0.16.0"
   checksum: becff1ced3c9eb3631e06e038d7238c1badb329c1232a34694cc9983b1d176b6ffb74560d2dc4cc5e3353aa0041503ae2e71d5043ac82a2bcfb1fdf529dbe8b0
+  languageName: node
+  linkType: hard
+
+"react-refresh@npm:^0.17.0":
+  version: 0.17.0
+  resolution: "react-refresh@npm:0.17.0"
+  checksum: e9d23a70543edde879263976d7909cd30c6f698fa372a1240142cf7c8bf99e0396378b9c07c2d39c3a10261d7ba07dc49f990cd8f1ac7b88952e99040a0be5e9
   languageName: node
   linkType: hard
 
