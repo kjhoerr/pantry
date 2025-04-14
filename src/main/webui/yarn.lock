@@ -1354,19 +1354,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/plugin-react@npm:1.1.1":
-  version: 1.1.1
-  resolution: "@rsbuild/plugin-react@npm:1.1.1"
-  dependencies:
-    "@rspack/plugin-react-refresh": ~1.0.1
-    react-refresh: ^0.16.0
-  peerDependencies:
-    "@rsbuild/core": 1.x
-  checksum: 163eb75ea86a548f2a29a25753f58fba4df796816cbeff342e42262fa4ca4145ba92916dc0aa0a7e0a784b56c4df849efdad436fb32d796852dea2b79a4e598c
-  languageName: node
-  linkType: hard
-
-"@rsbuild/plugin-react@npm:^1.2.0":
+"@rsbuild/plugin-react@npm:^1.1.0, @rsbuild/plugin-react@npm:^1.2.0":
   version: 1.2.0
   resolution: "@rsbuild/plugin-react@npm:1.2.0"
   dependencies:
@@ -1378,19 +1366,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/plugin-svgr@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@rsbuild/plugin-svgr@npm:1.1.0"
+"@rsbuild/plugin-svgr@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@rsbuild/plugin-svgr@npm:1.2.0"
   dependencies:
-    "@rsbuild/plugin-react": 1.1.1
+    "@rsbuild/plugin-react": ^1.1.0
     "@svgr/core": 8.1.0
     "@svgr/plugin-jsx": 8.1.0
     "@svgr/plugin-svgo": 8.1.0
     deepmerge: ^4.3.1
-    loader-utils: ^2.0.4
+    loader-utils: ^3.3.1
   peerDependencies:
     "@rsbuild/core": 1.x
-  checksum: d9bdbe6ad250163dc91412ef80d3e2146aa8c9dd68635430607894fe0fae47e78e731c72c917e685c1fffc0970590aef88ab2bcf2fafbe75819685385a17425e
+  checksum: 14c09fbda445c75c96fb0e7a0bfb6b1fdaa9fe53420f615f220b4b8d61ef418dbacfbed88316cbb6ea865e8749c59468f15c3a4d896827e78604fbe8a95d847a
   languageName: node
   linkType: hard
 
@@ -1518,22 +1506,6 @@ __metadata:
   version: 1.0.1
   resolution: "@rspack/lite-tapable@npm:1.0.1"
   checksum: a490aa7868178e7277573293a2b81191513d451c72f4118173f080b5c65a19618e1d37083cffa049b563433a3f772ab2f4424c0a920b04b1347ddb12fe3bcbf8
-  languageName: node
-  linkType: hard
-
-"@rspack/plugin-react-refresh@npm:~1.0.1":
-  version: 1.0.3
-  resolution: "@rspack/plugin-react-refresh@npm:1.0.3"
-  dependencies:
-    error-stack-parser: ^2.1.4
-    html-entities: ^2.5.2
-  peerDependencies:
-    react-refresh: ">=0.10.0 <1.0.0"
-    webpack-hot-middleware: 2.x
-  peerDependenciesMeta:
-    webpack-hot-middleware:
-      optional: true
-  checksum: 4104b21f5f1ff322c2f8eb8dc7fa746132780b052d952974239216d03e25cd0b9e41f754780cc40f25bac720628d63ef1b96dce5e1f636d87e78240faa02e524
   languageName: node
   linkType: hard
 
@@ -2597,13 +2569,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"big.js@npm:^5.2.2":
-  version: 5.2.2
-  resolution: "big.js@npm:5.2.2"
-  checksum: b89b6e8419b097a8fb4ed2399a1931a68c612bce3cfd5ca8c214b2d017531191070f990598de2fc6f3f993d91c0f08aa82697717f6b3b8732c9731866d233c9e
-  languageName: node
-  linkType: hard
-
 "bl@npm:^4.1.0":
   version: 4.1.0
   resolution: "bl@npm:4.1.0"
@@ -3400,13 +3365,6 @@ __metadata:
   version: 8.0.0
   resolution: "emoji-regex@npm:8.0.0"
   checksum: d4c5c39d5a9868b5fa152f00cada8a936868fd3367f33f71be515ecee4c803132d11b31a6222b2571b1e5f7e13890156a94880345594d0ce7e3c9895f560f192
-  languageName: node
-  linkType: hard
-
-"emojis-list@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "emojis-list@npm:3.0.0"
-  checksum: ddaaa02542e1e9436c03970eeed445f4ed29a5337dfba0fe0c38dfdd2af5da2429c2a0821304e8a8d1cadf27fdd5b22ff793571fa803ae16852a6975c65e8e70
   languageName: node
   linkType: hard
 
@@ -4391,13 +4349,6 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"html-entities@npm:^2.5.2":
-  version: 2.5.3
-  resolution: "html-entities@npm:2.5.3"
-  checksum: 752256b525bca987ff99b355793613e89905d9c72c3a683ed3dd4d7a9c346bec79f5cf4cb09d17cfca2ad1a5bfc93ee566f143c06056b510ce2f096c2cf968c0
-  languageName: node
-  linkType: hard
-
 "html-entities@npm:^2.6.0":
   version: 2.6.0
   resolution: "html-entities@npm:2.6.0"
@@ -5071,7 +5022,7 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"json5@npm:^2.1.2, json5@npm:^2.2.3":
+"json5@npm:^2.2.3":
   version: 2.2.3
   resolution: "json5@npm:2.2.3"
   bin:
@@ -5256,14 +5207,10 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"loader-utils@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "loader-utils@npm:2.0.4"
-  dependencies:
-    big.js: ^5.2.2
-    emojis-list: ^3.0.0
-    json5: ^2.1.2
-  checksum: a5281f5fff1eaa310ad5e1164095689443630f3411e927f95031ab4fb83b4a98f388185bb1fe949e8ab8d4247004336a625e9255c22122b815bb9a4c5d8fc3b7
+"loader-utils@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "loader-utils@npm:3.3.1"
+  checksum: d35808e081635e5bc50228a52ed79f83e2c82bd8f7578818c12b1b4cf0b7f409d72d9b93a683ec36b9eaa93346693d3f3c8380183ba2ff81599b0829d685de39
   languageName: node
   linkType: hard
 
@@ -5765,7 +5712,7 @@ eslint@latest:
     "@rsbuild/core": ^1.3.3
     "@rsbuild/plugin-eslint": latest
     "@rsbuild/plugin-react": ^1.2.0
-    "@rsbuild/plugin-svgr": ^1.1.0
+    "@rsbuild/plugin-svgr": ^1.2.0
     "@tailwindcss/postcss": ^4.1.3
     "@testing-library/dom": latest
     "@testing-library/jest-dom": latest
@@ -6073,13 +6020,6 @@ prettier@latest:
     redux:
       optional: true
   checksum: 96dfe2929561d7c98d4443722738e4595f08758bde27b7bc20cd98ba9b0dfe9b81b9fa17b6888be94a0c1d2d1305397ae493a8219698536d011a941589eb82bd
-  languageName: node
-  linkType: hard
-
-"react-refresh@npm:^0.16.0":
-  version: 0.16.0
-  resolution: "react-refresh@npm:0.16.0"
-  checksum: becff1ced3c9eb3631e06e038d7238c1badb329c1232a34694cc9983b1d176b6ffb74560d2dc4cc5e3353aa0041503ae2e71d5043ac82a2bcfb1fdf529dbe8b0
   languageName: node
   linkType: hard
 
