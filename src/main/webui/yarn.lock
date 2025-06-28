@@ -5898,7 +5898,7 @@ eslint@latest:
     react-redux: ^9.2.0
     react-router-dom: ^7.6.2
     redux: ^5.0.1
-    tailwindcss: ^4.1.10
+    tailwindcss: ^4.1.11
     typescript: latest
     typescript-eslint: latest
     uuid: ^11.1.0
@@ -7039,10 +7039,17 @@ prettier@latest:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:4.1.10, tailwindcss@npm:^4.1.10":
+"tailwindcss@npm:4.1.10":
   version: 4.1.10
   resolution: "tailwindcss@npm:4.1.10"
   checksum: acf0200beae4242af32075dae0733fd6e766ff3c36f0df5730be5ec3f73250baf8bdd87d903ecd81377205411c5b4e6844ebd105cf86f67cf6ceb5737e05d054
+  languageName: node
+  linkType: hard
+
+"tailwindcss@npm:^4.1.11":
+  version: 4.1.11
+  resolution: "tailwindcss@npm:4.1.11"
+  checksum: db5883219aa7b4192aa13a028547867c5d6c18b3438b99c25ac7af64c3f9475d1b96970cb27f52f6f53789bb91d8fc4ed8e7f181c73ba7dda721cf5a44983804
   languageName: node
   linkType: hard
 
