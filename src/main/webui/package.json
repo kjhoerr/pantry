@@ -15,8 +15,7 @@
     "preview": "rsbuild preview",
     "lint": "eslint .",
     "format": "prettier --write 'src/**/*.(ts|tsx)'",
-    "codegen": "graphql-codegen && yarn format",
-    "postinstall": "flowbite-react patch"
+    "codegen": "graphql-codegen && yarn format"
   },
   "dependencies": {
     "@heroicons/react": "2.0.16",
