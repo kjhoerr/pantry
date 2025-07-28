@@ -15,8 +15,7 @@
     "preview": "rsbuild preview",
     "lint": "eslint .",
     "format": "prettier --write 'src/**/*.(ts|tsx)'",
-    "codegen": "graphql-codegen && yarn format",
-    "postinstall": "flowbite-react patch"
+    "codegen": "graphql-codegen && yarn format"
   },
   "dependencies": {
     "@heroicons/react": "2.0.16",
@@ -27,7 +26,7 @@
     "@rsbuild/plugin-svgr": "^1.2.1",
     "@tailwindcss/postcss": "^4.1.11",
     "flowbite": "^3.1.2",
-    "flowbite-react": "^0.11.9",
+    "flowbite-react": "^0.12.5",
     "graphql": "^16.11.0",
     "graphql-request": "7.2.0",
     "react": "19.1.0",
