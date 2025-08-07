@@ -1413,18 +1413,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/core@npm:^1.4.12":
-  version: 1.4.12
-  resolution: "@rsbuild/core@npm:1.4.12"
+"@rsbuild/core@npm:^1.4.15":
+  version: 1.4.15
+  resolution: "@rsbuild/core@npm:1.4.15"
   dependencies:
     "@rspack/core": 1.4.11
     "@rspack/lite-tapable": ~1.0.1
     "@swc/helpers": ^0.5.17
-    core-js: ~3.44.0
+    core-js: ~3.45.0
     jiti: ^2.5.1
   bin:
     rsbuild: bin/rsbuild.js
-  checksum: a8e01486122fddb17676636d9b61f276e1efd3f24541c2f5087cbd7ccba2461c68d627c0954636107cd77749a993324cd84d88d321a714ed9ae5504997b96459
+  checksum: 67dd5d3a4a21fd4f20d70517ab62a243d3f996925236d926ed73664dfdfc2f363383e0495eb9b8b4a0091b31b7ea0f48b74771d438c304dcc197bd3f55208545
   languageName: node
   linkType: hard
 
@@ -3137,10 +3137,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:~3.44.0":
-  version: 3.44.0
-  resolution: "core-js@npm:3.44.0"
-  checksum: 1a9fca319aaeb8ae58764f9566a92d5fe7f609749dd1e5e0af4e1a0e4c6f0402d51b5ad379decb6ee722df0a65f0897a1ed1da397888e53437a52d3c105724a5
+"core-js@npm:~3.45.0":
+  version: 3.45.0
+  resolution: "core-js@npm:3.45.0"
+  checksum: 05706def467637c0392cb3d37d9e29714070d53feceea2715b4c805f9d55a62caac5d9f40c679a5f56e7fed4198a0e923392c704140fd617c111b239968d5bf1
   languageName: node
   linkType: hard
 
@@ -5930,7 +5930,7 @@ eslint@latest:
     "@heroicons/react": 2.0.16
     "@mantine/hooks": ^8.2.3
     "@reduxjs/toolkit": ^2.8.2
-    "@rsbuild/core": ^1.4.12
+    "@rsbuild/core": ^1.4.15
     "@rsbuild/plugin-eslint": latest
     "@rsbuild/plugin-react": ^1.3.4
     "@rsbuild/plugin-svgr": ^1.2.1
