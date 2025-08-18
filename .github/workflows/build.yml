@@ -3,7 +3,7 @@ name: Pantry build
 on:
   push:
     branches:
-      - trunk
+      - main
     tags:
       - v*
 
