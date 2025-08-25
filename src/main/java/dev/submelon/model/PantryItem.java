@@ -31,4 +31,6 @@ public class PantryItem extends ReactivePanacheMongoEntityBase {
 
     private String quantityUnitType;
 
+    private String[] labels;
+
 }

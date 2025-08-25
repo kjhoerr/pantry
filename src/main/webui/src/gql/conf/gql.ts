@@ -18,6 +18,10 @@ const documents = {
     types.AllItemsDocument,
   "\n  mutation storeItem(\n    $id: String\n    $name: String\n    $description: String\n    $quantity: Float!\n    $quantityUnitType: String\n  ) {\n    storeItem(\n      item: {\n        id: $id\n        name: $name\n        description: $description\n        quantity: $quantity\n        quantityUnitType: $quantityUnitType\n      }\n    ) {\n      id\n      name\n      description\n      quantity\n      quantityUnitType\n    }\n  }\n":
     types.StoreItemDocument,
+  "\n  query allLabels {\n    allLabels {\n      id\n      title\n      color\n    }\n  }\n":
+    types.AllLabelsDocument,
+  "\n  mutation syncLabels(\n    $labels: [PantryItemLabelInput]\n  ) {\n    syncLabels(\n      labels: $labels\n    ) {\n      id\n      title\n      color\n    }\n  }\n":
+    types.SyncLabelsDocument,
 };
 
 /**
@@ -46,6 +50,18 @@ export function graphql(
 export function graphql(
   source: "\n  mutation storeItem(\n    $id: String\n    $name: String\n    $description: String\n    $quantity: Float!\n    $quantityUnitType: String\n  ) {\n    storeItem(\n      item: {\n        id: $id\n        name: $name\n        description: $description\n        quantity: $quantity\n        quantityUnitType: $quantityUnitType\n      }\n    ) {\n      id\n      name\n      description\n      quantity\n      quantityUnitType\n    }\n  }\n",
 ): (typeof documents)["\n  mutation storeItem(\n    $id: String\n    $name: String\n    $description: String\n    $quantity: Float!\n    $quantityUnitType: String\n  ) {\n    storeItem(\n      item: {\n        id: $id\n        name: $name\n        description: $description\n        quantity: $quantity\n        quantityUnitType: $quantityUnitType\n      }\n    ) {\n      id\n      name\n      description\n      quantity\n      quantityUnitType\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  query allLabels {\n    allLabels {\n      id\n      title\n      color\n    }\n  }\n",
+): (typeof documents)["\n  query allLabels {\n    allLabels {\n      id\n      title\n      color\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  mutation syncLabels(\n    $labels: [PantryItemLabelInput]\n  ) {\n    syncLabels(\n      labels: $labels\n    ) {\n      id\n      title\n      color\n    }\n  }\n",
+): (typeof documents)["\n  mutation syncLabels(\n    $labels: [PantryItemLabelInput]\n  ) {\n    syncLabels(\n      labels: $labels\n    ) {\n      id\n      title\n      color\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

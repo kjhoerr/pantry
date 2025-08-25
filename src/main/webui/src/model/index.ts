@@ -1,4 +1,4 @@
 export * from "./errors";
 export * from "./health";
 export * from "./toastMessage";
-export type { PantryItem } from "../gql/conf/graphql";
+export type { PantryItem, PantryItemLabel } from "../gql/conf/graphql";
