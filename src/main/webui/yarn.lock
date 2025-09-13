@@ -5970,7 +5970,7 @@ eslint@latest:
     tailwindcss: ^4.1.13
     typescript: latest
     typescript-eslint: latest
-    uuid: ^12.0.0
+    uuid: ^13.0.0
     web-vitals: ^5.1.0
   languageName: unknown
   linkType: soft
@@ -7432,12 +7432,12 @@ typescript@latest:
   languageName: node
   linkType: hard
 
-"uuid@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "uuid@npm:12.0.0"
+"uuid@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "uuid@npm:13.0.0"
   bin:
-    uuid: dist/bin/uuid
-  checksum: 0e0c2d137f61c7a44a9aefcd58e8df3957960ae2899f8dea42d2842304d8c0a42a052fc23240f4bc83fb96403f20af5b3c92b1e4402bb48f708dabee62ecd1a7
+    uuid: dist-node/bin/uuid
+  checksum: 7510ee1ab371be5339ef26ff8cabc2f4a2c60640ff880652968f758072f53bd4f4af1c8b0e671a8c9bb29ef926a24dec3ef0e3861d78183b39291a85743a9f96
   languageName: node
   linkType: hard
 
