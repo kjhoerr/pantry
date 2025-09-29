@@ -1268,12 +1268,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:^8.3.1":
-  version: 8.3.1
-  resolution: "@mantine/hooks@npm:8.3.1"
+"@mantine/hooks@npm:^8.3.2":
+  version: 8.3.2
+  resolution: "@mantine/hooks@npm:8.3.2"
   peerDependencies:
     react: ^18.x || ^19.x
-  checksum: d6a1b866292650925a5f68e53dbb6d81d7b44c952d062670574968458755372ede4b6a34558c7e92bb73ae1c7c5df19f3dfba5672c71fe785178e8948dc5aeec
+  checksum: dcfdbb6507ecb9e06563890cdaf2a083b4257e9e7c743a201582ab629a1504f82eb32ef8eb46ac447b0155781fee13192e463ac86323775b7caec109e6d55309
   languageName: node
   linkType: hard
 
@@ -5982,7 +5982,7 @@ eslint@latest:
     "@graphql-codegen/cli": latest
     "@graphql-codegen/client-preset": latest
     "@heroicons/react": 2.0.16
-    "@mantine/hooks": ^8.3.1
+    "@mantine/hooks": ^8.3.2
     "@reduxjs/toolkit": ^2.9.0
     "@rsbuild/core": ^1.5.12
     "@rsbuild/plugin-eslint": latest
