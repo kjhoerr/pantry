@@ -24,7 +24,7 @@
     "@rsbuild/core": "^1.5.12",
     "@rsbuild/plugin-react": "^1.4.1",
     "@rsbuild/plugin-svgr": "^1.2.2",
-    "@tailwindcss/postcss": "^4.1.13",
+    "@tailwindcss/postcss": "^4.1.14",
     "flowbite": "^3.1.2",
     "flowbite-react": "^0.12.9",
     "graphql": "^16.11.0",
@@ -34,7 +34,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.3",
     "redux": "^5.0.1",
-    "tailwindcss": "^4.1.13",
+    "tailwindcss": "^4.1.14",
     "uuid": "^13.0.0",
     "web-vitals": "^5.1.0"
   },
