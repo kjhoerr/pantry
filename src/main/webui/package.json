@@ -21,7 +21,7 @@
     "@heroicons/react": "2.0.16",
     "@mantine/hooks": "^8.3.5",
     "@reduxjs/toolkit": "^2.9.2",
-    "@rsbuild/core": "^1.5.17",
+    "@rsbuild/core": "^1.6.0",
     "@rsbuild/plugin-react": "^1.4.1",
     "@rsbuild/plugin-svgr": "^1.2.2",
     "@tailwindcss/postcss": "^4.1.16",
