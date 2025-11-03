@@ -4366,14 +4366,14 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"graphql-request@npm:7.3.0":
-  version: 7.3.0
-  resolution: "graphql-request@npm:7.3.0"
+"graphql-request@npm:7.3.1":
+  version: 7.3.1
+  resolution: "graphql-request@npm:7.3.1"
   dependencies:
     "@graphql-typed-document-node/core": ^3.2.0
   peerDependencies:
     graphql: 14 - 16
-  checksum: ce9588df750994334cb0e21cd9b1e33f7c0a674cef36f87e0f47ab8f1ef11da4897c1160468ef01f70aef223609012fcd205124364f4607f5aa1f3b950fe81b5
+  checksum: 6a93ca279a8890f2de2ae77deb950e1f9b8988512e68a0a0179ea347a1536fbc8520f316d5c79788f588254eb4e93f2bebfa9c560b2028eab41b1c8433441a18
   languageName: node
   linkType: hard
 
@@ -5903,7 +5903,7 @@ eslint@latest:
     flowbite: ^3.1.2
     flowbite-react: ^0.12.10
     graphql: ^16.11.0
-    graphql-request: 7.3.0
+    graphql-request: 7.3.1
     prettier: latest
     react: 19.2.0
     react-dom: 19.2.0
