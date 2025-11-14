@@ -1443,15 +1443,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/plugin-react@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "@rsbuild/plugin-react@npm:1.4.1"
+"@rsbuild/plugin-react@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "@rsbuild/plugin-react@npm:1.4.2"
   dependencies:
-    "@rspack/plugin-react-refresh": ^1.5.1
-    react-refresh: ^0.17.0
+    "@rspack/plugin-react-refresh": ^1.5.2
+    react-refresh: ^0.18.0
   peerDependencies:
     "@rsbuild/core": 1.x
-  checksum: 5344d5674aa9001b61b67fefe755108c349873433f85703aac04106ffb0aea2f7f225762d04fddf352383d73514a644e1a8436e2b7ea9cd357e6e33d52c64455
+  checksum: 353b6b40f74109676ad2980d7be143d57707fdb3dcea25ffb4158124cda9c84777584b7cb72a3572884e6dc73ed532b2b42a60ca79738152aea713e8052017fe
   languageName: node
   linkType: hard
 
@@ -1605,9 +1605,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/plugin-react-refresh@npm:^1.5.1":
-  version: 1.5.1
-  resolution: "@rspack/plugin-react-refresh@npm:1.5.1"
+"@rspack/plugin-react-refresh@npm:^1.5.2":
+  version: 1.5.3
+  resolution: "@rspack/plugin-react-refresh@npm:1.5.3"
   dependencies:
     error-stack-parser: ^2.1.4
     html-entities: ^2.6.0
@@ -1617,7 +1617,7 @@ __metadata:
   peerDependenciesMeta:
     webpack-hot-middleware:
       optional: true
-  checksum: 1a7887bd9044266f705a5b350320b97dfb444e831842b043607180b795c73aa26620f64198979ad2845478c5dda811012fff472236a0037337c375b9525f930b
+  checksum: cc7316d1f9e996e3ac74a9b59a8bf6e6790c7e04c15daed6f70b15a0ba023c39fa692691bc07c2c3665cb57ab5851ad119d5d3b72ccaf5611d47ae33525ef230
   languageName: node
   linkType: hard
 
@@ -5902,7 +5902,7 @@ eslint@latest:
     "@reduxjs/toolkit": ^2.9.2
     "@rsbuild/core": ^1.6.3
     "@rsbuild/plugin-eslint": latest
-    "@rsbuild/plugin-react": ^1.4.1
+    "@rsbuild/plugin-react": ^1.4.2
     "@rsbuild/plugin-svgr": ^1.2.2
     "@tailwindcss/postcss": ^4.1.17
     "@testing-library/dom": latest
@@ -6218,6 +6218,13 @@ prettier@latest:
   version: 0.17.0
   resolution: "react-refresh@npm:0.17.0"
   checksum: e9d23a70543edde879263976d7909cd30c6f698fa372a1240142cf7c8bf99e0396378b9c07c2d39c3a10261d7ba07dc49f990cd8f1ac7b88952e99040a0be5e9
+  languageName: node
+  linkType: hard
+
+"react-refresh@npm:^0.18.0":
+  version: 0.18.0
+  resolution: "react-refresh@npm:0.18.0"
+  checksum: c27d236e7b38f4a09c2b0134e6227fa62e2b71edad5f22bab40962fc0deba9e0f16930609a82b6a021ef4b4f0a4d405cf0fbb2b51a0f478809619a8226f20379
   languageName: node
   linkType: hard
 
