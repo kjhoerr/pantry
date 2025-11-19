@@ -4123,13 +4123,13 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"flowbite-datepicker@npm:^1.3.0, flowbite-datepicker@npm:^1.3.1":
-  version: 1.3.2
-  resolution: "flowbite-datepicker@npm:1.3.2"
+"flowbite-datepicker@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "flowbite-datepicker@npm:2.0.0"
   dependencies:
     "@rollup/plugin-node-resolve": ^15.2.3
-    flowbite: ^2.0.0
-  checksum: 22fb7552cf96d9df25406fce0e5638be7dd8d0715cbc4521b4c1b628ec2aaf8f54e49b9e8c1479223d2d51fa99046cf0f351fe5aa11f1db8c7b4200e36f060b4
+    "@tailwindcss/postcss": ^4.1.17
+  checksum: 8b769d760f1f8c87c7bcf767ae9ea43853e725a10dd5d313884716703a1e6e415717027b27e03f339bf0694f62de51bff1d7e20b05b9a9a6bcc32e6e4d57ed06
   languageName: node
   linkType: hard
 
@@ -4161,26 +4161,16 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"flowbite@npm:^2.0.0":
-  version: 2.5.2
-  resolution: "flowbite@npm:2.5.2"
+"flowbite@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "flowbite@npm:4.0.1"
   dependencies:
     "@popperjs/core": ^2.9.3
-    flowbite-datepicker: ^1.3.0
-    mini-svg-data-uri: ^1.4.3
-  checksum: 5ff9d8bbc45cac313f4c6e53370810aa8a554f15e59de9ae691b09fd33e4c193ef9464070faf8aef2d2acda21c591a0239bb1b8957091c5bef685c5bea72d45c
-  languageName: node
-  linkType: hard
-
-"flowbite@npm:^3.1.2":
-  version: 3.1.2
-  resolution: "flowbite@npm:3.1.2"
-  dependencies:
-    "@popperjs/core": ^2.9.3
-    flowbite-datepicker: ^1.3.1
+    flowbite-datepicker: ^2.0.0
     mini-svg-data-uri: ^1.4.3
     postcss: ^8.5.1
-  checksum: ed0d87d77a2fad4f7324b381a8608c26ff6e25c68f1b50871548b68ea60bfe7570f43c052f479b3b3fb1ca6a28ed3094a1e9883e1448760f43a1be0b658ee4ee
+    tailwindcss: ^4.1.12
+  checksum: 1121fa1142ffb5c6c0c789bc575e65efc68e3fc97b6d4e54d354df078731f254b5c1ec8ac2ff2a00caef860dd69b9c332388cfcb1baea433f03591543445126a
   languageName: node
   linkType: hard
 
@@ -5919,7 +5909,7 @@ eslint@latest:
     eslint-config-prettier: latest
     eslint-plugin-prettier: latest
     eslint-plugin-react: latest
-    flowbite: ^3.1.2
+    flowbite: ^4.0.1
     flowbite-react: ^0.12.10
     graphql: ^16.12.0
     graphql-request: 7.3.3
@@ -7070,7 +7060,7 @@ prettier@latest:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:4.1.17, tailwindcss@npm:^4.1.17":
+"tailwindcss@npm:4.1.17, tailwindcss@npm:^4.1.12, tailwindcss@npm:^4.1.17":
   version: 4.1.17
   resolution: "tailwindcss@npm:4.1.17"
   checksum: d3b66a81a46ede234018ed06f4c5390b42652ee29b880ac9858fa688ebbdfa0e66fcfdd6c98cc6ed08da3711b933898b660fc929160744447a34aefdd38e7708
