@@ -26,7 +26,7 @@
     "@rsbuild/plugin-svgr": "^1.2.3",
     "@tailwindcss/postcss": "^4.1.18",
     "flowbite": "^4.0.1",
-    "flowbite-react": "^0.12.10",
+    "flowbite-react": "^0.12.15",
     "graphql": "^16.12.0",
     "graphql-request": "7.3.5",
     "react": "19.2.3",
