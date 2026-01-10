@@ -4327,9 +4327,9 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"flowbite-react@npm:^0.12.15":
-  version: 0.12.15
-  resolution: "flowbite-react@npm:0.12.15"
+"flowbite-react@npm:^0.12.16":
+  version: 0.12.16
+  resolution: "flowbite-react@npm:0.12.16"
   dependencies:
     "@floating-ui/core": 1.7.3
     "@floating-ui/react": 0.27.16
@@ -4351,7 +4351,7 @@ eslint@latest:
     tailwindcss: ^3 || ^4
   bin:
     flowbite-react: dist/cli/bin.js
-  checksum: 5336b77d2ace75bc53a0db072eae23a9333785b031c5bf6695b5285284a5c767b15e7dc5684ed7832ed31e77fa086f9bc9b6455ce117adb4b25e1ca3b19a8c6b
+  checksum: 6e99ea876b431ea3b07c8b2024ada2c59889f86118d1077bfefdb176c99db3da94aa0b7f59c0c668be4d2534f166a950642ad92cecfa471dbe713cb8bfbb6b73
   languageName: node
   linkType: hard
 
@@ -6104,7 +6104,7 @@ eslint@latest:
     eslint-plugin-prettier: latest
     eslint-plugin-react: latest
     flowbite: ^4.0.1
-    flowbite-react: ^0.12.15
+    flowbite-react: ^0.12.16
     graphql: ^16.12.0
     graphql-request: 7.4.0
     prettier: latest
