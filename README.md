@@ -7,13 +7,13 @@ This project uses [Quarkus](https://quarkus.io/) and a React application based o
 
 Developing both front-end and back-end in tandem needs some connecting. The GraphQL schema is accessible while the back-end is running, typically at `localhost:8080/graphql/schema.graphql`. Pantry uses the `graphql-codegen` library to query for that endpoint and automatically generate types for the front-end to utilize schema changes. This can be run from the `src/main/webui` directory:
 
-``` shell script
+``` shell
 yarn codegen
 ```
 
 You can run the application in dev mode that enables live coding using:
 
-``` shell script
+``` shell
 mvn quarkus:dev
 ```
 
@@ -28,13 +28,13 @@ QUARKUS_QUINOA_PACKAGE_MANAGER_INSTALL_NODE_VERSION=19.4.0 #e.g.
 
 You can create a native executable using:
 
-``` shell script
+``` shell
 mvn package -Pnative
 ```
 
 Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
 
-``` shell script
+``` shell
 mvn package -Pnative -Dquarkus.native.container-build=true
 ```
 
@@ -48,7 +48,7 @@ There are separate Dockerfiles available for different use cases in building Pan
 
 For instance, to build a JVM Docker image of Pantry, run:
 
-``` shell script
+``` shell
 # Build the Java jar - Quinoa runs `yarn` to build the front-end
 maven package
 # Build the Docker image based on the jar
