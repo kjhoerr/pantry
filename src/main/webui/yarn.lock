@@ -1473,15 +1473,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/plugin-react@npm:^1.4.2":
-  version: 1.4.2
-  resolution: "@rsbuild/plugin-react@npm:1.4.2"
+"@rsbuild/plugin-react@npm:^1.4.3":
+  version: 1.4.3
+  resolution: "@rsbuild/plugin-react@npm:1.4.3"
   dependencies:
-    "@rspack/plugin-react-refresh": ^1.5.2
+    "@rspack/plugin-react-refresh": ^1.5.3
     react-refresh: ^0.18.0
   peerDependencies:
-    "@rsbuild/core": 1.x
-  checksum: 353b6b40f74109676ad2980d7be143d57707fdb3dcea25ffb4158124cda9c84777584b7cb72a3572884e6dc73ed532b2b42a60ca79738152aea713e8052017fe
+    "@rsbuild/core": ^1.0.0 || ^2.0.0-0
+  checksum: 14eda6e5595ee5e89cd4ee4e02e76a1072cbe9e5fba5170c8e2cf5fa8e115e6c57b31a0ecdbdae0ca67eed2d5cde5e68f2d4381f10c4d4bdab5ebdbccaaefb34
   languageName: node
   linkType: hard
 
@@ -1635,9 +1635,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/plugin-react-refresh@npm:^1.5.2":
-  version: 1.5.3
-  resolution: "@rspack/plugin-react-refresh@npm:1.5.3"
+"@rspack/plugin-react-refresh@npm:^1.5.3":
+  version: 1.6.0
+  resolution: "@rspack/plugin-react-refresh@npm:1.6.0"
   dependencies:
     error-stack-parser: ^2.1.4
     html-entities: ^2.6.0
@@ -1647,7 +1647,7 @@ __metadata:
   peerDependenciesMeta:
     webpack-hot-middleware:
       optional: true
-  checksum: cc7316d1f9e996e3ac74a9b59a8bf6e6790c7e04c15daed6f70b15a0ba023c39fa692691bc07c2c3665cb57ab5851ad119d5d3b72ccaf5611d47ae33525ef230
+  checksum: a82e4d13f4f23b9c5e0301fd39982d51cc0dfd7fbb444392c2c4c61b9bdd820ee168354ac60fbfb3ab887a06008a45f42ab35c37a3cde826ac81ec01528786f6
   languageName: node
   linkType: hard
 
@@ -6086,7 +6086,7 @@ eslint@latest:
     "@reduxjs/toolkit": ^2.11.2
     "@rsbuild/core": ^1.7.2
     "@rsbuild/plugin-eslint": latest
-    "@rsbuild/plugin-react": ^1.4.2
+    "@rsbuild/plugin-react": ^1.4.3
     "@rsbuild/plugin-svgr": ^1.2.3
     "@tailwindcss/postcss": ^4.1.18
     "@testing-library/dom": latest
