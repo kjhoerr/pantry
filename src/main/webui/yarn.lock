@@ -1485,9 +1485,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/plugin-svgr@npm:^1.2.3":
-  version: 1.2.3
-  resolution: "@rsbuild/plugin-svgr@npm:1.2.3"
+"@rsbuild/plugin-svgr@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "@rsbuild/plugin-svgr@npm:1.2.4"
   dependencies:
     "@rsbuild/plugin-react": ^1.1.0
     "@svgr/core": 8.1.0
@@ -1496,8 +1496,8 @@ __metadata:
     deepmerge: ^4.3.1
     loader-utils: ^3.3.1
   peerDependencies:
-    "@rsbuild/core": 1.x
-  checksum: d00baf57290f87181eea03c47b0002ded8194e293add8720d3da4bb26a4955411ffb241081f408971491ee395b21cf5445f017dc1ef64d3f1d64f404ea374e24
+    "@rsbuild/core": ^1.0.0 || ^2.0.0-0
+  checksum: fe71ba8fc390556ffe7daf7c1300034323ea0cc2d1d4933a0252acfd00e78c3c8fa0a9df78203f261c826115ae35de2b341dd733bfdce049faf02065bd4d057a
   languageName: node
   linkType: hard
 
@@ -6087,7 +6087,7 @@ eslint@latest:
     "@rsbuild/core": ^1.7.2
     "@rsbuild/plugin-eslint": latest
     "@rsbuild/plugin-react": ^1.4.3
-    "@rsbuild/plugin-svgr": ^1.2.3
+    "@rsbuild/plugin-svgr": ^1.2.4
     "@tailwindcss/postcss": ^4.1.18
     "@testing-library/dom": latest
     "@testing-library/jest-dom": latest
