@@ -1473,15 +1473,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/plugin-react@npm:^1.4.3":
-  version: 1.4.3
-  resolution: "@rsbuild/plugin-react@npm:1.4.3"
+"@rsbuild/plugin-react@npm:^1.4.5":
+  version: 1.4.5
+  resolution: "@rsbuild/plugin-react@npm:1.4.5"
   dependencies:
-    "@rspack/plugin-react-refresh": ^1.5.3
+    "@rspack/plugin-react-refresh": ^1.6.0
     react-refresh: ^0.18.0
   peerDependencies:
     "@rsbuild/core": ^1.0.0 || ^2.0.0-0
-  checksum: 14eda6e5595ee5e89cd4ee4e02e76a1072cbe9e5fba5170c8e2cf5fa8e115e6c57b31a0ecdbdae0ca67eed2d5cde5e68f2d4381f10c4d4bdab5ebdbccaaefb34
+  checksum: 18c405f4c1a1c891c7508f8f421946757df965663bd06d18cccd7b618aaad1e5f59c7718cdd706da7c93bc992062266160976375b5a5385a0be88b46cfa19651
   languageName: node
   linkType: hard
 
@@ -1635,7 +1635,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/plugin-react-refresh@npm:^1.5.3":
+"@rspack/plugin-react-refresh@npm:^1.6.0":
   version: 1.6.0
   resolution: "@rspack/plugin-react-refresh@npm:1.6.0"
   dependencies:
@@ -6086,7 +6086,7 @@ eslint@latest:
     "@reduxjs/toolkit": ^2.11.2
     "@rsbuild/core": ^1.7.2
     "@rsbuild/plugin-eslint": latest
-    "@rsbuild/plugin-react": ^1.4.3
+    "@rsbuild/plugin-react": ^1.4.5
     "@rsbuild/plugin-svgr": ^1.3.0
     "@tailwindcss/postcss": ^4.1.18
     "@testing-library/dom": latest
